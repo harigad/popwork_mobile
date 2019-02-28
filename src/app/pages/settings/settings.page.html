@@ -1,0 +1,62 @@
+<ion-content>
+  <div class="settings-content">
+    <div class="user-settings">
+      <div class="choos">
+        <span (click)="chooseFile()">[click to change photo]</span>
+        <input class="file-input" type="file">
+      </div>
+      <img src="../../assets/imgs/noavatar.png" alt="noavatar">
+      <h3 *ngIf="hideName">{{ nameEdit.get('nameLastname').value }}
+        <ion-icon (click)="showInput()" name="md-create"></ion-icon></h3>
+      <div class="edit-form">
+        <form *ngIf="hideFormName" [formGroup]="nameEdit" (ngSubmit)="saveForm()">
+          <ion-item>
+            <ion-input placeholder="lame lastname" type="text" formControlName="nameLastname"></ion-input>
+          </ion-item>
+          <button ion-button type="submit">Save</button>
+        </form>
+      </div>
+      <p *ngIf="hideWork">{{ worksEdit.get('profesii').value + ' , ' + worksEdit.get('works').value }}
+        <ion-icon (click)="showWorkInput()" name="md-create"></ion-icon></p>
+      <div class="edit-works">
+        <form *ngIf="hideFormWork" [formGroup]="worksEdit" (ngSubmit)="saveFormWork()">
+          <ion-item>
+            <ion-input placeholder="work" type="text" formControlName="profesii"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="work" type="text" formControlName="works"></ion-input>
+          </ion-item>
+          <button ion-button type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="two-buttons">
+      <button class="earn-btn" ion-button (click)="presentModal()">
+        <ion-icon name="logo-usd"></ion-icon><span>Earn a free month for you and a friend</span></button>
+      <button class="service-btn" ion-button>
+        <ion-icon name="person"></ion-icon><span>Concierge Service</span></button>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-tabs">
+      <div class="settings">
+        <button class="earn-btn" ion-button>
+          <ion-icon class="sett-icon" name="md-settings"></ion-icon>
+        </button>
+      </div>
+      <div class="qr-code">
+        <button class="earn-btn" ion-button>
+          <ion-icon class="qr" name="barcode"></ion-icon>
+        </button>
+      </div>
+      <div class="location">
+        <button (click)="pushMapPage('/map')" class="earn-btn" ion-button>
+          <ion-icon class="location-color" name="navigate"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

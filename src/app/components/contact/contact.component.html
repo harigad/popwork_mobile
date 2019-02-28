@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="search-contact">
+    <input class="search-co" (input)="searchContacts($event)" type="search" placeholder="Search contact" value="">
+    <div class="checked-length">
+      aasasasas
+      <ion-checkbox [checked]="check" (ionChange)="onInputChange($event)" color="danger"></ion-checkbox>
+    </div>
+  </div>
+    <!--<div class="contacts">-->
+    <!--<ion-list>-->
+      <!--<ion-item *ngFor="let contact of searchContact; let i = index">-->
+        <!--<ion-checkbox [(ngModel)]="contact.checked" (ionChange)="checkedValue()"-->
+         <!--[value]="contact?.phoneNumbers[0].value" color="danger"></ion-checkbox>-->
+        <!--<ion-label class="name_number">{{ contact?.displayName }}<br> <small>{{ contact?.phoneNumbers[0].value }}</small></ion-label>-->
+      <!--</ion-item>-->
+    <!--</ion-list>-->
+  <!--</div>-->
+  </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="invited-contact">
+      <button class="invite" (click)="inviteContact()">Invite</button>
+      <button class="cancel" (click)="closeModal()">Cancel</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

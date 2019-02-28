@@ -1,0 +1,75 @@
+#map {
+  width: 100%;
+  height: calc(100vh - 61px);
+}
+.footer-tabs{
+    text-align: center;
+    .settings, .qr-code,.location {
+      width: 30%;
+      display: inline-block;
+      button{
+        background: none;
+        outline: none;
+        .location-color{
+          color: #f30c56;
+          font-size: 30px;
+        }
+        .sett-icon{
+          color: grey;
+          font-size: 30px;
+        }
+        .qr{
+          font-size: 52px;
+          color: #f30c56;
+        }
+      }
+    }
+  }
+  .searchSpace{
+    position: absolute;
+    z-index: 99999;
+    background: #fff;
+    left: 10%;
+    right: 10%;
+    top: 20px;
+    border-radius: 4px;
+    .search{
+      position: absolute;
+      top: 8px;
+      left: 15px;
+      font-size: 24px;
+      color: gray;
+    }
+    ion-input{
+      text-align: center;
+      letter-spacing: 3px;
+    }
+  }
+  .slider-info{
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    h1{
+      color: #fff;
+      margin-left: 15px;
+      font-size: 16px;
+    }
+    span{
+      display: block;
+      color: #fff;
+      margin-left: 15px;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+    .slides{
+      width: 100%;
+      ion-slide{
+        background: url(../../../assets/imgs/blur-back2.jpg);
+        border: 8px solid white;
+        border-radius: 6px;
+        text-align: left;
+        height: 300px;
+        display: block;
+      }
+    }
+  }

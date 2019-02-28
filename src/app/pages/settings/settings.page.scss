@@ -1,0 +1,127 @@
+.settings-content{
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  top: 15%;
+  .choos{
+    margin: auto;
+    position: relative;
+  }
+  .file-input{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+  }
+  .user-settings{
+    top: 20%;
+    margin: auto;
+    position: relative;
+    span{
+      display: block;
+      color: #f30c56;
+      font-weight: 100;
+    }
+    img{
+      width: 140px;
+    }
+    h3{
+      margin: 0;
+      color: #000;
+      font-weight: 100;
+      font-size: 19px;
+      ion-icon{
+        margin-left: 10px;
+        color: #f30c56;
+      }
+    }
+    p{
+      margin-top: 8px;
+      color: #000;
+      font-size: 13px;
+      font-weight: 100;
+      ion-icon{
+        margin-left: 10px;
+        font-size: 20px;
+        color: #f30c56;
+      }
+    }
+    .edit-form, .edit-works{
+      button{
+        background: #f30c56;
+        height: 25px;
+        border-radius: 4px;
+        margin-top: 6px;
+        color: #fff;
+        span{
+          color: #fff;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+  .two-buttons{
+    margin-top: 25px;
+    button{
+      display: block;
+      margin: auto;
+      width: 100%;
+      background: #f30c56;
+      padding: 0;
+      height: 65px;
+      font-size: 14px;
+      font-weight: 100;
+      border-radius: 6px;
+      span{
+        color: #fff;
+        position: relative;
+        bottom: 8px;
+      }
+    }
+    .earn-btn{
+      margin-bottom: 15px;
+      border-right: 6px;
+      ion-icon{
+        background: #fff;
+        color: #f30c56;
+        border-radius: 100%;
+        height: 28px;
+        width: 30px;
+        font-size: 26px;
+        margin-right: 10px;
+      }
+    }
+    .service-btn{
+      ion-icon{
+        font-size: 31px;
+        color: #fff;
+      }
+    }
+  }
+}
+.footer-tabs{
+  text-align: center;
+  .settings, .qr-code,.location {
+    width: 30%;
+    display: inline-block;
+    button{
+      background: none;
+      box-shadow: none;
+      outline: none;
+      .location-color{
+        color: grey;
+        font-size: 30px;
+      }
+      .sett-icon{
+        color: #f30c56;
+        font-size: 30px;
+      }
+      .qr{
+        font-size: 52px;
+        color: #f30c56;
+      }
+    }
+  }
+}

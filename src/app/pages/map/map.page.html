@@ -1,0 +1,46 @@
+<ion-content>
+  <div class="map">
+    <div class="searchSpace">
+      <ion-icon class="search" name="search"></ion-icon>
+      <ion-input placeholder="find your third space"></ion-input>
+    </div>
+    <div id="map" #gmap></div>
+    <div class="slider-info">
+      <ion-slides [options]="sliderConfig">
+        <ion-slide *ngFor="let object of objects">
+          <h1>{{ object.title }}</h1>
+          <span>{{ object.date1 }}</span>
+          <span>{{ object.date2 }}</span>
+          <span>{{ object.wifi }}</span>
+          <span>{{ object.info }}</span>
+          <span>{{ object.book }}</span>
+          <span>{{ object.phone }}</span>
+          <span>{{ object.printer }}</span>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-tabs">
+      <div class="settings">
+        <button (click)="pushSettingsPage()" class="earn-btn" ion-button>
+          <ion-icon class="sett-icon" name="md-settings"></ion-icon>
+        </button>
+      </div>
+      <div class="qr-code">
+        <button class="earn-btn" ion-button>
+          <ion-icon class="qr" name="qr-scanner"></ion-icon>
+        </button>
+      </div>
+      <div class="location">
+        <button class="earn-btn" ion-button>
+          <ion-icon class="location-color" name="navigate"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
