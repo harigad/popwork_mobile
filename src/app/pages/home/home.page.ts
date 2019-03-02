@@ -26,14 +26,14 @@ export class HomePage implements OnInit {
   }
 
   sendPhoneNumber() {
+    console.log(this.phone);
     this.authService.sendPhoneNumber({phone: this.phone}).subscribe((res: any) => {
       if (res && res.status) {
-        this.router.navigate(['/settings', {phone: this.phone}]);
+        this.router.navigate(['/confimation'], {queryParams: {phone: this.phone}});
       }
     }, (error => {
       // TODO: remove next line after api is ready
-      // this.navCtrl.push(SignupPage, {phone: this.phone});
-        this.router.navigate(['/settings', {phone: this.phone}]);
+        this.router.navigate(['/confimation'], {queryParams: {phone: this.phone}});
       console.log(error);
     }));
   }
