@@ -1,0 +1,32 @@
+.scroll-content{
+  text-align: center;
+  .confirm-code{
+    background: grey;
+    height: 100vh;
+  }
+}
+
+label {
+  color: white;
+  display: block;
+  margin: 8px;
+}
+
+label.error {
+  color: #f53d3d !important;
+}
+
+.pin {
+  background: #353535;
+  color: white;
+  width: 48px;
+  display: inline-block;
+  text-align: center;
+  margin: 10px 8px;
+  border-radius: 4px;
+  input {
+    text-align: center;
+    font-size: 22px;
+    margin: 11px 8px 11px 3px;
+  }
+}

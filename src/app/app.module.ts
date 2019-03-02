@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
 // import {ComponentsModule} from './components/components.module';
 import {Contacts} from '@ionic-native/contacts';
+import { FormsModule } from '@angular/forms';
+import {AuthService} from '../services/auth.service';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,11 +21,13 @@ import {Contacts} from '@ionic-native/contacts';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
     // ComponentsModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Contacts
   ],
