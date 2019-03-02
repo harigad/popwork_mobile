@@ -15,6 +15,7 @@ import {
   Marker,
   Environment
 } from '@ionic-native/google-maps';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-map',
@@ -29,7 +30,11 @@ export class MapPage implements OnInit {
   map: any;
   sliderConfig: any = {};
 
-  constructor(private platform: Platform, private router: Router) {
+  constructor(
+      private platform: Platform,
+      private router: Router,
+      private authServise: AuthService
+  ) {
   }
 
   async ngOnInit() {
@@ -141,6 +146,9 @@ export class MapPage implements OnInit {
     ];
     JSON.stringify(this.objects);
     console.log(this.objects);
+    this.authServise.getPlaces().subscribe(places => {
+      this.objects = places;
+    })
   }
 
   pushSettingsPage() {

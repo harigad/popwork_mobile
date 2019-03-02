@@ -39,7 +39,8 @@
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.4.0",
-    "zone.js": "~0.8.29"
+    "zone.js": "~0.8.29",
+    "underscore": "latest"
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.12.3",

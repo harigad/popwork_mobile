@@ -1,6 +1,6 @@
 <ion-content class="scroll-content">
   <div class="confirm-code">
-    <form (submit)="sendPin()" [formGroup]="pinForm">
+    <form (ngSubmit)="sendPin()" [formGroup]="pinForm">
       <ion-input maxlength="1"  class="pin" type="text" #a (input)="moveFocus(a, b)" name="pin1" formControlName="pin1"></ion-input>
       <ion-input maxlength="1"  class="pin" type="text" #b (input)="moveFocus(b, c)" name="pin2" formControlName="pin2"></ion-input>
       <ion-input maxlength="1"  class="pin" type="text" #c (input)="moveFocus(c, d)" name="pin3" formControlName="pin3"></ion-input>

@@ -39,7 +39,7 @@ export class ConfimationPage implements OnInit {
       pin4: ['', Validators.required]
     });
       console.log(this.activeRoute.params);
-    this.activeRoute.params.subscribe(params => {
+    this.activeRoute.queryParams.subscribe(params => {
       this.phone = params['phone'];
       console.log(params);
     });

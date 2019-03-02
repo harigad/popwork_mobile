@@ -1,60 +1,33 @@
 import {Injectable} from '@angular/core';
-
 import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
   HttpRequest,
-  HttpResponse
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
 } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {tap} from 'rxjs/operators';
-import {appConfig} from '../utils/app.config';
-import {clearLocalStorage, getFromLocalStorage} from '../utils/local-storage';
-// import {Nav} from "ionic-angular";
-
-// import {Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
+import {Observable} from 'rxjs';
+import {_} from 'underscore';
 
 @Injectable()
-export class HttpInterceptorService implements HttpInterceptor {
 
+export class TokenInterceptor implements HttpInterceptor {
   constructor(
-      // private nav: Nav
+      public auth: AuthService
   ) {
   }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // if (req.url.indexOf(appConfig.apiUrl) !== -1 && req.url.indexOf(appConfig.apiUrl+'login') === -1) {
-   // if (req.url.indexOf('/apiUrl/') !== -1) {
-      return this.handleRequest(req, next);
-   // }
-  }
-
-  private handleRequest(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // let dupReq: any;
-    const auth = getFromLocalStorage('VB_USER');
-    if (auth && auth.token) {
-        req = req.clone({
-  headers: req.headers.set('x-access-token', ` ${auth.token}`).append('Content-Type', 'application/x-www-form-urlencoded').append('Access-Control-Allow-Origin', '*')
-      });
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log(request.method);
+    if (!_.contains(request.url, 'login')) {
+      if (this.auth.getToken()) {
+        request = request.clone({
+          headers: request.headers.set('x-access-token',  `${this.auth.getToken()}`)
+              .append('Content-Type', 'application/x-www-form-urlencoded')
+              .append('Access-Control-Allow-Origin', '*')
+        });
+      }
     }
-    return next.handle(req)
-        .pipe(
-            tap(
-                (evt: HttpEvent<any>) => {
-                  if (evt instanceof HttpResponse) {
-
-                  }
-                  return evt;
-                },
-                (err: any) => {
-                  if (err instanceof HttpErrorResponse) {
-                    if (err.status === 401) {
-                      clearLocalStorage();
-                    }
-                  }
-                })
-        );
+    return next.handle(request);
   }
 }
