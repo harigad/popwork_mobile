@@ -6,22 +6,16 @@
     </div>
     <div id="map" #gmap></div>
     <div class="slider-info">
-      <ion-slides [options]="sliderConfig">
+      <ion-slides (ionSlideDidChange)="getLocation()" [options]="sliderConfig">
         <ion-slide *ngFor="let object of objects">
-          <h1>{{ object.title }}</h1>
-          <span>{{ object.date1 }}</span>
-          <span>{{ object.date2 }}</span>
-          <span>{{ object.wifi }}</span>
-          <span>{{ object.info }}</span>
-          <span>{{ object.book }}</span>
-          <span>{{ object.phone }}</span>
-          <span>{{ object.printer }}</span>
+          <h1>{{ object.name }}</h1>
+          <span>{{ object.city }}</span>
+          <span>{{ object.state }}</span>
         </ion-slide>
       </ion-slides>
     </div>
   </div>
 </ion-content>
-
 
 <ion-footer>
   <ion-toolbar>

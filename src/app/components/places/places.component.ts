@@ -1,65 +1,56 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
-import {Platform} from '@ionic/angular';
-
-declare var google: any;
-import {Router} from '@angular/router';
-
-
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker,
-  Environment
-} from '@ionic-native/google-maps';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
+import {Platform} from '@ionic/angular';
+declare var google: any;
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.page.html',
-  styleUrls: ['./map.page.scss'],
+  selector: 'app-places',
+  templateUrl: './places.component.html',
+  styleUrls: ['./places.component.scss']
 })
-export class MapPage implements OnInit {
+export class PlacesComponent implements OnInit {
 
-  public objects: any;
   @ViewChild('gmap') gmapElement: any;
   myLocation;
   map: any;
-  sliderConfig: any = {};
-
+  private placeForm: FormGroup;
+  errorPlace = false;
+  place: any = [];
   constructor(
-      private platform: Platform,
-      private router: Router,
+      private modalCtrl: ModalController,
+      private formBuilder: FormBuilder,
       private authService: AuthService,
+      private platform: Platform,
   ) {
-  }
 
-  async ngOnInit() {
-
-    this.authService.getPlaces().subscribe(places => {
-      this.objects = places;
+    this.placeForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zipcode: ['', Validators.required],
+      lat: ['', Validators.required],
+      lng: ['', Validators.required],
+      googleid: ['', Validators.required]
     });
-    this.sliderConfig = {
-      // loop: true,
-      spaceBetween: 15,
-      slidesPerView: 1.2,
-      centeredSlides: true
-    };
-    await this.platform.ready();
-    await this.initMap();
   }
 
-  getLocation() {
-    const index = event.target.getActiveIndex().then(i => {
-      console.log(this.objects[i]);
-    });
-
+  ngOnInit() {
+    this.platform.ready();
+    this.initMapPlace();
   }
 
-  initMap() {
+  searchPlaces(e) {
+    if (e.target.value && e.target.value.length > 3) {
+      this.authService.searchPlace(e.target.value).subscribe(place => {
+        this.place = place;
+      });
+    }
+
+  }
+  initMapPlace() {
     console.log('Rendering the Map');
 
     if (navigator.geolocation) {
@@ -121,45 +112,30 @@ export class MapPage implements OnInit {
     }
   }
 
-  // getJson() {
-  //   this.objects = [{
-  //     title: 'Jypsy Lime Lounge 1',
-  //     date1: '9:00 AM - 11:00 AM',
-  //     date2: '3:00 PM - 10:00 PM',
-  //     wifi: 'Free',
-  //     info: 'Accessible Power Outlets',
-  //     book: 'Book Library',
-  //     phone: 'Phone Room',
-  //     printer: 'Printer',
-  //   },
-  //     {
-  //       title: 'Jypsy Lime Lounge 2',
-  //       date1: '9:00 AM - 11:00 AM',
-  //       date2: '3:00 PM - 10:00 PM',
-  //       wifi: 'Free',
-  //       info: 'Accessible Power Outlets',
-  //       book: 'Book Library',
-  //       phone: 'Phone Room',
-  //       printer: 'Printer'
-  //     },
-  //     {
-  //       title: 'Jypsy Lime Lounge 3',
-  //       date1: '9:00 AM - 11:00 AM',
-  //       date2: '3:00 PM - 10:00 PM',
-  //       wifi: 'Free',
-  //       info: 'Accessible Power Outlets',
-  //       book: 'Book Library',
-  //       phone: 'Phone Room',
-  //       printer: 'Printer'
-  //     }
-  //   ];
-  //   JSON.stringify(this.objects);
-  //   console.log(this.objects);
-  //
-  // }
+  createPlaces() {
+    if (this.placeForm.valid) {
+      this.errorPlace = false;
+      this.authService.createPlaces(this.placeForm.value).subscribe(place => {
+        console.log(place);
+        this.modalCtrl.dismiss();
+      });
+    } else {
+      this.errorPlace = true;
+    }
+    // this.dataPlace = {
+    //   name: this.placeForm.value.name,
+    //   address: this.placeForm.value.address,
+    //   city: this.placeForm.value.city,
+    //   state: this.placeForm.value.state,
+    //   zipcode: this.placeForm.value.zipcode,
+    //   lat: this.placeForm.value. lat,
+    //   lng: this.placeForm.value.lng,
+    //   googleid: this.placeForm.value.googleid,
+    // };
+  }
 
-  pushSettingsPage() {
-    this.router.navigate(['/settings']);
+  closeModalPlace() {
+    this.modalCtrl.dismiss();
   }
 
 }

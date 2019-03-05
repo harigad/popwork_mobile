@@ -53,7 +53,6 @@ export class ContactComponent implements OnInit {
       this.contacts.find(this.ourtype, option).then(conts => {
         this.contactsFound = conts;
         this.searchContact = this.contactsFound;
-        console.log('text+text');
         console.log(this.contactsFound);
       });
     }

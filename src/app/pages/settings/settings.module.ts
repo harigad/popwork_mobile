@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { SettingsPage } from './settings.page';
 import {ContactComponent} from '../../components/contact/contact.component';
 import {ComponentsModule} from '../../components/components.module';
+import {PlacesComponent} from '../../components/places/places.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -21,10 +23,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ComponentsModule,
+    ComponentsModule
     // BrowserModule
   ],
-  entryComponents: [ContactComponent],
-  declarations: [SettingsPage, ContactComponent]
+  entryComponents: [ContactComponent, PlacesComponent],
+  declarations: [SettingsPage, ContactComponent, PlacesComponent]
 })
 export class SettingsPageModule {}

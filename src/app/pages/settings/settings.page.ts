@@ -3,6 +3,7 @@ import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {NavController, ModalController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {ContactComponent} from '../../components/contact/contact.component';
+import {PlacesComponent} from '../../components/places/places.component';
 
 @Component({
   selector: 'app-settings',
@@ -79,6 +80,12 @@ export class SettingsPage implements OnInit {
   async presentModal() {
     const modal = await this.modalCtrl.create({
       component: ContactComponent
+    });
+    return await modal.present();
+  }
+  async presentModalPlace() {
+    const modal = await this.modalCtrl.create({
+      component: PlacesComponent
     });
     return await modal.present();
   }
