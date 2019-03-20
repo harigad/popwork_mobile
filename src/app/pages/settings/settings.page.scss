@@ -25,7 +25,10 @@
       font-weight: 100;
     }
     img{
-      width: 140px;
+      width: 130px;
+      height: 130px;
+      border-radius: 100%;
+      margin-top: 6px;
     }
     h3{
       margin: 0;
@@ -82,7 +85,6 @@
     }
     .earn-btn{
       margin-bottom: 10px;
-      border-right: 6px;
       ion-icon{
         background: #fff;
         color: #f30c56;

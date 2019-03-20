@@ -1,13 +1,13 @@
 <ion-content>
   <div class="map">
-    <div class="searchSpace">
-      <ion-icon class="search" name="search"></ion-icon>
-      <ion-input placeholder="find your third space"></ion-input>
+    <div class="search-place">
+      <ion-icon class="search-pl" name="search"></ion-icon>
+      <ion-input (input)="searchPlaces($event)" type="search" placeholder="Search place"></ion-input>
     </div>
     <div id="map" #gmap></div>
     <div class="slider-info">
-      <ion-slides (ionSlideDidChange)="getLocation()" [options]="sliderConfig">
-        <ion-slide *ngFor="let object of objects">
+      <ion-slides (ionSlideDidChange)="getLocation($event)" [options]="sliderConfig">
+        <ion-slide *ngFor="let object of places">
           <h1>{{ object.name }}</h1>
           <span>{{ object.city }}</span>
           <span>{{ object.state }}</span>
@@ -27,7 +27,7 @@
       </div>
       <div class="qr-code">
         <button class="earn-btn" ion-button>
-          <ion-icon class="qr" name="qr-scanner"></ion-icon>
+          <ion-icon class="qr" name="barcode"></ion-icon>
         </button>
       </div>
       <div class="location">

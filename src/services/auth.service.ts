@@ -12,11 +12,13 @@ export class AuthService {
 
   constructor(
       private http: HttpClient
-  ) { }
+  ) {
+  }
 
   sendPhoneNumber(phone) {
     return this.http.post(appConfig.apiUrl + `/login/mobile/${phone.phone.replace(/\D/g, '')}`, {});
   }
+
   sendPin(pin) {
     console.log(pin);
     return this.http.post(appConfig.apiUrl + `/login/verify/${pin.phone.replace(/\D/g, '')}/${pin.pin}`, {});
@@ -35,17 +37,16 @@ export class AuthService {
       googleid: place.googleid
     });
     const params = new HttpParams()
-        // .set('name', place.name)
-        // .set('address', place.address)
-        // .set('city', place.city)
-        // .set('state', place.state)
-        // .set('zipcode', place.zipcode)
-        // .set('lat', place.lat)
-        // .set('lng', place.lng)
-        // .set('googleid', place.googleid);
+    // .set('name', place.name)
+    // .set('address', place.address)
+    // .set('city', place.city)
+    // .set('state', place.state)
+    // .set('zipcode', place.zipcode)
+    // .set('lat', place.lat)
+    // .set('lng', place.lng)
+    // .set('googleid', place.googleid);
         .set('data', dataJson);
-    return this.http.post(appConfig.apiUrl + `/places`, params, {
-    });
+    return this.http.post(appConfig.apiUrl + `/places`, params, {});
   }
 
   getPlaces() {
@@ -58,5 +59,10 @@ export class AuthService {
 
   getToken() {
     return getFromLocalStorage('VB_USER') ? getFromLocalStorage('VB_USER').token : '';
+  }
+
+  saveForm(user) {
+    return this.http.put(`${appConfig.apiUrl}/users`, user);
+
   }
 }

@@ -2,29 +2,31 @@
   <div class="settings-content">
     <div class="user-settings">
       <div class="choos">
-        <span (click)="chooseFile()">[click to change photo]</span>
-        <input class="file-input" type="file">
+        <span *ngIf="changePhoto" (click)="chooseFile()">[click to change photo]</span>
+        <span *ngIf="savePhoto" (click)="toSavePhoto($event)">[click to save photo]</span>
+        <ion-input *ngIf="changePhoto" (change)="processFile($event)" accept="image/*" class="file-input" type="file" ></ion-input>
+        <!--<input (change)="processFile($event)" accept="image/*" class="file-input" type="file">-->
       </div>
-      <img src="../../assets/imgs/noavatar.png" alt="noavatar">
-      <h3 *ngIf="hideName">{{ nameEdit.get('nameLastname').value }}
+      <img [src]="url || '../../assets/imgs/noavatar.png'" alt="noavatar">
+      <h3 *ngIf="hideName">{{ nameEdit.get('name').value }}
         <ion-icon (click)="showInput()" name="md-create"></ion-icon></h3>
       <div class="edit-form">
         <form *ngIf="hideFormName" [formGroup]="nameEdit" (ngSubmit)="saveForm()">
           <ion-item>
-            <ion-input placeholder="lame lastname" type="text" formControlName="nameLastname"></ion-input>
+            <ion-input placeholder="lame lastname" type="text" formControlName="name"></ion-input>
           </ion-item>
           <button ion-button type="submit">Save</button>
         </form>
       </div>
-      <p *ngIf="hideWork">{{ worksEdit.get('profesii').value + ' , ' + worksEdit.get('works').value }}
+      <p *ngIf="hideWork">{{ worksEdit.get('jobtitle').value + ' , ' + worksEdit.get('company').value }}
         <ion-icon (click)="showWorkInput()" name="md-create"></ion-icon></p>
       <div class="edit-works">
         <form *ngIf="hideFormWork" [formGroup]="worksEdit" (ngSubmit)="saveFormWork()">
           <ion-item>
-            <ion-input placeholder="work" type="text" formControlName="profesii"></ion-input>
+            <ion-input placeholder="work" type="text" formControlName="jobtitle"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input placeholder="work" type="text" formControlName="works"></ion-input>
+            <ion-input placeholder="work" type="text" formControlName="company"></ion-input>
           </ion-item>
           <button ion-button type="submit">Save</button>
         </form>

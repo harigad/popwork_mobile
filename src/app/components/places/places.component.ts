@@ -4,6 +4,8 @@ import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
 import {Platform} from '@ionic/angular';
 declare var google: any;
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 
 @Component({
   selector: 'app-places',
@@ -23,6 +25,7 @@ export class PlacesComponent implements OnInit {
       private formBuilder: FormBuilder,
       private authService: AuthService,
       private platform: Platform,
+      private geolocation: Geolocation
   ) {
 
     this.placeForm = this.formBuilder.group({
@@ -53,10 +56,10 @@ export class PlacesComponent implements OnInit {
   initMapPlace() {
     console.log('Rendering the Map');
 
-    if (navigator.geolocation) {
+    if (this.geolocation) {
 
       console.log('Navigation ON');
-      navigator.geolocation.getCurrentPosition(position => {
+      this.geolocation.getCurrentPosition().then(position => {
         this.myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         this.map = new google.maps.Map(this.gmapElement.nativeElement, {
@@ -85,7 +88,6 @@ export class PlacesComponent implements OnInit {
           },
           // animation: google.maps.Animation.BOUNCE,
         });
-
       });
 
     } else {

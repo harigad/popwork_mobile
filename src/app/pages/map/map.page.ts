@@ -1,9 +1,9 @@
 import {Component, ViewChild, OnInit} from '@angular/core';
 import {Platform} from '@ionic/angular';
-
 declare var google: any;
 import {Router} from '@angular/router';
-
+import {AuthService} from '../../../services/auth.service';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import {
   GoogleMaps,
@@ -15,7 +15,6 @@ import {
   Marker,
   Environment
 } from '@ionic-native/google-maps';
-import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-map',
@@ -24,23 +23,23 @@ import {AuthService} from '../../../services/auth.service';
 })
 export class MapPage implements OnInit {
 
-  public objects: any;
+  public places: any;
   @ViewChild('gmap') gmapElement: any;
   myLocation;
   map: any;
   sliderConfig: any = {};
-
   constructor(
       private platform: Platform,
       private router: Router,
       private authService: AuthService,
+      private geolocation: Geolocation
   ) {
   }
-
-  async ngOnInit() {
+  ngOnInit() {
 
     this.authService.getPlaces().subscribe(places => {
-      this.objects = places;
+      this.places = places;
+      this.placeMarkers();
     });
     this.sliderConfig = {
       // loop: true,
@@ -48,24 +47,33 @@ export class MapPage implements OnInit {
       slidesPerView: 1.2,
       centeredSlides: true
     };
-    await this.platform.ready();
-    await this.initMap();
+    this.platform.ready();
+    this.initMap();
   }
 
-  getLocation() {
-    const index = event.target.getActiveIndex().then(i => {
-      console.log(this.objects[i]);
-    });
+  searchPlaces(e) {
+    if (e.target.value && e.target.value.length > 3) {
+      this.authService.searchPlace(e.target.value).subscribe(place => {
+        this.place = place;
+      });
+    }
 
+  }
+  getLocation(event) {
+    const index = event.target.getActiveIndex().then(i => {
+     const center =  new google.maps.LatLng(this.places[i].lat, this.places[i].lng);
+      console.log(this.places[i]);
+     this.map.panTo(center);
+    });
   }
 
   initMap() {
     console.log('Rendering the Map');
 
-    if (navigator.geolocation) {
+    if (this.geolocation) {
 
       console.log('Navigation ON');
-      navigator.geolocation.getCurrentPosition(position => {
+      this.geolocation.getCurrentPosition().then(position => {
         this.myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         this.map = new google.maps.Map(this.gmapElement.nativeElement, {
@@ -94,7 +102,6 @@ export class MapPage implements OnInit {
           },
           // animation: google.maps.Animation.BOUNCE,
         });
-
       });
 
     } else {
@@ -121,45 +128,21 @@ export class MapPage implements OnInit {
     }
   }
 
-  // getJson() {
-  //   this.objects = [{
-  //     title: 'Jypsy Lime Lounge 1',
-  //     date1: '9:00 AM - 11:00 AM',
-  //     date2: '3:00 PM - 10:00 PM',
-  //     wifi: 'Free',
-  //     info: 'Accessible Power Outlets',
-  //     book: 'Book Library',
-  //     phone: 'Phone Room',
-  //     printer: 'Printer',
-  //   },
-  //     {
-  //       title: 'Jypsy Lime Lounge 2',
-  //       date1: '9:00 AM - 11:00 AM',
-  //       date2: '3:00 PM - 10:00 PM',
-  //       wifi: 'Free',
-  //       info: 'Accessible Power Outlets',
-  //       book: 'Book Library',
-  //       phone: 'Phone Room',
-  //       printer: 'Printer'
-  //     },
-  //     {
-  //       title: 'Jypsy Lime Lounge 3',
-  //       date1: '9:00 AM - 11:00 AM',
-  //       date2: '3:00 PM - 10:00 PM',
-  //       wifi: 'Free',
-  //       info: 'Accessible Power Outlets',
-  //       book: 'Book Library',
-  //       phone: 'Phone Room',
-  //       printer: 'Printer'
-  //     }
-  //   ];
-  //   JSON.stringify(this.objects);
-  //   console.log(this.objects);
-  //
-  // }
-
   pushSettingsPage() {
     this.router.navigate(['/settings']);
   }
 
+  private placeMarkers() {
+     this.places.forEach((place, i) => {
+       const marker = new google.maps.Marker({
+         position: new google.maps.LatLng(place.lat, place.lng),
+         map: this.map,
+         icon: {
+           scaledSize: new google.maps.Size(20, 20),
+           url: '../../assets/imgs/icons-marker.png'
+         },
+       });
+     });
+
+  }
 }

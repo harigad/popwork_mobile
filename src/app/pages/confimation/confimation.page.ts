@@ -19,6 +19,7 @@ export class ConfimationPage implements OnInit {
   public wrongPin = false;
   sentPin: any = '';
   public phone;
+  public code;
 
   constructor(
       public authService: AuthService,
@@ -41,6 +42,13 @@ export class ConfimationPage implements OnInit {
       console.log(this.activeRoute.params);
     this.activeRoute.queryParams.subscribe(params => {
       this.phone = params['phone'];
+      this.code = params['code'];
+      this.pinForm = this.fb.group({
+        pin1: [this.code[0], Validators.required],
+        pin2: [this.code[1], Validators.required],
+        pin3: [this.code[2], Validators.required],
+        pin4: [this.code[3], Validators.required]
+      });
       console.log(params);
     });
   }

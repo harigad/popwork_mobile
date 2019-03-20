@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Validators, FormBuilder, FormGroup} from '@angular/forms';
+import {Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {NavController, ModalController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {ContactComponent} from '../../components/contact/contact.component';
 import {PlacesComponent} from '../../components/places/places.component';
+import {AuthService} from '../../../services/auth.service';
+import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
 
 @Component({
   selector: 'app-settings',
@@ -16,39 +18,36 @@ export class SettingsPage implements OnInit {
   public hideWork = true;
   public hideFormName;
   public hideFormWork;
-  public full_name = 'Jon Doe';
-  private nameEdit: FormGroup;
-  private worksEdit: FormGroup;
-  public full_proff = 'Senior Mobile Architect';
-  public full_works = 'Walmart Labs';
-
-
+  public nameEdit: FormGroup = new FormGroup({});
+  public worksEdit: FormGroup = new FormGroup({});
+  public user: any = {};
+  public changePhoto = true;
+  public savePhoto = false;
   constructor(
       private formBuilder: FormBuilder,
       public modalCtrl: ModalController,
       public navCtrl: NavController,
-      private  router: Router
+      private  router: Router,
+      private authService: AuthService
   ) {
-    this.nameEdit = this.formBuilder.group({
-      nameLastname: ['', Validators.required],
-    });
-
-    this.worksEdit = this.formBuilder.group({
-      profesii: ['', Validators.required],
-      works: ['', Validators.required]
-    });
   }
 
   ngOnInit() {
-    console.log('ionViewDidLoad SettingsPage');
-    this.nameEdit = this.formBuilder.group({
-      nameLastname: [this.full_name, Validators.required],
+    this.user = getFromLocalStorage('VB_USER').user || {};
+    this.nameEdit = new FormGroup({
+      name: new FormControl(),
     });
-
-    this.worksEdit = this.formBuilder.group({
-      profesii: [this.full_proff, Validators.required],
-      works: [this.full_works, Validators.required]
+    this.worksEdit = new FormGroup({
+      jobtitle: new FormControl(),
+      company: new FormControl()
     });
+      this.nameEdit = new FormGroup({
+        name: new FormControl(this.user.name)
+      });
+      this.worksEdit = new FormGroup({
+        jobtitle: new FormControl(this.user.jobtitle),
+        company: new FormControl(this.user.company)
+      });
   }
 
   showInput() {
@@ -57,9 +56,33 @@ export class SettingsPage implements OnInit {
   }
 
   saveForm() {
-    console.log(this.nameEdit.value);
+    this.authService.saveForm(this.nameEdit.value).subscribe((user: any ) => {
+      this.user = user;
+      const userData = getFromLocalStorage('VB_USER');
+      userData.user = user;
+      setToLocalStorage('VB_USER', userData);
+      this.nameEdit = new FormGroup({
+        name: new FormControl(user),
+      });
+    });
     this.hideName = true;
     this.hideFormName = false;
+  }
+
+  saveFormWork() {
+    this.authService.saveForm(this.worksEdit.value).subscribe((user: any ) => {
+      this.user = user;
+      const userData = getFromLocalStorage('VB_USER');
+      userData.user = user;
+      setToLocalStorage('VB_USER', userData);
+      this.worksEdit = new FormGroup({
+        jobtitle: new FormControl(user),
+        company: new FormControl(user),
+      });
+    });
+    console.log(this.worksEdit.value);
+    this.hideWork = true;
+    this.hideFormWork = false;
   }
 
   showWorkInput() {
@@ -67,14 +90,24 @@ export class SettingsPage implements OnInit {
     this.hideFormWork = true;
   }
 
-  saveFormWork() {
-    console.log(this.worksEdit.value);
-    this.hideWork = true;
-    this.hideFormWork = false;
-  }
-
   pushMapPage() {
     this.router.navigate(['/map']);
+  }
+  processFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e) => {
+      this.url = e.target.result;
+      };
+      this.changePhoto = false;
+      this.savePhoto = true;
+    }
+  }
+  toSavePhoto(e) {
+    console.log(e);
+    this.changePhoto = true;
+    this.savePhoto = false;
   }
 
   async presentModal() {
