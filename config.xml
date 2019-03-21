@@ -86,6 +86,7 @@
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDCtTk5bb6tm7KxmtkMNt6sFF0oZIUxmZs" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyAffA9E6YukvzLIccCVqgK_zEmMh6zg_EA" />
     </plugin>
-    <engine name="android" spec="7.1.4" />
     <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
+    <plugin name="cordova-plugin-geolocation" spec="4.0.1" />
+    <engine name="android" spec="7.1.4" />
 </widget>

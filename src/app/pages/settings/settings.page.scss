@@ -2,7 +2,7 @@
   text-align: center;
   padding: 20px;
   position: relative;
-  top: 15%;
+  top: 10%;
   .choos{
     margin: auto;
     position: relative;
@@ -25,7 +25,10 @@
       font-weight: 100;
     }
     img{
-      width: 140px;
+      width: 130px;
+      height: 130px;
+      border-radius: 100%;
+      margin-top: 6px;
     }
     h3{
       margin: 0;
@@ -82,7 +85,6 @@
     }
     .earn-btn{
       margin-bottom: 10px;
-      border-right: 6px;
       ion-icon{
         background: #fff;
         color: #f30c56;
@@ -100,6 +102,14 @@
       }
     }
     .play-btn{
+      margin-top: 10px;
+      ion-icon{
+        font-size: 31px;
+        color: #fff;
+      }
+    }
+    .chart-btn{
+      background: #716e6e;
       margin-top: 10px;
       ion-icon{
         font-size: 31px;
@@ -126,8 +136,8 @@
         font-size: 30px;
       }
       .qr{
-        font-size: 52px;
-        color: #f30c56;
+        font-size: 30px;
+        color: gray;
       }
     }
   }

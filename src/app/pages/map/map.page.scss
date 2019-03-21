@@ -1,6 +1,6 @@
 #map {
   width: 100%;
-  height: calc(100vh - 61px);
+  height: calc(100vh - 65px);
 }
 .footer-tabs{
     text-align: center;
@@ -19,35 +19,35 @@
           font-size: 30px;
         }
         .qr{
-          font-size: 52px;
-          color: #f30c56;
+          font-size: 30px;
+          color: grey;
         }
       }
     }
   }
-  .searchSpace{
+.search-place{
+  position: absolute;
+  z-index: 99999;
+  background: #fff;
+  left: 10%;
+  right: 10%;
+  top: 20px;
+  border-radius: 4px;
+  .search-pl{
     position: absolute;
-    z-index: 99999;
-    background: #fff;
-    left: 10%;
-    right: 10%;
-    top: 20px;
-    border-radius: 4px;
-    .search{
-      position: absolute;
-      top: 8px;
-      left: 15px;
-      font-size: 24px;
-      color: gray;
-    }
-    ion-input{
-      text-align: center;
-      letter-spacing: 3px;
-    }
+    top: 8px;
+    left: 15px;
+    font-size: 24px;
+    color: gray;
   }
+  ion-input{
+    text-align: center;
+    letter-spacing: 1px;
+  }
+}
   .slider-info{
     position: absolute;
-    bottom: 30px;
+    bottom: 0;
     width: 100%;
     h1{
       color: #fff;

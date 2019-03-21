@@ -1,0 +1,51 @@
+
+.chartGraph {
+  width: calc(100% - 24px);
+  height: 100%;
+  position: relative;
+  margin: 0 12px;
+  background: rgba(183,183,183,0.2);
+  .chart-wrapper {
+    height: calc(100% - 60px);
+    position: relative;
+  }
+}
+#myChart {
+
+}
+.closeModal{
+  text-align: center;
+  button{
+    background: #f30c56;
+    color: #fff;
+    margin-top: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+}
+
+.footer-tabs{
+  text-align: center;
+  .settings, .qr-code,.location {
+    width: 30%;
+    display: inline-block;
+    button{
+      background: none;
+      box-shadow: none;
+      outline: none;
+      .location-color{
+        color: grey;
+        font-size: 30px;
+      }
+      .sett-icon{
+        color: #f30c56;
+        font-size: 30px;
+      }
+      .qr{
+        font-size: 30px;
+        color: gray;
+      }
+    }
+  }
+}
