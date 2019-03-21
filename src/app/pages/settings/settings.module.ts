@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SettingsPage } from './settings.page';
 import {ContactComponent} from '../../components/contact/contact.component';
 import {ComponentsModule} from '../../components/components.module';
-import {PlacesComponent} from '../../components/places/places.component';
+import { ChartComponent } from '../../components/chart/chart.component';
 
 const routes: Routes = [
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
     ComponentsModule
     // BrowserModule
   ],
-  entryComponents: [ContactComponent, PlacesComponent],
-  declarations: [SettingsPage, ContactComponent, PlacesComponent]
+  entryComponents: [ContactComponent, ChartComponent],
+  declarations: [SettingsPage, ContactComponent, ChartComponent]
 })
 export class SettingsPageModule {}

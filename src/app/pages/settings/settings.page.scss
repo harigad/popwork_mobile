@@ -108,6 +108,14 @@
         color: #fff;
       }
     }
+    .chart-btn{
+      background: #716e6e;
+      margin-top: 10px;
+      ion-icon{
+        font-size: 31px;
+        color: #fff;
+      }
+    }
   }
 }
 .footer-tabs{
@@ -128,8 +136,8 @@
         font-size: 30px;
       }
       .qr{
-        font-size: 52px;
-        color: #f30c56;
+        font-size: 30px;
+        color: gray;
       }
     }
   }

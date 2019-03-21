@@ -1,47 +1,47 @@
-<ion-content>
-  <div class="map">
-    <div class="search-place">
-      <ion-icon class="search-pl" name="search"></ion-icon>
-      <ion-input (input)="searchPlaces($event)" type="search" placeholder="Search place"></ion-input>
-    </div>
-    <div id="map" #gmap></div>
-  </div>
-  <div class="places-form">
-    <form [formGroup]="placeForm">
-      <ion-item>
-        <ion-input placeholder="Name" type="text" formControlName="name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="Address" type="text" formControlName="address"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="City" type="text" formControlName="city"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="State" type="text" formControlName="state"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="Zipcode" type="number" formControlName="zipcode"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="Latitude" type="number" formControlName="lat"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="Longitude" type="number" formControlName="lng"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="GoogleID" type="number" formControlName="googleid"></ion-input>
-      </ion-item>
-      <p class="errorPlace" *ngIf="errorPlace">* All fields are required</p>
-    </form>
-  </div>
-</ion-content>
+<!--<ion-content>-->
+  <!--<div class="map">-->
+    <!--<div class="search-place">-->
+      <!--<ion-icon class="search-pl" name="search"></ion-icon>-->
+      <!--<ion-input (input)="searchPlaces($event)" type="search" placeholder="Search place"></ion-input>-->
+    <!--</div>-->
+    <!--<div id="map" #gmap></div>-->
+  <!--</div>-->
+  <!--<div class="places-form">-->
+    <!--<form [formGroup]="placeForm">-->
+      <!--<ion-item>-->
+        <!--<ion-input placeholder="Name" type="text" formControlName="name"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+        <!--<ion-input placeholder="Address" type="text" formControlName="address"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+        <!--<ion-input placeholder="City" type="text" formControlName="city"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+        <!--<ion-input placeholder="State" type="text" formControlName="state"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+        <!--<ion-input placeholder="Zipcode" type="number" formControlName="zipcode"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+        <!--<ion-input placeholder="Latitude" type="number" formControlName="lat"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+        <!--<ion-input placeholder="Longitude" type="number" formControlName="lng"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+        <!--<ion-input placeholder="GoogleID" type="number" formControlName="googleid"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<p class="errorPlace" *ngIf="errorPlace">* All fields are required</p>-->
+    <!--</form>-->
+  <!--</div>-->
+<!--</ion-content>-->
 
-<ion-footer>
-  <ion-toolbar>
-    <div class="add-places">
-      <button class="create" (click)="createPlaces()">Add Places</button>
-      <button class="cancel" (click)="closeModalPlace()">Cancel</button>
-    </div>
-  </ion-toolbar>
-</ion-footer>
+<!--<ion-footer>-->
+  <!--<ion-toolbar>-->
+    <!--<div class="add-places">-->
+      <!--<button class="create" (click)="createPlaces()">Add Places</button>-->
+      <!--<button class="cancel" (click)="closeModalPlace()">Cancel</button>-->
+    <!--</div>-->
+  <!--</ion-toolbar>-->
+<!--</ion-footer>-->

@@ -3,7 +3,8 @@ import {Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {NavController, ModalController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {ContactComponent} from '../../components/contact/contact.component';
-import {PlacesComponent} from '../../components/places/places.component';
+// import {PlacesComponent} from '../../components/places/places.component';
+import { ChartComponent } from '../../components/chart/chart.component';
 import {AuthService} from '../../../services/auth.service';
 import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
 
@@ -93,6 +94,14 @@ export class SettingsPage implements OnInit {
   pushMapPage() {
     this.router.navigate(['/map']);
   }
+  pushMessagePage() {
+    this.router.navigate(['/message']);
+  }
+
+  pushSettingsPage() {
+    this.router.navigate(['/settings']);
+  }
+
   processFile(event) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -116,9 +125,9 @@ export class SettingsPage implements OnInit {
     });
     return await modal.present();
   }
-  async presentModalPlace() {
+  async presentModalChart() {
     const modal = await this.modalCtrl.create({
-      component: PlacesComponent
+      component: ChartComponent
     });
     return await modal.present();
   }

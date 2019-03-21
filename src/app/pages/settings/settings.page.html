@@ -37,8 +37,10 @@
         <ion-icon name="logo-usd"></ion-icon><span>Earn a free month for you and a friend</span></button>
       <button class="service-btn" ion-button>
         <ion-icon name="person"></ion-icon><span>Concierge Service</span></button>
-      <button class="play-btn" (click)="presentModalPlace()" ion-button>
-        <ion-icon name="pin"></ion-icon><span>Add a New Place</span></button>
+      <!--<button class="play-btn" (click)="presentModalPlace()" ion-button>-->
+        <!--<ion-icon name="pin"></ion-icon><span>Add a New Place</span></button>-->
+      <button (click)="presentModalChart()" class="chart-btn" ion-button>
+        <ion-icon name="trending-up"></ion-icon><span>Sip N Stir</span></button>
     </div>
   </div>
 </ion-content>
@@ -46,19 +48,19 @@
 <ion-footer>
   <ion-toolbar>
     <div class="footer-tabs">
-      <div class="settings">
-        <button class="earn-btn" ion-button>
-          <ion-icon class="sett-icon" name="md-settings"></ion-icon>
-        </button>
-      </div>
       <div class="qr-code">
-        <button class="earn-btn" ion-button>
-          <ion-icon class="qr" name="barcode"></ion-icon>
+        <button (click)="pushMessagePage('/message')" class="earn-btn" ion-button>
+          <ion-icon class="qr" name="chatbubbles"></ion-icon>
         </button>
       </div>
       <div class="location">
         <button (click)="pushMapPage('/map')" class="earn-btn" ion-button>
           <ion-icon class="location-color" name="navigate"></ion-icon>
+        </button>
+      </div>
+      <div class="settings">
+        <button (click)="pushSettingsPage('/settings')" class="earn-btn" ion-button>
+          <ion-icon class="sett-icon" name="md-settings"></ion-icon>
         </button>
       </div>
     </div>

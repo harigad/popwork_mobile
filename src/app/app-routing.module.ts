@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
   { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
   { path: 'confimation', loadChildren: './pages/confimation/confimation.module#ConfimationPageModule' },
+  { path: 'message', loadChildren: './pages/message/message.module#MessagePageModule' },
 ];
 
 @NgModule({

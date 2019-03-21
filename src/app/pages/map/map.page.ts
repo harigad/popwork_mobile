@@ -132,6 +132,13 @@ export class MapPage implements OnInit {
     this.router.navigate(['/settings']);
   }
 
+  pushMapPage() {
+    this.router.navigate(['/map']);
+  }
+  pushMessagePage() {
+    this.router.navigate(['/message']);
+  }
+
   private placeMarkers() {
      this.places.forEach((place, i) => {
        const marker = new google.maps.Marker({
