@@ -7,6 +7,7 @@ import {ContactComponent} from '../../components/contact/contact.component';
 import { ChartComponent } from '../../components/chart/chart.component';
 import {AuthService} from '../../../services/auth.service';
 import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
+import { CallComponent } from '../../components/call/call.component';
 
 @Component({
   selector: 'app-settings',
@@ -128,6 +129,14 @@ export class SettingsPage implements OnInit {
   async presentModalChart() {
     const modal = await this.modalCtrl.create({
       component: ChartComponent
+    });
+    return await modal.present();
+  }
+
+  async presentModalCall() {
+    const modal = await this.modalCtrl.create({
+      component: CallComponent,
+      cssClass: 'modalCall'
     });
     return await modal.present();
   }

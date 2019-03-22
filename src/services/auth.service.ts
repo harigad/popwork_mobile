@@ -65,4 +65,7 @@ export class AuthService {
     return this.http.put(`${appConfig.apiUrl}/users`, user);
 
   }
+  getMessage() {
+    return this.http.get(`${appConfig.apiUrl}/messages`);
+  }
 }

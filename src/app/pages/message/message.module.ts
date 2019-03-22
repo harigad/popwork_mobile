@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { MessagePage } from './message.page';
 import { MessagesComponent } from '../../components/messages/messages.component';
+import { MomentModule } from 'ngx-moment';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    MomentModule,
     RouterModule.forChild(routes)
   ],
   declarations: [MessagePage, MessagesComponent]

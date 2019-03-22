@@ -3,9 +3,15 @@
     <div class="chart-wrapper">
       <canvas id="myChart"></canvas>
     </div>
+    <div class="selectGraph">
+          <ion-select class="chartContent" (ionChange)="onChange($event)">
+            <ion-select-option selected [value]="1">DAY</ion-select-option>
+            <ion-select-option [value]="2">WEEKLY</ion-select-option>
+            <ion-select-option [value]="3">MONTHLY</ion-select-option>
+          </ion-select>
+    </div>
   </div>
 </ion-content>
-
 <ion-footer>
   <ion-toolbar>
     <div class="footer-tabs">

@@ -9,9 +9,21 @@
     height: calc(100% - 60px);
     position: relative;
   }
-}
-#myChart {
-
+  .chartContent{
+    color: #000;
+    border: 1px solid grey;
+    padding: 6px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 18px;
+    background: #fff;
+  }
+  .selectGraph{
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    font-size: 15px;
+  }
 }
 .closeModal{
   text-align: center;
