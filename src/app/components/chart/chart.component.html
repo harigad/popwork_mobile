@@ -1,6 +1,15 @@
 <ion-content>
   <div class="chartGraph">
     <div class="chart-wrapper">
+      <div class="change-btn">
+        <!--<button (click)="prevChart()" class="prev" ion-button>Prev</button>-->
+        <ion-icon (click)="prevChart()" class="prev" name="arrow-round-back"></ion-icon>
+        <div class="dateChart">
+          <span>16-04-92</span>
+        </div>
+        <!--<button (click)="nextChart()" class="next" ion-button>Next</button>-->
+        <ion-icon (click)="nextChart()" class="next" name="arrow-round-forward"></ion-icon>
+      </div>
       <canvas id="myChart"></canvas>
     </div>
     <div class="selectGraph">

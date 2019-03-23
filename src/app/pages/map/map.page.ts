@@ -24,6 +24,7 @@ import {
 export class MapPage implements OnInit {
 
   public places: any;
+  public place: any;
   @ViewChild('gmap') gmapElement: any;
   myLocation;
   map: any;

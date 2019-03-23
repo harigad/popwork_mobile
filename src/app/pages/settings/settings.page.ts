@@ -25,6 +25,7 @@ export class SettingsPage implements OnInit {
   public user: any = {};
   public changePhoto = true;
   public savePhoto = false;
+  public url;
   constructor(
       private formBuilder: FormBuilder,
       public modalCtrl: ModalController,
@@ -107,7 +108,7 @@ export class SettingsPage implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (e) => {
+      reader.onload = (e: any) => {
       this.url = e.target.result;
       };
       this.changePhoto = false;

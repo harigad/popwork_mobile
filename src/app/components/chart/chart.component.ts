@@ -310,7 +310,16 @@ export class ChartComponent implements OnInit {
       });
     }
   }
-
+  prevChart() {
+    this.chartService.prevData({time: 'day', start: '2019-01-17'}).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+  nextChart() {
+    this.chartService.nextData({time: 'day', start: '2019-01-17'}).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
   pushMapPage() {
     this.modalCtrl.dismiss();
     this.router.navigate(['/map']);

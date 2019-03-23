@@ -8,7 +8,36 @@
   .chart-wrapper {
     height: calc(100% - 60px);
     position: relative;
-  }
+    .change-btn{
+      position: absolute;
+      top: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      ion-icon{
+        color: #05717d;
+        font-size: 14px;
+        width: 50px;
+        height: 50px;
+      }
+      .prev{
+        margin-right: 20%;
+      }
+      .next{
+        margin-left: 20%;
+      }
+      .dateChart{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 20px;
+        span{
+          letter-spacing: 2px;
+        }
+        color: #05717d;
+      }
+    }
+}
   .chartContent{
     color: #000;
     border: 1px solid grey;

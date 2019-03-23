@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AuthService } from '../../../services/auth.service';
 import {Router} from '@angular/router';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,8 @@ export class HomePage implements OnInit {
   constructor(
       public navCtrl: NavController,
       public authService: AuthService,
-      private  router: Router
+      private  router: Router,
+      private iab: InAppBrowser
   ) { }
 
   onChange($event) {
@@ -34,6 +37,9 @@ export class HomePage implements OnInit {
     }, (error => {
       console.log(error);
     }));
+  }
+  openSystem() {
+    this.iab.create(`https://popwork-dev-api.herokuapp.com/linkedin/login`, '_self','location=no');
   }
 
   ngOnInit() {
