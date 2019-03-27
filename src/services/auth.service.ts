@@ -58,7 +58,7 @@ export class AuthService {
   }
 
   getToken() {
-    return getFromLocalStorage('VB_USER') ? getFromLocalStorage('VB_USER').token : '';
+    return getFromLocalStorage('VB_USER') ? getFromLocalStorage('VB_USER').jwt : '';
   }
 
   saveForm(user) {

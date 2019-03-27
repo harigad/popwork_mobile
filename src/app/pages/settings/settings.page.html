@@ -1,10 +1,10 @@
-<ion-content>
+<ion-content class="settings-content-w">
   <div class="settings-content">
     <div class="user-settings">
       <div class="choos">
-        <span *ngIf="changePhoto" (click)="chooseFile()">[click to change photo]</span>
+        <span *ngIf="changePhoto">[click to change photo]</span>
         <span *ngIf="savePhoto" (click)="toSavePhoto($event)">[click to save photo]</span>
-        <ion-input *ngIf="changePhoto" (change)="processFile($event)" accept="image/*" class="file-input" type="file" ></ion-input>
+        <input *ngIf="changePhoto" (change)="processFile($event)" accept="image/*" class="file-input" type="file" />
         <!--<input (change)="processFile($event)" accept="image/*" class="file-input" type="file">-->
       </div>
       <img [src]="url || '../../assets/imgs/noavatar.png'" alt="noavatar">

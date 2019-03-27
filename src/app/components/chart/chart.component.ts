@@ -11,7 +11,8 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-
+  public shift = 0;
+  public date;
   constructor(
       private chartService: ChartService,
       private router: Router,
@@ -21,6 +22,7 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
     this.chartService.getData({time: 'day', start: '2019-01-17'}).subscribe((data: any) => {
       console.log(data);
+      this.date = data.date;
       const  ctx = (<HTMLCanvasElement>document.getElementById('myChart')).getContext('2d');
       const ch = new Chart(ctx, {
         type: 'line',
@@ -310,15 +312,20 @@ export class ChartComponent implements OnInit {
       });
     }
   }
+
   prevChart() {
-    this.chartService.prevData({time: 'day', start: '2019-01-17'}).subscribe((data: any) => {
-      console.log(data);
-    });
+      this.shift--;
+      this.chartService.getData({time: 'day', start: '2019-01-17', shift: this.shift}).subscribe((data: any) => {
+        console.log(data);
+      });
   }
   nextChart() {
-    this.chartService.nextData({time: 'day', start: '2019-01-17'}).subscribe((data: any) => {
-      console.log(data);
-    });
+    if (this.shift !== 0) {
+      this.shift++;
+      this.chartService.getData({time: 'day', start: '2019-01-17', shift: this.shift}).subscribe((data: any) => {
+        console.log(data);
+      });
+    }
   }
   pushMapPage() {
     this.modalCtrl.dismiss();

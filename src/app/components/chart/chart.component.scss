@@ -30,11 +30,14 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: 20px;
+        top: 0;
         span{
           letter-spacing: 2px;
         }
         color: #05717d;
+      }
+      .opacity{
+        opacity: 0.3;
       }
     }
 }
