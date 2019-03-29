@@ -9,6 +9,7 @@ import {ContactComponent} from '../../components/contact/contact.component';
 import {ComponentsModule} from '../../components/components.module';
 import { ChartComponent } from '../../components/chart/chart.component';
 import {CallComponent} from '../../components/call/call.component';
+import { SMS } from '@ionic-native/sms/ngx';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
     ComponentsModule
     // BrowserModule
   ],
+  providers: [SMS],
   entryComponents: [ContactComponent, ChartComponent, CallComponent],
   declarations: [SettingsPage, ContactComponent, ChartComponent, CallComponent]
 })

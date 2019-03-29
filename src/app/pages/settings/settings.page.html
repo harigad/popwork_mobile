@@ -5,10 +5,9 @@
         <span *ngIf="changePhoto">[click to change photo]</span>
         <span *ngIf="savePhoto" (click)="toSavePhoto($event)">[click to save photo]</span>
         <input *ngIf="changePhoto" (change)="processFile($event)" accept="image/*" class="file-input" type="file" />
-        <!--<input (change)="processFile($event)" accept="image/*" class="file-input" type="file">-->
       </div>
       <img [src]="url || '../../assets/imgs/noavatar.png'" alt="noavatar">
-      <h3 *ngIf="hideName">{{ nameEdit.get('name').value }}
+      <h3 *ngIf="hideName">{{ user.fullname || nameEdit.get('name').value }}
         <ion-icon (click)="showInput()" name="md-create"></ion-icon></h3>
       <div class="edit-form">
         <form *ngIf="hideFormName" [formGroup]="nameEdit" (ngSubmit)="saveForm()">

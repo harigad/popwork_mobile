@@ -38,6 +38,7 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
     this.user = getFromLocalStorage('VB_USER').user || {};
     this.url = this.user.photo;
+    console.log(this.user);
     this.nameEdit = new FormGroup({
       name: new FormControl(),
     });

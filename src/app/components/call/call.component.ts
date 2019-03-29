@@ -14,7 +14,6 @@ export class CallComponent implements OnInit {
 
   ngOnInit() {
   }
-
   closeModalCall() {
     this.modalCtrl.dismiss();
   }
