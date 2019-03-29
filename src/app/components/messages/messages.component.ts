@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import {AuthService} from '../../../services/auth.service';
+
 
 
 @Component({
@@ -9,54 +11,15 @@ import * as moment from 'moment';
 })
 export class MessagesComponent implements OnInit {
   public messages = [];
-  constructor() { }
+  constructor(
+      private authService: AuthService
+  ) { }
 
   ngOnInit() {
-    this.messages = [
-      {
-        name: 'Name',
-        fname: 'Lastname',
-        date: moment().startOf('hour').fromNow(),
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
-        'Ab amet animi atque autem consectetur debitis doloribus enim facere illo.'
-      },
-      {
-        name: 'Name',
-        fname: 'Lastname',
-        date: moment().startOf('hour').fromNow(),
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
-        ' Ab amet animi atque autem consectetur debitis doloribus enim facere illo.'
-      },
-      {
-        name: 'Name',
-        fname: 'Lastname',
-        date: moment().startOf('hour').fromNow(),
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
-            ' Ab amet animi atque autem consectetur debitis doloribus enim facere illo.'
-      },
-      {
-        name: 'Name',
-        fname: 'Lastname',
-        date: moment().startOf('hour').fromNow(),
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
-            ' Ab amet animi atque autem consectetur debitis doloribus enim facere illo.'
-      },
-      {
-        name: 'Name',
-        fname: 'Lastname',
-        date: moment().startOf('hour').fromNow(),
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
-            ' Ab amet animi atque autem consectetur debitis doloribus enim facere illo.'
-      },
-      {
-        name: 'Name',
-        fname: 'Lastname',
-        date: moment().startOf('hour').fromNow(),
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
-            ' Ab amet animi atque autem consectetur debitis doloribus enim facere illo.'
-      },
-    ];
-
+    this.authService.getMessage().subscribe((mess: any ) => {
+      console.log(mess);
+      this.messages = mess;
+    });
   }
 
 

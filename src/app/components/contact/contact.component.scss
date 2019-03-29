@@ -1,8 +1,10 @@
 .search-contact{
   position: fixed;
   width: 90%;
-  top: 60px;
+  top: 65px;
   z-index: 99999;
+  margin-bottom: 10px;
+  text-align: right;
   .search-co{
     padding: 6px;
     border-radius: 2px;
@@ -11,10 +13,23 @@
     width: 100%;
     outline: none;
   }
+  .selectContact{
+    text-align: right;
+  }
+}
+.spiner{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 99999;
 }
 .contacts{
+  position: absolute;
+  top: 40px;
+  margin: auto;
+  width: 90%;
   .name_number{
-    padding-left: 6px;
+    padding-left: 10px;
   }
 }
 .invited-contact{

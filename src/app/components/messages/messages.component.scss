@@ -1,11 +1,15 @@
 .message{
   .textMess{
     font-weight: bold;
-    font-family: cursive;
+    font-family: sans-serif;
     line-height: 25px;
     height: 50px;
     overflow: hidden;
     margin-top: 12px;
+    color: #12273d;
+    font-size: 17px;
+    border-bottom: 2px solid #f2f3f8;
+    margin-left: 4px;
   }
   .fromMesaage{
     width: 60%;
@@ -19,17 +23,18 @@
       display: inline-block;
       margin: 0;
       margin-left: 10px;
-      color: gray;
+      color: #6b798b;
       font-size: 15px;
       font-family: sans-serif;
+      letter-spacing: 0.5px;
     }
   }
   .dateMessage{
     width: 40%;
     display: inline-block;
     text-align: right;
-    span{
-      color: gray;
+    .dateMess{
+      color: #6b798b;
       font-size: 15px;
       font-family: sans-serif;
     }

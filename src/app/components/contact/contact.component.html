@@ -7,20 +7,27 @@
 <ion-content padding>
   <div class="search-contact">
     <input class="search-co" (input)="searchContacts($event)" type="search" placeholder="Search contact" value="">
-    <div class="checked-length" >
-      aasasasas
-      <ion-checkbox [checked]="check" (ionChange)="onInputChange($event)" color="danger"></ion-checkbox>
-    </div>
+    <span *ngIf="show" class="selectContact" >Selected: {{arrayLength}}</span>
+    <ion-spinner class="spiner" name="lines"></ion-spinner>
+    <!--{{arrayLength}}-->
+    <!--<div class="checked-length">-->
+      <!--<ion-list>-->
+        <!--<ion-item *ngFor="let entry of form">-->
+          <!--<ion-label>{{entry.val}}</ion-label>-->
+          <!--<ion-checkbox slot="end" (ionChange)="onInputChange($event, entry.val)"></ion-checkbox>-->
+        <!--</ion-item>-->
+      <!--</ion-list>-->
+    <!--</div>-->
   </div>
-    <!--<div class="contacts">-->
-    <!--<ion-list>-->
-      <!--<ion-item *ngFor="let contact of searchContact; let i = index">-->
-        <!--<ion-checkbox [(ngModel)]="contact.checked" (ionChange)="checkedValue()"-->
-         <!--[value]="contact?.phoneNumbers[0].value" color="danger"></ion-checkbox>-->
-        <!--<ion-label class="name_number">{{ contact?.displayName }}<br> <small>{{ contact?.phoneNumbers[0].value }}</small></ion-label>-->
-      <!--</ion-item>-->
-    <!--</ion-list>-->
-  <!--</div>-->
+    <div class="contacts">
+    <ion-list>
+      <ion-item *ngFor="let contact of searchContact;">
+        <ion-checkbox [(ngModel)]="contact.checked" (ionChange)="onInputChange($event, contact)"
+         [value]="contact?.phoneNumbers[0].value" color="danger"></ion-checkbox>
+        <ion-label class="name_number">{{ contact?.displayName }}<br> <small>{{ contact?.phoneNumbers[0].value }}</small></ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
   </ion-content>
 
 <ion-footer>

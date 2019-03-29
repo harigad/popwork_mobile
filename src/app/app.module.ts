@@ -12,6 +12,8 @@ import {Contacts} from '@ionic-native/contacts';
 import { FormsModule } from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {TokenInterceptor} from '../services/http-interceptor.service';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import {TokenInterceptor} from '../services/http-interceptor.service';
     StatusBar,
     SplashScreen,
     AuthService,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     Contacts

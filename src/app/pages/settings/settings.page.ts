@@ -7,6 +7,7 @@ import {ContactComponent} from '../../components/contact/contact.component';
 import { ChartComponent } from '../../components/chart/chart.component';
 import {AuthService} from '../../../services/auth.service';
 import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
+import { CallComponent } from '../../components/call/call.component';
 
 @Component({
   selector: 'app-settings',
@@ -24,6 +25,7 @@ export class SettingsPage implements OnInit {
   public user: any = {};
   public changePhoto = true;
   public savePhoto = false;
+  public url;
   constructor(
       private formBuilder: FormBuilder,
       public modalCtrl: ModalController,
@@ -35,6 +37,8 @@ export class SettingsPage implements OnInit {
 
   ngOnInit() {
     this.user = getFromLocalStorage('VB_USER').user || {};
+    this.url = this.user.photo;
+    console.log(this.user);
     this.nameEdit = new FormGroup({
       name: new FormControl(),
     });
@@ -106,7 +110,7 @@ export class SettingsPage implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (e) => {
+      reader.onload = (e: any) => {
       this.url = e.target.result;
       };
       this.changePhoto = false;
@@ -128,6 +132,14 @@ export class SettingsPage implements OnInit {
   async presentModalChart() {
     const modal = await this.modalCtrl.create({
       component: ChartComponent
+    });
+    return await modal.present();
+  }
+
+  async presentModalCall() {
+    const modal = await this.modalCtrl.create({
+      component: CallComponent,
+      cssClass: 'modalCall'
     });
     return await modal.present();
   }

@@ -58,11 +58,14 @@ export class AuthService {
   }
 
   getToken() {
-    return getFromLocalStorage('VB_USER') ? getFromLocalStorage('VB_USER').token : '';
+    return getFromLocalStorage('VB_USER') ? getFromLocalStorage('VB_USER').jwt : '';
   }
 
   saveForm(user) {
     return this.http.put(`${appConfig.apiUrl}/users`, user);
 
+  }
+  getMessage() {
+    return this.http.get(`${appConfig.apiUrl}/messages`);
   }
 }

@@ -1,3 +1,8 @@
+.settings-content-w {
+  --offset-top: 0px !important;
+  --offset-bottom: 0px !important;
+  --keyboard-offset: 0px !important;
+}
 .settings-content{
   text-align: center;
   padding: 20px;
@@ -71,7 +76,7 @@
       display: block;
       margin: auto;
       width: 100%;
-      background: #f30c56;
+      background: #ff0046;
       padding: 0;
       height: 65px;
       font-size: 14px;
@@ -96,6 +101,7 @@
       }
     }
     .service-btn{
+      background: #d800f4;
       ion-icon{
         font-size: 31px;
         color: #fff;
@@ -109,7 +115,7 @@
       }
     }
     .chart-btn{
-      background: #716e6e;
+      background: #757575;
       margin-top: 10px;
       ion-icon{
         font-size: 31px;
@@ -132,7 +138,7 @@
         font-size: 30px;
       }
       .sett-icon{
-        color: #f30c56;
+        color: #ff0046;
         font-size: 30px;
       }
       .qr{

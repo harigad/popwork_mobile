@@ -1,10 +1,10 @@
 <div *ngFor="let mess of messages" class="message">
   <div class="fromMesaage">
-    <img src="../../../assets/imgs/avatar6.png" alt="avatar6">
-    <p>{{mess.name + " " + mess.fname}}</p>
+    <img src="{{ mess.photo }}"alt="avatar6">
+    <p>{{ mess.fullname }}</p>
   </div>
   <div class="dateMessage">
-    <span class="dateMess">{{ mess.date }}</span>
+    <span class="dateMess">{{ mess.created | amTimeAgo }}</span>
   </div>
-  <p class="textMess">{{ mess.text }}</p>
+  <p class="textMess">{{ mess.message }}</p>
 </div>
