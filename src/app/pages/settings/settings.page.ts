@@ -4,10 +4,10 @@ import {NavController, ModalController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {ContactComponent} from '../../components/contact/contact.component';
 // import {PlacesComponent} from '../../components/places/places.component';
-import { ChartComponent } from '../../components/chart/chart.component';
+import {ChartComponent} from '../../components/chart/chart.component';
 import {AuthService} from '../../../services/auth.service';
 import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
-import { CallComponent } from '../../components/call/call.component';
+import {CallComponent} from '../../components/call/call.component';
 
 @Component({
   selector: 'app-settings',
@@ -22,10 +22,12 @@ export class SettingsPage implements OnInit {
   public hideFormWork;
   public nameEdit: FormGroup = new FormGroup({});
   public worksEdit: FormGroup = new FormGroup({});
+  public photoEdit: FormGroup = new FormGroup({});
   public user: any = {};
   public changePhoto = true;
   public savePhoto = false;
   public url;
+
   constructor(
       private formBuilder: FormBuilder,
       public modalCtrl: ModalController,
@@ -39,20 +41,7 @@ export class SettingsPage implements OnInit {
     this.user = getFromLocalStorage('VB_USER').user || {};
     this.url = this.user.photo;
     console.log(this.user);
-    this.nameEdit = new FormGroup({
-      name: new FormControl(),
-    });
-    this.worksEdit = new FormGroup({
-      jobtitle: new FormControl(),
-      company: new FormControl()
-    });
-      this.nameEdit = new FormGroup({
-        name: new FormControl(this.user.name)
-      });
-      this.worksEdit = new FormGroup({
-        jobtitle: new FormControl(this.user.jobtitle),
-        company: new FormControl(this.user.company)
-      });
+    this.initForms();
   }
 
   showInput() {
@@ -61,29 +50,29 @@ export class SettingsPage implements OnInit {
   }
 
   saveForm() {
-    this.authService.saveForm(this.nameEdit.value).subscribe((user: any ) => {
-      this.user = user;
-      const userData = getFromLocalStorage('VB_USER');
-      userData.user = user;
-      setToLocalStorage('VB_USER', userData);
-      this.nameEdit = new FormGroup({
-        name: new FormControl(user),
-      });
+    this.authService.saveForm(this.nameEdit.value).subscribe((saved: boolean) => {
+      if (saved) {
+        const userData = getFromLocalStorage('VB_USER');
+        userData.user.fullname = this.nameEdit.value.name;
+        setToLocalStorage('VB_USER', userData);
+        this.user = getFromLocalStorage('VB_USER').user || {};
+        this.nameEdit = new FormGroup({
+          name: new FormControl(this.nameEdit.value.name),
+        });
+      }
     });
     this.hideName = true;
     this.hideFormName = false;
   }
 
   saveFormWork() {
-    this.authService.saveForm(this.worksEdit.value).subscribe((user: any ) => {
-      this.user = user;
-      const userData = getFromLocalStorage('VB_USER');
-      userData.user = user;
-      setToLocalStorage('VB_USER', userData);
-      this.worksEdit = new FormGroup({
-        jobtitle: new FormControl(user),
-        company: new FormControl(user),
-      });
+    const profile = this.worksEdit.value;
+    this.authService.saveForm(this.worksEdit.value).subscribe((saved: boolean) => {
+      if (saved) {
+        const userData = getFromLocalStorage('VB_USER');
+        this.user.profile = userData.user.profile = profile;
+        setToLocalStorage('VB_USER', userData);
+      }
     });
     console.log(this.worksEdit.value);
     this.hideWork = true;
@@ -98,6 +87,7 @@ export class SettingsPage implements OnInit {
   pushMapPage() {
     this.router.navigate(['/map']);
   }
+
   pushMessagePage() {
     this.router.navigate(['/message']);
   }
@@ -111,14 +101,25 @@ export class SettingsPage implements OnInit {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (e: any) => {
-      this.url = e.target.result;
+        this.url = e.target.result;
       };
       this.changePhoto = false;
       this.savePhoto = true;
     }
   }
-  toSavePhoto(e) {
-    console.log(e);
+
+  toSavePhoto() {
+    this.authService.saveForm(this.photoEdit.value).subscribe((saved: boolean) => {
+      if (saved) {
+        const userData = getFromLocalStorage('VB_USER');
+        userData.user.photo = this.url;
+        setToLocalStorage('VB_USER', userData);
+        this.user = getFromLocalStorage('VB_USER').user || {};
+        this.nameEdit = new FormGroup({
+          photo: new FormControl(this.photoEdit.value.url),
+        });
+      }
+    });
     this.changePhoto = true;
     this.savePhoto = false;
   }
@@ -129,6 +130,7 @@ export class SettingsPage implements OnInit {
     });
     return await modal.present();
   }
+
   async presentModalChart() {
     const modal = await this.modalCtrl.create({
       component: ChartComponent
@@ -144,4 +146,16 @@ export class SettingsPage implements OnInit {
     return await modal.present();
   }
 
+  private initForms() {
+    this.nameEdit = new FormGroup({
+      name: new FormControl(this.user.fullname)
+    });
+    this.worksEdit = new FormGroup({
+      jobtitle: new FormControl(this.user.profile ? this.user.profile.jobtitle : ''),
+      company: new FormControl(this.user.profile ? this.user.profile.company : ''),
+    });
+    this.photoEdit = new FormGroup({
+      photo: new FormControl()
+    });
+  }
 }

@@ -9,7 +9,7 @@ import { SMS } from '@ionic-native/sms/ngx';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  public arrayValue: any = [];
+  public selectedNumbers: any = [];
   public arrayLength;
   ourtype: ContactFieldType[] = ['displayName'];
   contactsFound = [];
@@ -34,26 +34,30 @@ export class ContactComponent implements OnInit {
   }
   onInputChange(event: any, val) {
     console.log(event);
-    const index: number = this.arrayValue.indexOf(val);
+    const index: number = this.selectedNumbers.indexOf(val);
     if (event.detail.checked === true) {
-      this.arrayValue.push(val);
-      this.arrayLength = this.arrayValue.length;
+      this.selectedNumbers.push(val);
+      this.arrayLength = this.selectedNumbers.length;
       this.show = true;
     } else {
-      this.arrayValue.splice(index, 1);
-      this.arrayLength = this.arrayValue.length;
+      this.selectedNumbers.splice(index, 1);
+      this.arrayLength = this.selectedNumbers.length;
       if (this.arrayLength === 0) {
         this.show = false;
       }
     }
   }
   inviteContact() {
-    if (!this.arrayValue.length) {
+    if (!this.selectedNumbers.length) {
       console.log('test');
     } else {
-      console.log(this.arrayValue);
+      this.sms.send(this.selectedNumbers, 'Hello From Ionic').then( e => {
+            console.log('sent');
+            console.log(e);
+        this.modalCtrl.dismiss();
+          }
+      );
     }
-    this.sms.send('0037477494799', 'Hello From Ionic');
   }
   closeModal() {
     this.modalCtrl.dismiss();
