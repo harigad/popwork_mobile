@@ -2,9 +2,12 @@
   <div class="settings-content">
     <div class="user-settings">
       <div class="choos">
+        <form [formGroup]="photoEdit">
         <span *ngIf="changePhoto">[click to change photo]</span>
-        <span *ngIf="savePhoto" (click)="toSavePhoto($event)">[click to save photo]</span>
-        <input *ngIf="changePhoto" (change)="processFile($event)" accept="image/*" class="file-input" type="file" />
+        <span *ngIf="savePhoto" (click)="toSavePhoto()">[click to save photo]</span>
+        <input formControlName="photo" *ngIf="changePhoto"
+         (change)="processFile($event)" accept="image/*" class="file-input" type="file" />
+        </form>
       </div>
       <img [src]="url || '../../assets/imgs/noavatar.png'" alt="noavatar">
       <h3 *ngIf="hideName">{{ user.fullname || nameEdit.get('name').value }}
@@ -17,15 +20,15 @@
           <button ion-button type="submit">Save</button>
         </form>
       </div>
-      <p *ngIf="hideWork">{{ worksEdit.get('jobtitle').value + ' , ' + worksEdit.get('company').value }}
+      <p *ngIf="hideWork">{{ user.profile?.jobtitle || 'Job Title' + ' , ' + (user.profile?.company || 'Company Name')}}
         <ion-icon (click)="showWorkInput()" name="md-create"></ion-icon></p>
       <div class="edit-works">
         <form *ngIf="hideFormWork" [formGroup]="worksEdit" (ngSubmit)="saveFormWork()">
           <ion-item>
-            <ion-input placeholder="work" type="text" formControlName="jobtitle"></ion-input>
+            <ion-input placeholder="Job Title" type="text" formControlName="jobtitle"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input placeholder="work" type="text" formControlName="company"></ion-input>
+            <ion-input placeholder="Company Name" type="text" formControlName="company"></ion-input>
           </ion-item>
           <button ion-button type="submit">Save</button>
         </form>

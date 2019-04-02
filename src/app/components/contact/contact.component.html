@@ -8,7 +8,8 @@
   <div class="search-contact">
     <input class="search-co" (input)="searchContacts($event)" type="search" placeholder="Search contact" value="">
     <span *ngIf="show" class="selectContact" >Selected: {{arrayLength}}</span>
-    <ion-spinner class="spiner" name="lines"></ion-spinner>
+    <ion-spinner *ngIf="loading" class="spiner" name="lines"></ion-spinner>
+    <span *ngIf="loading" class="loadContact">Loading contacts</span>
     <!--{{arrayLength}}-->
     <!--<div class="checked-length">-->
       <!--<ion-list>-->
@@ -22,7 +23,7 @@
     <div class="contacts">
     <ion-list>
       <ion-item *ngFor="let contact of searchContact;">
-        <ion-checkbox [(ngModel)]="contact.checked" (ionChange)="onInputChange($event, contact)"
+        <ion-checkbox [(ngModel)]="contact.checked" (ionChange)="onInputChange($event, contact?.phoneNumbers[0].value)"
          [value]="contact?.phoneNumbers[0].value" color="danger"></ion-checkbox>
         <ion-label class="name_number">{{ contact?.displayName }}<br> <small>{{ contact?.phoneNumbers[0].value }}</small></ion-label>
       </ion-item>
