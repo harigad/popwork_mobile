@@ -3,7 +3,6 @@ import {Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {NavController, ModalController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {ContactComponent} from '../../components/contact/contact.component';
-// import {PlacesComponent} from '../../components/places/places.component';
 import {ChartComponent} from '../../components/chart/chart.component';
 import {AuthService} from '../../../services/auth.service';
 import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
@@ -40,7 +39,6 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
     this.user = getFromLocalStorage('VB_USER').user || {};
     this.url = this.user.photo;
-    console.log(this.user);
     this.initForms();
   }
 
@@ -72,11 +70,10 @@ export class SettingsPage implements OnInit {
         const userData = getFromLocalStorage('VB_USER');
         this.user.profile = userData.user.profile = profile;
         setToLocalStorage('VB_USER', userData);
+        this.hideFormWork = false;
+        this.hideWork = true;
       }
     });
-    console.log(this.worksEdit.value);
-    this.hideWork = true;
-    this.hideFormWork = false;
   }
 
   showWorkInput() {
