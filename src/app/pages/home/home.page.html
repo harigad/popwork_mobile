@@ -3,8 +3,6 @@
     <div class="numberForm">
       <form (submit)="sendPhoneNumber()" >
         <label>third<span>&#x25CF; &#x25CF; &#x25CF;</span>space</label>
-        <ion-input maxlength="16"  class="phone" type="tel" name="phone" [ngModel]="phone | pipesPhone"
-                   placeholder="find your third space" (ngModelChange)="onChange($event)"></ion-input>
         <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
       </form>
       <button (click)="openSystem()" class="linkendin" ion-button>Login to Linkendin</button>

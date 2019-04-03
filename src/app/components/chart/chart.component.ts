@@ -48,7 +48,7 @@ export class ChartComponent implements OnInit {
               backgroundColor: 'rgba(30,250,99,0.03)',
             },
             {
-              label: 'members',
+              label: 'premium',
               data: data.members,
               pointRadius: 0,
               borderColor: 'blue',
@@ -122,7 +122,7 @@ export class ChartComponent implements OnInit {
                 backgroundColor: 'rgba(30,250,99,0.03)',
               },
               {
-                label: 'members',
+                label: 'premium',
                 data: data.members,
                 pointRadius: 0,
                 borderColor: 'blue',
@@ -194,7 +194,7 @@ export class ChartComponent implements OnInit {
                 backgroundColor: 'rgba(30,250,99,0.03)',
               },
               {
-                label: 'members',
+                label: 'premium',
                 data: data.members,
                 pointRadius: 0,
                 borderColor: 'blue',
@@ -266,7 +266,7 @@ export class ChartComponent implements OnInit {
                 backgroundColor: 'rgba(30,250,99,0.03)',
               },
               {
-                label: 'members',
+                label: 'premium',
                 data: data.members,
                 pointRadius: 0,
                 borderColor: 'blue',
