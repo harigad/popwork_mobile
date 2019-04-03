@@ -47,7 +47,10 @@ export class HomePage implements OnInit {
   }
 
   openSystem() {
-    const browser = this.iab.create(`https://popwork-dev-api.herokuapp.com/linkedin/login`, '_self');
+  const browser = this.iab.create(`https://popwork-dev-api.herokuapp.com/linkedin/login`, '_self', {
+    location: 'no',
+    zoom: 'no'
+    });
     if (this.platform.is('cordova')) {
       browser.on('loadstop').subscribe((event) => {
         console.log('loadstop');
