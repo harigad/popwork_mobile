@@ -62,7 +62,8 @@ export class AuthService {
   }
 
   saveForm(user) {
-    return this.http.put(`${appConfig.apiUrl}/users`, user);
+    const params = new HttpParams().set("data",JSON.stringify(user));
+    return this.http.put(`${appConfig.apiUrl}/users`, params,{});
 
   }
   getMessage() {

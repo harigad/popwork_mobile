@@ -13,8 +13,8 @@ export class ChartService {
 
   getData(params) {
     return params.shift ?
-        this.http.get(`${appConfig.apiUrl}/presence/2/${params.time}/${params.start}/${params.shift}`) :
-        this.http.get(`${appConfig.apiUrl}/presence/2/${params.time}/${params.start}/0`);
+        this.http.get(`${appConfig.apiUrl}/presence/2/${params.time}/${params.shift}`) :
+        this.http.get(`${appConfig.apiUrl}/presence/2/${params.time}/0`);
   }
 
 }
