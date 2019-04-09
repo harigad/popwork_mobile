@@ -47,17 +47,28 @@ export class HomePage implements OnInit {
   }
 
   openSystem() {
-  const browser = this.iab.create(`https://popwork-dev-api.herokuapp.com/linkedin/login`, '_self', {
-    location: 'no',
-    zoom: 'no'
-    });
     if (this.platform.is('cordova')) {
-      browser.on('loadstop').subscribe((event) => {
-        console.log('loadstop');
-        console.log(JSON.stringify(event));
-        if (event.url.includes('http://localhost:8100/?token=')) {
+      const browser = this.iab.create(`https://popwork-dev-api.herokuapp.com/linkedin/login`, '_blank', {
+        location: 'yes',
+        zoom: 'no'
+      });
+      // alert('cordova');
+      browser.on('loaderror').subscribe((event) => {
+        if (event.url.includes('localhost')) {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
-          console.log(tok);
+          setToLocalStorage('VB_USER', JSON.parse(tok));
+          browser.close();
+          this.ngZone.run(() => this.router.navigate(['/settings'])).then();
+        }
+      });
+    } else {
+      const browser = this.iab.create(`https://popwork-dev-api.herokuapp.com/linkedin/login`, '_self', {
+        location: 'yes',
+        zoom: 'no'
+      });
+      browser.on('loadstop').subscribe((event) => {
+        if (event.url.includes('localhost')) {
+          const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
           browser.close();
           this.ngZone.run(() => this.router.navigate(['/settings'])).then();
