@@ -1,9 +1,10 @@
-<ion-content>
+<ion-content force-overscroll="false">
   <div class="homepage-content">
     <div class="video-container">
-      <video autoplay loop class="videoBack" controls="false" playsinline webkit-playsinline>
-        <source src="/assets/video/coffee.mp4" type="video/mp4">
-      </video>
+<!--      <video webkit-playsinline="webkit-playsinline" autoplay loop class="videoBack">-->
+<!--        <source src="/assets/video/coffee.mp4" type="video/mp4">-->
+<!--      </video>-->
+      <gl-background-video class="videoBack" src="/assets/video/coffee.mp4" poster="/assets/imgs/back-blur.jpg"></gl-background-video>
     </div>
     <div class="numberForm">
       <form (submit)="sendPhoneNumber()" >
