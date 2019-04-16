@@ -4,15 +4,32 @@ import {HttpClient} from '@angular/common/http';
 import {getFromLocalStorage} from '../utils/local-storage';
 import { HttpHeaders} from '@angular/common/http';
 import { HttpParams} from '@angular/common/http';
+import io from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  
+  socket:any;
 
   constructor(
       private http: HttpClient
   ) {
+
+      if(this.getToken() !== ''){
+        this.connectSocket();
+      }   
+  }
+
+  connectSocket(){
+    this.socket = io(appConfig.apiUrl,{
+      query: {
+        token: this.getToken(),
+        lat: "pass lattitude from location here",
+        lng: "pass longitude from location here"
+      }
+    });
   }
 
   sendPhoneNumber(phone) {
