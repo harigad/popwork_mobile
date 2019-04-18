@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "online": "ng build && node app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -45,6 +46,7 @@
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-sms-plugin": "^1.0.0",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
     "gl-ionic-background-video": "0.0.5",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
