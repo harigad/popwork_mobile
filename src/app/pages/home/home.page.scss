@@ -1,7 +1,5 @@
 
   .homepage-content {
-    //background: url("../../../assets/imgs/back-blur.jpg");
-    //background-size: cover;
     height: 100%;
     width: 100%;
     text-align: center;
@@ -13,13 +11,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+      .videoFixed {
+        position: fixed;
+        top: 50%;
+        left: 30%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+      }
     }
     .videoBack{
       min-width: 100%;
       min-height: 100%;
-      position:"relative";
-      left:"500px";
+      position: relative;
+      left: 500px;
     }
     .numberForm{
       top: 70%;

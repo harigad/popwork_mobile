@@ -5,29 +5,51 @@ import {getFromLocalStorage} from '../utils/local-storage';
 import { HttpHeaders} from '@angular/common/http';
 import { HttpParams} from '@angular/common/http';
 import io from 'socket.io-client';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   socket:any;
+  myLocation;
+  lat;
+  lng;
 
   constructor(
-      private http: HttpClient
+      private http: HttpClient,
+      private geolocation: Geolocation
   ) {
 
       if(this.getToken() !== ''){
         this.connectSocket();
-      }   
+      }
+    this.positionInterval();
+    this.socket = io(appConfig.apiUrl);
+  }
+
+  positionInterval() {
+    setInterval(() => {
+      this.getUserPosition();
+    }, 30000);
+  }
+
+  getUserPosition() {
+    this.geolocation.getCurrentPosition().then(position => {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      console.log(this.lat);
+      console.log(this.lng);
+    });
   }
 
   connectSocket(){
     this.socket = io(appConfig.apiUrl,{
       query: {
         token: this.getToken(),
-        lat: "pass lattitude from location here",
-        lng: "pass longitude from location here"
+        lat: this.lat,
+        lng: this.lng
       }
     });
   }

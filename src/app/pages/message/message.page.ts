@@ -17,15 +17,4 @@ export class MessagePage implements OnInit {
 
   }
 
-  pushMapPage() {
-    this.router.navigate(['/map']);
-  }
-  pushMessagePage() {
-    this.router.navigate(['/message']);
-  }
-
-  pushSettingsPage() {
-    this.router.navigate(['/settings']);
-  }
-
 }

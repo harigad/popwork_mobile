@@ -21,17 +21,17 @@
   <ion-toolbar>
     <div class="footer-tabs">
       <div class="qr-code">
-        <button (click)="pushMessagePage('/message')" class="earn-btn" ion-button>
+        <button routerLink="/message" routerDirection="root"  class="earn-btn" ion-button>
           <ion-icon class="qr" name="chatbubbles"></ion-icon>
         </button>
       </div>
       <div class="location">
-        <button (click)="pushMapPage('/map')" class="earn-btn" ion-button>
+        <button routerLink="/map" routerDirection="root" class="earn-btn" ion-button>
           <ion-icon class="location-color" name="navigate"></ion-icon>
         </button>
       </div>
       <div class="settings">
-        <button (click)="pushSettingsPage('/settings')" class="earn-btn" ion-button>
+        <button routerLink="/settings" routerDirection="root" class="earn-btn" ion-button>
           <ion-icon class="sett-icon" name="md-settings"></ion-icon>
         </button>
       </div>

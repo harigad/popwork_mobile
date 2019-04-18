@@ -58,7 +58,7 @@ export class HomePage implements OnInit {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
           browser.close();
-          this.ngZone.run(() => this.router.navigate(['/settings'])).then();
+          this.ngZone.run(() => this.router.navigate(['/map'])).then();
         }
       });
     } else {
@@ -71,7 +71,7 @@ export class HomePage implements OnInit {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
           browser.close();
-          this.ngZone.run(() => this.router.navigate(['/settings'])).then();
+          this.ngZone.run(() => this.router.navigate(['/map'])).then();
         }
       });
     }
@@ -83,7 +83,7 @@ export class HomePage implements OnInit {
         console.log(decodeURI(res.token ));
         const tok = decodeURI(res.token);
         setToLocalStorage('VB_USER', JSON.parse(tok + '"}}'));
-        this.router.navigate(['/settings']);
+        this.router.navigate(['/map']);
       }
     });
 

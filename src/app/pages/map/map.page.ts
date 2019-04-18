@@ -103,6 +103,7 @@ export class MapPage implements OnInit {
           },
           // animation: google.maps.Animation.BOUNCE,
         });
+        console.log(this.myLocation);
       });
 
     } else {
@@ -129,16 +130,16 @@ export class MapPage implements OnInit {
     }
   }
 
-  pushSettingsPage() {
-    this.router.navigate(['/settings']);
-  }
-
-  pushMapPage() {
-    this.router.navigate(['/map']);
-  }
-  pushMessagePage() {
-    this.router.navigate(['/message']);
-  }
+  // pushSettingsPage() {
+  //   this.router.navigate(['/settings']);
+  // }
+  //
+  // pushMapPage() {
+  //   this.router.navigate(['/map']);
+  // }
+  // pushMessagePage() {
+  //   this.router.navigate(['/message']);
+  // }
 
   private placeMarkers() {
      this.places.forEach((place, i) => {

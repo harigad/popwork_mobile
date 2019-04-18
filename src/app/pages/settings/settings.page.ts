@@ -57,10 +57,10 @@ export class SettingsPage implements OnInit {
         this.nameEdit = new FormGroup({
           name: new FormControl(this.nameEdit.value.name),
         });
+        this.hideName = true;
+        this.hideFormName = false;
       }
     });
-    this.hideName = true;
-    this.hideFormName = false;
   }
 
   saveFormWork() {
@@ -79,18 +79,6 @@ export class SettingsPage implements OnInit {
   showWorkInput() {
     this.hideWork = false;
     this.hideFormWork = true;
-  }
-
-  pushMapPage() {
-    this.router.navigate(['/map']);
-  }
-
-  pushMessagePage() {
-    this.router.navigate(['/message']);
-  }
-
-  pushSettingsPage() {
-    this.router.navigate(['/settings']);
   }
 
   processFile(event) {

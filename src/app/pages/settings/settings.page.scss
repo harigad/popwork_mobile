@@ -82,10 +82,12 @@
       font-size: 14px;
       font-weight: 100;
       border-radius: 6px;
+      outline: none;
       span{
         color: #fff;
         position: relative;
         bottom: 8px;
+        letter-spacing: 1px;
       }
     }
     .earn-btn{
