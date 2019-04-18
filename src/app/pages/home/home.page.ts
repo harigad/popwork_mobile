@@ -86,6 +86,10 @@ export class HomePage implements OnInit {
         this.router.navigate(['/map']);
       }
     });
+    if(this.authService.isTokenValid()) {
+      this.router.navigate(['/map']);
+    }
+
 
   }
 

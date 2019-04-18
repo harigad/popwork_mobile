@@ -6,6 +6,8 @@ import { HttpHeaders} from '@angular/common/http';
 import { HttpParams} from '@angular/common/http';
 import io from 'socket.io-client';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import * as jwt_decode from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,8 @@ export class AuthService {
 
   socket:any;
   myLocation;
-  lat;
-  lng;
+  public lat;
+  public lng;
 
   constructor(
       private http: HttpClient,
@@ -26,7 +28,7 @@ export class AuthService {
         this.connectSocket();
       }
     this.positionInterval();
-    this.socket = io(appConfig.apiUrl);
+
   }
 
   positionInterval() {
@@ -44,13 +46,25 @@ export class AuthService {
     });
   }
 
-  connectSocket(){
-    this.socket = io(appConfig.apiUrl,{
+  connectSocket() {
+    this.socket = io(appConfig.apiUrl, {
       query: {
         token: this.getToken(),
         lat: this.lat,
         lng: this.lng
       }
+    });
+
+    io.on('connection', () => {
+      setInterval(() => {
+        this.socket.emit('position', {
+          query: {
+            token: this.getToken(),
+            lat: this.lat,
+            lng: this.lng
+          }
+        });
+      }, 30000);
     });
   }
 
@@ -108,4 +122,16 @@ export class AuthService {
   getMessage() {
     return this.http.get(`${appConfig.apiUrl}/messages`);
   }
+
+  isTokenValid() {
+    let token = this.getToken();
+    if(!token){
+      return false;
+    }
+    let decoded = jwt_decode(token);
+    if (decoded.exp === undefined) return false;
+    const date = new Date(decoded.exp * 1000);
+    return (date.valueOf() > new Date().valueOf());
+  }
+
 }

@@ -46,6 +46,7 @@
     "cordova-sms-plugin": "^1.0.0",
     "core-js": "^2.5.4",
     "gl-ionic-background-video": "0.0.5",
+    "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "ngx-moment": "^3.4.0",
     "rxjs": "~6.3.3",
