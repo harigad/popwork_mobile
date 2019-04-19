@@ -55,7 +55,7 @@ export class AuthService {
       }
     });
 
-    io.on('connection', () => {
+    this.socket.on('connection', () => {
       setInterval(() => {
         this.socket.emit('position', {
           query: {
