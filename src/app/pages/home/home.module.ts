@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
-import 'gl-ionic-background-video';
-
+import 'src/app/pages/home/gl-ionic-background-video';
 import {PipesModule} from '../../../pipes/pipes.module';
 
 const routes: Routes = [

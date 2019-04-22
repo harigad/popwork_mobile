@@ -103,8 +103,8 @@
       "cordova-sms-plugin": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

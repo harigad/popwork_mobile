@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { StripePaymentComponent } from './stripe-payment/stripe-payment';
 @NgModule({
   declarations: [
-      StripePaymentComponent,
+      StripePaymentComponent
   ],
   entryComponents: [
 
