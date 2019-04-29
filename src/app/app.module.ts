@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {TokenInterceptor} from '../services/http-interceptor.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import {CodePush} from "@ionic-native/code-push/ngx";
+import {Geolocation} from "@ionic-native/geolocation/ngx";
 
 
 
@@ -29,8 +31,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   ],
   providers: [
     StatusBar,
+    CodePush,
     SplashScreen,
     AuthService,
+    Geolocation,
     InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

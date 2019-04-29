@@ -10,7 +10,11 @@
           <label style="text-shadow: 0px 0px 5px #fff;">Pop<span>&#x25CF; &#x25CF; &#x25CF;</span>Work</label>
         <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
       </form>
-      <button (click)="openSystem()" class="linkendin" ion-button>Pop In</button>
+      <button [disabled]="buttonDisabled"  (click)="openSystem()" class="linkendin" ion-button>Pop In</button>
     </div>
-  </div>
+      <div *ngIf="showProgress" class="modal" padding>
+        <ion-spinner class="spiner" name="lines"></ion-spinner>
+        <p>Installing Update</p>
+      </div>
+    </div>
 </ion-content>

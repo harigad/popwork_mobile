@@ -4,8 +4,7 @@ import {AuthService} from '../../../services/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 import {setToLocalStorage} from '../../../utils/local-storage';
-
-import {log} from "util";
+import {CodePush, SyncStatus} from "@ionic-native/code-push/ngx";
 
 
 @Component({
@@ -16,7 +15,9 @@ import {log} from "util";
 export class HomePage implements OnInit {
 
   public phone;
-
+  progressStatus: string = '';
+  public showProgress: boolean;
+  public buttonDisabled: boolean;
   constructor(
       public navCtrl: NavController,
       public authService: AuthService,
@@ -25,9 +26,49 @@ export class HomePage implements OnInit {
       private acvtivRoute: ActivatedRoute,
       private  platform: Platform,
       private ngZone: NgZone,
+      private codePush: CodePush,
   ) {
+    this.platform.ready().then(() => {
+      this.codePush.sync({}, (progress) => {
+        this.ngZone.run(() => {
+          this.progressStatus = JSON.stringify(progress);
+        });
+      }).subscribe((status) => {
+        if (status === SyncStatus.CHECKING_FOR_UPDATE) {
+        }
+        if (status === SyncStatus.DOWNLOADING_PACKAGE) {
+          this.showInstall();
+          this.disableButton();
+        }
+        if (status === SyncStatus.IN_PROGRESS) {
+          this.showInstall();
+          this.disableButton();
+        }
+        if (status === SyncStatus.INSTALLING_UPDATE) {
+          this.showInstall();
+          this.disableButton();
+        }
+        if (status === SyncStatus.UP_TO_DATE) {
+          this.hideInstall();
+        }
+        if (status === SyncStatus.UPDATE_INSTALLED) {
+          this.hideInstall();
+        }
+        if (status === SyncStatus.ERROR) {
+        }
+      });
+    });
   }
 
+  showInstall(){
+    this.showProgress = true;
+  }
+  hideInstall(){
+    this.showProgress = false;
+  }
+  disableButton(){
+    this.buttonDisabled = true;
+  }
   onChange($event) {
     this.phone = $event || '';
     if (this.phone.replace(/\D/g, '').length === 10) {
@@ -89,8 +130,6 @@ export class HomePage implements OnInit {
     if(this.authService.isTokenValid()) {
       this.router.navigate(['/map']);
     }
-
-
   }
 
 }
