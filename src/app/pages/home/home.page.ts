@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
   progressStatus: string = '';
   public showProgress: boolean;
   public buttonDisabled: boolean;
+  private status;
   constructor(
       public navCtrl: NavController,
       public authService: AuthService,
@@ -28,12 +29,24 @@ export class HomePage implements OnInit {
       private ngZone: NgZone,
       private codePush: CodePush,
   ) {
-    this.platform.ready().then(() => {
+
+  }
+  ngOnInit() {
+    this.acvtivRoute.queryParams.subscribe(res => {
+      if (res.token) {
+        console.log(decodeURI(res.token ));
+        const tok = decodeURI(res.token);
+        setToLocalStorage('VB_USER', JSON.parse(tok + '"}}'));
+        this.router.navigate(['/map']);
+      }
+    });
+
       this.codePush.sync({}, (progress) => {
         this.ngZone.run(() => {
           this.progressStatus = JSON.stringify(progress);
         });
       }).subscribe((status) => {
+        this.status = status;
         if (status === SyncStatus.CHECKING_FOR_UPDATE) {
         }
         if (status === SyncStatus.DOWNLOADING_PACKAGE) {
@@ -50,16 +63,20 @@ export class HomePage implements OnInit {
         }
         if (status === SyncStatus.UP_TO_DATE) {
           this.hideInstall();
+          if(this.authService.isTokenValid()) {
+            this.router.navigate(['/map']);
+          }
         }
         if (status === SyncStatus.UPDATE_INSTALLED) {
           this.hideInstall();
+          if(this.authService.isTokenValid()) {
+            this.router.navigate(['/map']);
+          }
         }
         if (status === SyncStatus.ERROR) {
         }
       });
-    });
   }
-
   showInstall(){
     this.showProgress = true;
   }
@@ -118,18 +135,6 @@ export class HomePage implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.acvtivRoute.queryParams.subscribe(res => {
-      if (res.token) {
-        console.log(decodeURI(res.token ));
-        const tok = decodeURI(res.token);
-        setToLocalStorage('VB_USER', JSON.parse(tok + '"}}'));
-        this.router.navigate(['/map']);
-      }
-    });
-    if(this.authService.isTokenValid()) {
-      this.router.navigate(['/map']);
-    }
-  }
+
 
 }
