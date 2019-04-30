@@ -3,6 +3,9 @@
     <platform name="android">
         <preference name="CodePushDeploymentKey" value="xg0DVsmvJh6Fo96K9Wuw34SVeFGK7afd3ba0-e9d2-4258-b6cb-a18fea6afe78" />
     </platform>
+    <platform name="ios">
+        <preference name="CodePushDeploymentKey" value="1qY8k0Nwit3z4UavKU6oGWhu2oc37afd3ba0-e9d2-4258-b6cb-a18fea6afe78" />
+    </platform>
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -106,4 +109,8 @@
     <plugin name="cordova-plugin-zip" spec="^3.1.0" />
     <engine name="android" spec="7.1.4" />
     <engine name="ios" spec="4.5.5" />
+    <plugin name="cordova-plugin-geofence" spec="0.7.0">
+        <variable name="GEOFENCE_ALWAYS_USAGE_DESCRIPTION" value="${EXECUTABLE_NAME} Would Like to Use Your Current Location Even In Background." />
+        <variable name="GEOFENCE_IN_USE_USAGE_DESCRIPTION" value="${EXECUTABLE_NAME} Would Like to Use Your Current Location When In Use." />
+    </plugin>
 </widget>
