@@ -41,8 +41,6 @@ export class AuthService {
     this.geolocation.getCurrentPosition().then(position => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
-      console.log(this.lat);
-      console.log(this.lng);
     });
   }
 
