@@ -26,6 +26,7 @@ export class SettingsPage implements OnInit {
   public changePhoto = true;
   public savePhoto = false;
   public url;
+  public  company;
 
   constructor(
       private formBuilder: FormBuilder,

@@ -41,8 +41,6 @@ export class AuthService {
     this.geolocation.getCurrentPosition().then(position => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
-      console.log(this.lat);
-      console.log(this.lng);
     });
   }
 
@@ -55,7 +53,7 @@ export class AuthService {
       }
     });
 
-    io.on('connection', () => {
+    this.socket.on('connection', () => {
       setInterval(() => {
         this.socket.emit('position', {
           query: {

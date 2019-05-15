@@ -1,0 +1,25 @@
+{
+  "tags": [
+    {
+      "label": "gl-background-video",
+      "description": "",
+      "attributes": [
+        {
+          "label": "muted",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "poster",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "src",
+          "description": "",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

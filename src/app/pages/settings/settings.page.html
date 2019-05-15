@@ -20,7 +20,8 @@
           <button ion-button type="submit">Save</button>
         </form>
       </div>
-      <p *ngIf="hideWork">{{ user.profile?.jobtitle || 'Job Title' + ' , ' + (user.profile?.company || 'Company Name')}}
+      <p *ngIf="hideWork">{{ user.profile?.jobtitle || 'Job Title' }},</p>
+      <p *ngIf="hideWork">{{ user.profile?.company || 'Company Name' }}
         <ion-icon (click)="showWorkInput()" name="md-create"></ion-icon></p>
       <div class="edit-works">
         <form *ngIf="hideFormWork" [formGroup]="worksEdit" (ngSubmit)="saveFormWork()">

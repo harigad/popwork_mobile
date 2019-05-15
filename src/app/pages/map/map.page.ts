@@ -69,14 +69,9 @@ export class MapPage implements OnInit {
   }
 
   initMap() {
-    console.log('Rendering the Map');
-
     if (this.geolocation) {
-
-      console.log('Navigation ON');
       this.geolocation.getCurrentPosition().then(position => {
         this.myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
         this.map = new google.maps.Map(this.gmapElement.nativeElement, {
           center: this.myLocation,
           zoom: 14,
@@ -93,7 +88,6 @@ export class MapPage implements OnInit {
             // 'stylers': [{'invert_lightness': true}, {'saturation': 10}, {'lightness': 30}, {'gamma': 0.5}, {'hue': '#435158'}]
           }]
         });
-
         const marker = new google.maps.Marker({
           position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           map: this.map,
@@ -103,7 +97,6 @@ export class MapPage implements OnInit {
           },
           // animation: google.maps.Animation.BOUNCE,
         });
-        console.log(this.myLocation);
       });
 
     } else {
