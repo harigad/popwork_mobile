@@ -16,10 +16,10 @@ export class MessagesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.getMessage().subscribe((mess: any ) => {
-      console.log(mess);
-      this.messages = mess;
-    });
+    // this.authService.getMessage().subscribe((mess: any ) => {
+    //   console.log(mess);
+    //   this.messages = mess;
+    // });
   }
 
 

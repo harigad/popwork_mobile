@@ -1,0 +1,44 @@
+.inline{
+  display: inline-block;
+  text-align: center;
+}
+.arrowBack{
+  width: 12%;
+  button{
+    background: #b9b9b9;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    outline: none;
+    ion-icon{
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+}
+.autorChat{
+  width: 76%;
+  h4{
+    margin-bottom: 4px;
+    color: #acacac;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+.arrowMore{
+  width: 12%;
+  button{
+    background: none;
+    ion-icon{
+      font-size: 34px;
+      color: #9e9999;
+    }
+  }
+}
+.placeInfo{
+  text-align: center;
+  span{
+    color: #2563ef;
+    letter-spacing: 2px;
+  }
+}

@@ -113,20 +113,20 @@ export class AuthService {
   }
 
   saveForm(user) {
-    const params = new HttpParams().set("data",JSON.stringify(user));
-    return this.http.put(`${appConfig.apiUrl}/users`, params,{});
+    const params = new HttpParams().set('data', JSON.stringify(user));
+    return this.http.put(`${appConfig.apiUrl}/users`, params, {});
 
   }
-  getMessage() {
-    return this.http.get(`${appConfig.apiUrl}/messages`);
+  getMessage(type) {
+    return this.http.get(`${appConfig.apiUrl}/messages?type=` + type);
   }
 
   isTokenValid() {
-    let token = this.getToken();
-    if(!token){
+    const token = this.getToken();
+    if (!token) {
       return false;
     }
-    let decoded = jwt_decode(token);
+    const decoded = jwt_decode(token);
     if (decoded.exp === undefined) return false;
     const date = new Date(decoded.exp * 1000);
     return (date.valueOf() > new Date().valueOf());

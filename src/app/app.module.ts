@@ -13,8 +13,9 @@ import { FormsModule } from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {TokenInterceptor} from '../services/http-interceptor.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import {CodePush} from "@ionic-native/code-push/ngx";
-import {Geolocation} from "@ionic-native/geolocation/ngx";
+import {CodePush} from '@ionic-native/code-push/ngx';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
+import { Push } from '@ionic-native/push/ngx';
 
 
 
@@ -33,6 +34,7 @@ import {Geolocation} from "@ionic-native/geolocation/ngx";
     StatusBar,
     CodePush,
     SplashScreen,
+    Push,
     AuthService,
     Geolocation,
     InAppBrowser,
