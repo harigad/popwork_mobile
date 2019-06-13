@@ -14,7 +14,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class AuthService {
 
-  socket:any;
+  socket: any;
   myLocation;
   public lat;
   public lng;
@@ -24,7 +24,7 @@ export class AuthService {
       private geolocation: Geolocation
   ) {
 
-      if(this.getToken() !== ''){
+      if (this.getToken() !== '') {
         this.connectSocket();
       }
     this.positionInterval();
@@ -115,10 +115,21 @@ export class AuthService {
   saveForm(user) {
     const params = new HttpParams().set('data', JSON.stringify(user));
     return this.http.put(`${appConfig.apiUrl}/users`, params, {});
-
   }
-  getMessage(type) {
-    return this.http.get(`${appConfig.apiUrl}/messages?type=` + type);
+  createChannels(channel) {
+    return this.http.post(appConfig.apiUrl + `/channels`, channel);
+  }
+  getChannels() {
+    return this.http.get(`${appConfig.apiUrl}/channels`);
+  }
+  getPublicMess(id) {
+    return this.http.get(`${appConfig.apiUrl}/messages/public/${id}`);
+  }
+  // getPrivateMess() {
+  //   return this.http.get(`${appConfig.apiUrl}/messages/private`);
+  // }
+  sendMessage(data) {
+    return this.http.post(`${appConfig.apiUrl}/messages`, data);
   }
 
   isTokenValid() {

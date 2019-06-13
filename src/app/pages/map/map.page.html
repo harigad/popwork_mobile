@@ -5,14 +5,10 @@
       <ion-input (input)="searchPlaces($event)" type="search" placeholder="search"></ion-input>
     </div>
     <div id="map" #gmap></div>
-    <div class="slider-info">
-      <ion-slides (ionSlideDidChange)="getLocation($event)" [options]="sliderConfig">
-        <ion-slide *ngFor="let object of places">
-          <h1>{{ object.name }}</h1>
-          <span>{{ object.city }}</span>
-          <span>{{ object.state }}</span>
-        </ion-slide>
-      </ion-slides>
+    <div *ngIf="showPlaceInfo" class="object-info">
+        <div class="info-block">
+          <app-place-info [place]="showPlaceInfo"></app-place-info>
+        </div>
     </div>
   </div>
 </ion-content>

@@ -1,0 +1,12 @@
+<div class="new-channel">
+  <h4>Create channel</h4>
+  <form class="channelForm" [formGroup]="channelForm">
+    <ion-item>
+      <ion-input placeholder="Title" type="text" formControlName="title"></ion-input>
+    </ion-item>
+    <div class="channelBtn">
+      <button (click)="addChannel()" class="create" ion-button>Create</button>
+      <button (click)="cancel()" class="cancel" ion-button>Cancel</button>
+    </div>
+  </form>
+</div>

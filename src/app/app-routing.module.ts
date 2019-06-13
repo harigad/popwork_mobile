@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
   { path: 'confimation', loadChildren: './pages/confimation/confimation.module#ConfimationPageModule' },
   { path: 'message', loadChildren: './pages/message/message.module#MessagePageModule' },
-  { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' },
+  { path: 'chat/:id', loadChildren: './pages/chat/chat.module#ChatPageModule' },
 ];
 
 @NgModule({

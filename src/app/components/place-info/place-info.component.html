@@ -1,0 +1,11 @@
+<div class="places">
+  <h3>{{ place.placeTitle }}</h3>
+  <span>{{place.meters + ' , '}}</span>
+  <span>{{place.street + ' , '}}</span>
+  <span>{{place.city}}</span>
+  <div class="placeUser">
+    <div *ngFor="let users of place.user" class="user">
+      <ion-icon name="chatbubbles"></ion-icon><p>{{ users.jobTitle }}</p>
+    </div>
+  </div>
+</div>

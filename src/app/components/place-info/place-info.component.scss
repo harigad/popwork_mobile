@@ -1,0 +1,30 @@
+.places{
+  padding: 8px 20px;
+  h3{
+    margin: 0;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: #4c4848;
+  }
+  span{
+    font-size: 12px;
+    color: #9e9898;
+    letter-spacing: 1px;
+  }
+  .placeUser{
+    margin-top: 6px;
+    ion-icon{
+      font-size: 26px;
+      color: #e40341;
+      margin-right: 8px;
+    }
+    p{
+      margin: 6px 0;
+      display: inline-block;
+      position: absolute;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #6f6767;
+    }
+  }
+}

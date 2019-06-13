@@ -4,7 +4,7 @@ import {AuthService} from '../../../services/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 import {setToLocalStorage} from '../../../utils/local-storage';
-import {CodePush, SyncStatus} from "@ionic-native/code-push/ngx";
+import {CodePush, SyncStatus} from '@ionic-native/code-push/ngx';
 
 
 @Component({
@@ -63,13 +63,13 @@ export class HomePage implements OnInit {
         }
         if (status === SyncStatus.UP_TO_DATE) {
           this.hideInstall();
-          if(this.authService.isTokenValid()) {
+          if (this.authService.isTokenValid()) {
             this.router.navigate(['/map']);
           }
         }
         if (status === SyncStatus.UPDATE_INSTALLED) {
           this.hideInstall();
-          if(this.authService.isTokenValid()) {
+          if (this.authService.isTokenValid()) {
             this.router.navigate(['/map']);
           }
         }
@@ -77,13 +77,13 @@ export class HomePage implements OnInit {
         }
       });
   }
-  showInstall(){
+  showInstall() {
     this.showProgress = true;
   }
-  hideInstall(){
+  hideInstall() {
     this.showProgress = false;
   }
-  disableButton(){
+  disableButton() {
     this.buttonDisabled = true;
   }
   onChange($event) {

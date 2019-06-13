@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <div class="inline arrowBack">
-      <button routerLink="/message" routerDirection="root" ion-button><ion-icon name="arrow-back"></ion-icon></button>
+      <button (click)="backToMessage()" ion-button><ion-icon name="arrow-back"></ion-icon></button>
     </div>
     <div class="inline autorChat">
       <h4>Name Lastname</h4>
@@ -16,5 +16,28 @@
 </ion-header>
 
 <ion-content padding>
-
+  <div class="chat" *ngFor="let message of messages">
+    <div [ngClass]="currentUserId === message.fromuser ? 'currentUser' : 'channelUser'">
+      <div *ngIf="currentUserId !== message.fromuser" class="fromUser">
+        <img  src="{{ message.photo || './assets/imgs/no_avatar.png'}}">
+      </div>
+      <div class="fromMess">
+        <p>{{ message.message }}</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <form class="messageForm" [formGroup]="sendMessage">
+    <div class="inputMess">
+      <ion-input id="inputValue" class="textMess" placeholder="New Message" formControlName="message" type="text"></ion-input>
+    </div>
+    <div class="sendMess">
+      <button (click)="send(sendMessage.value)" ion-button><ion-icon name="arrow-dropright-circle"></ion-icon></button>
+    </div>
+    <div class="clearfix"></div>
+    </form>
+  </ion-toolbar>
+</ion-footer>

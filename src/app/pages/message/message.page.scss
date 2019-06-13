@@ -4,9 +4,19 @@ ion-title{
   color: #12273d;
   font-size: 24px;
 }
+.addChannel{
+  float: right;
+  font-size: 32px;
+  color: #12416a;
+}
 .messBtn{
-  text-align: center;
   padding-bottom: 14px;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  position: fixed;
+  text-align: center;
   button{
     color: #acacac;
     background: #dbdbdb;
@@ -38,6 +48,9 @@ ion-title{
     color: #fff;
   }
 }
+  .paddingTop{
+    padding-top: 60px;
+  }
 .message{
   .textMess{
     font-weight: bold;
@@ -55,7 +68,7 @@ ion-title{
     width: 60%;
     display: inline-block;
     img{
-      width: 40px;
+      width: 50px;
       border-radius: 100%;
       vertical-align: middle;
     }

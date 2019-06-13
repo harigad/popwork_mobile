@@ -45,7 +45,7 @@
     letter-spacing: 1px;
   }
 }
-  .slider-info{
+  .object-info{
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -61,15 +61,10 @@
       font-size: 13px;
       padding: 8px 0;
     }
-    .slides{
-      width: 100%;
-      ion-slide{
-        background: url('../../../assets/imgs/third-back.jpg');
-        border: 8px solid white;
-        border-radius: 6px;
+      .info-block{
+        background: #f6f6f6;
         text-align: left;
-        height: 300px;
+        height: 200px;
         display: block;
-      }
     }
   }
