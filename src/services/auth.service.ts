@@ -100,8 +100,8 @@ export class AuthService {
     return this.http.post(appConfig.apiUrl + `/places`, params, {});
   }
 
-  getPlaces() {
-    return this.http.get(`${appConfig.apiUrl}/places`);
+  getPlaces(lat, lng) {
+    return this.http.get(`${appConfig.apiUrl}/popworks/${lat}/${lng}`);
   }
 
   searchPlace(e) {
