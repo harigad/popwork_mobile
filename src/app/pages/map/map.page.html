@@ -2,8 +2,13 @@
   <div class="map">
     <div class="search-place">
       <ion-icon class="search-pl" name="search"></ion-icon>
-      <ion-input (input)="searchPlaces($event)" type="search" placeholder="search"></ion-input>
+      <ion-input class="searchinput" (input)="searchPlaces($event)" type="search" placeholder="find"></ion-input>
     </div>
+    <div class="shout-icon" >
+      <img src="assets/imgs/shout-icon.png" >
+    </div>
+    
+
     <div id="map" #gmap></div>
     <div *ngIf="showPlaceInfo" class="object-info">
         <div class="info-block">
