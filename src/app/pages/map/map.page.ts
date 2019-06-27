@@ -41,78 +41,8 @@ export class MapPage implements OnInit {
   ) {
   }
   ngOnInit() {
-    // this.workPlaces = [
-    //   {
-    //     placeTitle: 'Atero',
-    //     meters: '400',
-    //     street: 'Shahumyan',
-    //     city: 'Spitak',
-    //     lat: '41.0060',
-    //     lng: '44.3833',
-    //     id: '1',
-    //     user: [{
-    //       jobTitle: 'Web Developer'
-    //     },
-    //     {
-    //       jobTitle: 'Mobile Designer'
-    //     }
-    //     ],
-    //   },
-    //   {
-    //     placeTitle: 'WeWork',
-    //     meters: '500',
-    //     street: 'Test Street1',
-    //     city: 'Vanadzor',
-    //     lat: '40.820180',
-    //     lng: '44.485540',
-    //     id: '2',
-    //     user: [{
-    //       jobTitle: 'Software Developer'
-    //     },
-    //       {
-    //         jobTitle: 'Web Designer'
-    //       }
-    //     ],
-    //   },
-    //   {
-    //     placeTitle: 'Test Place1',
-    //     meters: '600',
-    //     street: 'Test Street2',
-    //     city: 'Test City1',
-    //     lat: '40.793410',
-    //     lng: '43.839280',
-    //     id: '3',
-    //     user: [{
-    //       jobTitle: 'Seo'
-    //     },
-    //       {
-    //         jobTitle: 'UX , Logos'
-    //       }
-    //     ],
-    //   },
-    //   {
-    //     placeTitle: 'Test Place2',
-    //     meters: '700',
-    //     street: 'Test Street3',
-    //     city: 'Test City2',
-    //     lat: '40.173970',
-    //     lng: '44.502750',
-    //     id: '4',
-    //     user: [{
-    //       jobTitle: 'Mobile React Native Developer'
-    //     },
-    //       {
-    //         jobTitle: 'Web Developer'
-    //       }
-    //     ],
-    //   }
-    // ];
-
-
-      // this.places = this.workPlaces;
     this.platform.ready();
     this.initMap();
-    // this.placeMarkers();
   }
 
   searchPlaces(e) {
@@ -126,7 +56,7 @@ export class MapPage implements OnInit {
    
     if (this.geolocation) {
       this.geolocation.getCurrentPosition().then(position => {
-        // this.workPlaces.push({lat: position.coords.latitude, lng: position.coords.longitude});
+       
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
         this.authService.getPlaces(lat, lng).subscribe(places => {
@@ -134,9 +64,9 @@ export class MapPage implements OnInit {
           this.placeMarkers();
           console.log();
         });
-        console.log(lat, lng);
+  
         this.myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        debugger;
+        
         this.map = new google.maps.Map(this.gmapElement.nativeElement, {
           center: this.myLocation,
           zoom: 1,
@@ -766,7 +696,7 @@ export class MapPage implements OnInit {
           iconUrl = "../../assets/imgs/coworking-map-icon-trans.png";
         }
       }
-     let labelText = ' ';//this.places[i].people + "";
+     let labelText = this.places[i].people + "";
      if(this.places[i].people == 0){
         labelText = ' ';
      }
