@@ -26,6 +26,7 @@ export class MapPage implements OnInit {
   public objects: any;
   public places: any;
   public place: any;
+  public selectedMarker: any;
   public showPlaceInfo;
   @ViewChild('gmap') gmapElement: any;
   myLocation;
@@ -765,11 +766,13 @@ export class MapPage implements OnInit {
           iconUrl = "../../assets/imgs/coworking-map-icon-trans.png";
         }
       }
-     let labelText = this.places[i].people + "";
+     let labelText = ' ';//this.places[i].people + "";
      if(this.places[i].people == 0){
         labelText = ' ';
      }
-      markers[i] = new google.maps.Marker({
+
+     let place = this.places[i];
+     let marker =  new google.maps.Marker({
         position: pos,
         map: this.map,
         label: {text: labelText, color: "white"},
@@ -778,6 +781,20 @@ export class MapPage implements OnInit {
           url: iconUrl,
         },
       });
+
+      
+      marker.addListener('click', function() {
+          if(this.selectedMarker){
+              this.selectedMarker.setAnimation(null);
+          }
+            this.selectedMarker = marker;
+            this.selectedMarker.setAnimation(google.maps.Animation.BOUNCE);
+            this.map.panTo(new google.maps.LatLng(place.lat,place.lng));
+           
+      }.bind(this));
+
+      markers[i] = marker;
+
       google.maps.event.addListener(markers[i], 'click', () => {
         this.showPlaceInfo = this.places.filter(item => item.id === markers[i].id )[0];
         console.log(this.showPlaceInfo);
