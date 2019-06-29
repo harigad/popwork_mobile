@@ -1,12 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Inbox</ion-title>
-    <div>
-      <ion-icon (click)="addChannelModal()" class="addChannel" name="add-circle"></ion-icon>
-    </div>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
   <div class="messBtn">
     <button (click)="getNearby('nearby')" class="nearby" [ngClass]="{'activated1' : buttonActiveNearby}" ion-button>nearby</button>

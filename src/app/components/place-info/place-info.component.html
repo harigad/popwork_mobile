@@ -1,4 +1,6 @@
-<div class="places">
+
+<div class="bgImage" [ngStyle]="{'background-image': 'url(' + backgroundImage + ')'}" ></div>
+<div class="places" >
   <h3>{{ place.name }}</h3>
   <span>{{place.vicinity }}</span>
   <div class="placeUser">

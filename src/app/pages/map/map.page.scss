@@ -2,14 +2,50 @@
   width: 100%;
   height: calc(100vh - 44px);
 }
+.footer-tabs{
+    text-align: center;
+    .settings, .qr-code,.location {
+      width: 30%;
+      display: inline-block;
+      button{
+        background: none;
+        outline: none;
+        .location-color{
+          color: #ff0046;
+          font-size: 30px;
+        }
+        .sett-icon{
+          color: grey;
+          font-size: 30px;
+        }
+        .qr{
+          font-size: 30px;
+          color: grey;
+        }
+      }
+    }
+  }
+
+  .shout-icon{
+    position: absolute;
+    z-index: 7777;
+    width:40px;
+    height:40px;
+    right: 20px;
+    top: 20px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px #888888;
+    background-color: #ff4560;
+  }
 .search-place{
+  box-shadow: 0px 0px 10px #888888;
   position: absolute;
   z-index: 99999;
   background: #fff;
-  left: 10%;
-  right: 10%;
+  left: 20px;
+  right: 80px;
   top: 20px;
-  border-radius: 4px;
+  border-radius: 6px;
   .search-pl{
     position: absolute;
     top: 8px;
@@ -17,7 +53,13 @@
     font-size: 24px;
     color: gray;
   }
+
+  .searchinput {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   ion-input{
+    
     text-align: center;
     letter-spacing: 1px;
   }
@@ -39,7 +81,7 @@
       padding: 8px 0;
     }
       .info-block{
-        background: #f6f6f6;
+        background: #666;
         text-align: left;
         display: block;
     }
