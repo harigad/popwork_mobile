@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {getFromLocalStorage} from '../../../utils/local-storage';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chat',
@@ -21,7 +22,8 @@ export class ChatPage implements OnInit {
   constructor(private authService: AuthService,
               public activeRouter: ActivatedRoute,
               private router: Router,
-              private formBuilder: FormBuilder
+              private formBuilder: FormBuilder,
+              private navCtrl: NavController
   ) {
     this.sendMessage = this.formBuilder.group({
       message: ['', Validators.required],
@@ -42,7 +44,7 @@ export class ChatPage implements OnInit {
   }
 
   backToMessage() {
-    this.router.navigate(['/main']).then();
+    this.navCtrl.back();
   }
 
   send(message) {
