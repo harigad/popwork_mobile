@@ -93,28 +93,3 @@ ion-title{
     }
   }
 }
-
-.footer-tabs {
-  text-align: center;
-  .settings, .qr-code, .location {
-    width: 30%;
-    display: inline-block;
-    button {
-      background: none;
-      box-shadow: none;
-      outline: none;
-      .location-color {
-        color: grey;
-        font-size: 30px;
-      }
-      .sett-icon {
-        color: gray;
-        font-size: 30px;
-      }
-      .qr {
-        font-size: 30px;
-        color: #ff0046;
-      }
-    }
-  }
-}

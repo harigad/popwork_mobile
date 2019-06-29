@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
         console.log(decodeURI(res.token ));
         const tok = decodeURI(res.token);
         setToLocalStorage('VB_USER', JSON.parse(tok + '"}}'));
-        this.router.navigate(['/map']);
+        this.router.navigate(['/main']);
       }
     });
 
@@ -64,13 +64,13 @@ export class HomePage implements OnInit {
         if (status === SyncStatus.UP_TO_DATE) {
           this.hideInstall();
           if (this.authService.isTokenValid()) {
-            this.router.navigate(['/map']);
+            this.router.navigate(['/main']);
           }
         }
         if (status === SyncStatus.UPDATE_INSTALLED) {
           this.hideInstall();
           if (this.authService.isTokenValid()) {
-            this.router.navigate(['/map']);
+            this.router.navigate(['/main']);
           }
         }
         if (status === SyncStatus.ERROR) {
@@ -116,7 +116,15 @@ export class HomePage implements OnInit {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
           browser.close();
-          this.ngZone.run(() => this.router.navigate(['/map'])).then();
+          this.ngZone.run(() => this.router.navigate(['/main'])).then();
+        }
+      });
+      browser.on('loadstop').subscribe((event) => {
+        if (event.url.includes('localhost')) {
+          const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
+          setToLocalStorage('VB_USER', JSON.parse(tok));
+          browser.close();
+          this.ngZone.run(() => this.router.navigate(['/main'])).then();
         }
       });
     } else {
@@ -129,7 +137,7 @@ export class HomePage implements OnInit {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
           browser.close();
-          this.ngZone.run(() => this.router.navigate(['/map'])).then();
+          this.ngZone.run(() => this.router.navigate(['/main'])).then();
         }
       });
     }

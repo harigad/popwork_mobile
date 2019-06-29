@@ -2,29 +2,6 @@
   width: 100%;
   height: calc(100vh - 44px);
 }
-.footer-tabs{
-    text-align: center;
-    .settings, .qr-code,.location {
-      width: 30%;
-      display: inline-block;
-      button{
-        background: none;
-        outline: none;
-        .location-color{
-          color: #ff0046;
-          font-size: 30px;
-        }
-        .sett-icon{
-          color: grey;
-          font-size: 30px;
-        }
-        .qr{
-          font-size: 30px;
-          color: grey;
-        }
-      }
-    }
-  }
 .search-place{
   position: absolute;
   z-index: 99999;
@@ -64,7 +41,6 @@
       .info-block{
         background: #f6f6f6;
         text-align: left;
-        height: 200px;
         display: block;
     }
   }

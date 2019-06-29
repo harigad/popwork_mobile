@@ -7,7 +7,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-// import {ComponentsModule} from './components/components.module';
 import {Contacts} from '@ionic-native/contacts';
 import { FormsModule } from '@angular/forms';
 import {AuthService} from '../services/auth.service';
@@ -16,7 +15,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import {CodePush} from '@ionic-native/code-push/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { Push } from '@ionic-native/push/ngx';
-
 
 
 @NgModule({
@@ -28,7 +26,6 @@ import { Push } from '@ionic-native/push/ngx';
     AppRoutingModule,
     HttpClientModule,
     FormsModule
-    // ComponentsModule
   ],
   providers: [
     StatusBar,

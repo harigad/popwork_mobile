@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="popwork.mobile" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <platform name="android">
-        <preference name="CodePushDeploymentKey" value="xg0DVsmvJh6Fo96K9Wuw34SVeFGK7afd3ba0-e9d2-4258-b6cb-a18fea6afe78" />
-        <resource-file src="google-services.json" target="app/google-services.json" />
+        <preference name="CodePushDeploymentKey" value="MQcmon72siDExtQNcWS_Dd5Tci7x7afd3ba0-e9d2-4258-b6cb-a18fea6afe78" />
     </platform>
     <platform name="ios">
         <preference name="CodePushDeploymentKey" value="1qY8k0Nwit3z4UavKU6oGWhu2oc37afd3ba0-e9d2-4258-b6cb-a18fea6afe78" />
@@ -113,13 +112,7 @@
     <plugin name="cordova-plugin-zip" spec="^3.1.0" />
     <plugin name="phonegap-plugin-push" spec="2.2.3">
         <variable name="ANDROID_SUPPORT_V13_VERSION" value="27.+" />
-        <variable name="FCM_VERSION" value="15.0.1" />
-    </plugin>
-    <plugin name="cordova-android-play-services-gradle-release" spec="^3.0.0">
-        <variable name="PLAY_SERVICES_VERSION" value="12.+" />
-    </plugin>
-    <plugin name="cordova-android-firebase-gradle-release" spec="^3.0.0">
-        <variable name="FIREBASE_VERSION" value="12.+" />
+        <variable name="FCM_VERSION" value="11.6.2" />
     </plugin>
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.4" />

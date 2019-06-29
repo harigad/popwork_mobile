@@ -17,6 +17,7 @@ export class ChatPage implements OnInit {
   currentUserId;
   channelId;
   public textMess = [];
+  channelcreatedUser: any;
   constructor(private authService: AuthService,
               public activeRouter: ActivatedRoute,
               private router: Router,
@@ -32,8 +33,8 @@ export class ChatPage implements OnInit {
     this.activeRouter.params.subscribe(params => {
       const data = params.id;
       this.channelId = params.id;
-      this.authService.getPublicMess(data).subscribe( mess => {
-
+      this.authService.getPublicMessById(data).subscribe( mess => {
+        this.channelcreatedUser = mess[0].channel_created_user;
         this.messages = mess;
         console.log(mess);
       });
@@ -41,7 +42,7 @@ export class ChatPage implements OnInit {
   }
 
   backToMessage() {
-    this.router.navigate(['/message']);
+    this.router.navigate(['/main']).then();
   }
 
   send(message) {

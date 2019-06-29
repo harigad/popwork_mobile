@@ -122,12 +122,15 @@ export class AuthService {
   getChannels() {
     return this.http.get(`${appConfig.apiUrl}/channels`);
   }
-  getPublicMess(id) {
+  getPublicMessById(id) {
     return this.http.get(`${appConfig.apiUrl}/messages/public/${id}`);
   }
-  // getPrivateMess() {
-  //   return this.http.get(`${appConfig.apiUrl}/messages/private`);
-  // }
+  getPrivateMess() {
+    return this.http.get(`${appConfig.apiUrl}/messages/private`);
+  }
+  getPrivateMessByUserId(id) {
+    return this.http.get(`${appConfig.apiUrl}/messages/private/${id}`);
+  }
   sendMessage(data) {
     return this.http.post(`${appConfig.apiUrl}/messages`, data);
   }

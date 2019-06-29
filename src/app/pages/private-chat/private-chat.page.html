@@ -4,7 +4,7 @@
       <button (click)="backToMessage()" ion-button><ion-icon name="arrow-back"></ion-icon></button>
     </div>
     <div class="inline autorChat">
-      <h4>{{ channelcreatedUser }}</h4>
+      <h4>Name Lastname</h4>
     </div>
     <div class="inline arrowMore">
       <button ion-button><ion-icon name="more"></ion-icon></button>
@@ -14,12 +14,11 @@
     </div>
   </ion-toolbar>
 </ion-header>
-
 <ion-content padding>
-  <div class="chat" *ngFor="let message of messages">
+  <div class="private-chat" *ngFor="let message of messages">
     <div [ngClass]="currentUserId === message.fromuser ? 'currentUser' : 'channelUser'">
       <div *ngIf="currentUserId !== message.fromuser" class="fromUser">
-        <img  src="{{ message.photo || './assets/imgs/no_avatar.png'}}">
+        <img  src="{{ message.fromuser_photo || './assets/imgs/no_avatar.png'}}">
       </div>
       <div class="fromMess">
         <p>{{ message.message }}</p>
@@ -30,14 +29,14 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <form class="messageForm" [formGroup]="sendMessage">
-    <div class="inputMess">
-      <ion-input id="inputValue" class="textMess" placeholder="New Message" formControlName="message" type="text"></ion-input>
-    </div>
-    <div class="sendMess">
-      <button (click)="send(sendMessage.value)" ion-button><ion-icon name="arrow-dropright-circle"></ion-icon></button>
-    </div>
-    <div class="clearfix"></div>
+    <form class="messageForm" [formGroup]="sendMessagePrivate">
+      <div class="inputMess">
+        <ion-input id="inputValue" class="textMess" placeholder="New Message" formControlName="message" type="text"></ion-input>
+      </div>
+      <div class="sendMess">
+        <button (click)="send(sendMessagePrivate.value)" ion-button><ion-icon name="arrow-dropright-circle"></ion-icon></button>
+      </div>
+      <div class="clearfix"></div>
     </form>
   </ion-toolbar>
 </ion-footer>

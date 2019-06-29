@@ -35,7 +35,6 @@ export class AddChannelComponent implements OnInit {
     this.initMap();
   }
   initMap() {
-    console.log('Rendering the Map');
     if (this.geolocation) {
       this.geolocation.getCurrentPosition().then(position => {
         this.lat = position.coords.latitude.toString();
@@ -52,11 +51,9 @@ export class AddChannelComponent implements OnInit {
       lat: this.lat,
       lng: this.lng
     };
-    console.log(channel);
     if (this.channelForm.valid) {
       this.authService.createChannels(channel).subscribe( res => {
         this.modalCtrl.dismiss();
-        console.log(res);
       });
     }
   }

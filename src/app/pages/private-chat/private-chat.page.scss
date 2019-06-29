@@ -24,6 +24,7 @@
   h4{
     margin-bottom: 4px;
     color: #acacac;
+    font-weight: 600;
     text-transform: uppercase;
   }
 }
@@ -53,7 +54,7 @@
     height: 50px;
   }
 }
-.chat{
+.private-chat{
   display: inline-block;
   width: 100%;
   .fromMess{
@@ -81,7 +82,6 @@
         border-top-left-radius: 20px;
         padding: 15px 20px;
         color: #fff;
-
       }
     }
   }

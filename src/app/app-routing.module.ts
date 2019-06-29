@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'confimation', loadChildren: './pages/confimation/confimation.module#ConfimationPageModule' },
   { path: 'message', loadChildren: './pages/message/message.module#MessagePageModule' },
   { path: 'chat/:id', loadChildren: './pages/chat/chat.module#ChatPageModule' },
+  { path: 'private-chat/:id', loadChildren: './pages/private-chat/private-chat.module#PrivateChatPageModule' },
+  { path: 'main', loadChildren: './pages/main/main.module#MainPageModule' },
 ];
 
 @NgModule({
