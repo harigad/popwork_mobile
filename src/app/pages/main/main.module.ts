@@ -18,7 +18,7 @@ const routes: Routes = [
                         [
                             {
                                 path: '',
-                                loadChildren: './pages/message/message.module#MessagePageModule'
+                                loadChildren: '../message/message.module#MessagePageModule'
                             }
                         ]
                 },
@@ -28,7 +28,7 @@ const routes: Routes = [
                         [
                             {
                                 path: '',
-                                loadChildren: './pages/map/map.module#MapPageModule'
+                                loadChildren: '../map/map.module#MapPageModule'
                             }
                         ]
                 },
@@ -38,7 +38,7 @@ const routes: Routes = [
                         [
                             {
                                 path: '',
-                                loadChildren: './pages/settings/settings.module#SettingsPageModule'
+                                loadChildren: '../settings/settings.module#SettingsPageModule'
                             }
                         ]
                 },
