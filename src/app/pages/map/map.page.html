@@ -4,10 +4,9 @@
       <ion-icon class="search-pl" name="search"></ion-icon>
       <ion-input class="searchinput" (input)="searchPlaces($event)" type="search" placeholder="find"></ion-input>
     </div>
-    <div class="shout-icon" >
+    <div (click)="addChannelModal()" class="shout-icon" >
       <img src="assets/imgs/shout-icon.png" >
     </div>
-    
 
     <div id="map" #gmap></div>
     <div *ngIf="showPlaceInfo" class="object-info">
@@ -17,4 +16,3 @@
     </div>
   </div>
 </ion-content>
-

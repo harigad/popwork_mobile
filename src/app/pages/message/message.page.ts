@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
-import { ModalController } from '@ionic/angular';
-import { AddChannelComponent } from '../../components/add-channel/add-channel.component';
 import {getFromLocalStorage} from '../../../utils/local-storage';
 
 @Component({
@@ -22,7 +20,6 @@ export class MessagePage implements OnInit {
     constructor(
         private router: Router,
         private authService: AuthService,
-        public modalController: ModalController
     ) {
     }
 
@@ -65,11 +62,4 @@ export class MessagePage implements OnInit {
         this.router.navigate(['private-chat/' + id]).then();
     }
 
-    async addChannelModal() {
-        const modal = await this.modalController.create({
-            component: AddChannelComponent,
-            cssClass: 'modalChannel'
-        });
-        return await modal.present();
-    }
 }

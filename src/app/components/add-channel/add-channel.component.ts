@@ -16,8 +16,12 @@ export class AddChannelComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   myLocation;
   map: any;
-  lat: any;
-  lng: any;
+  lng1: any;
+  lat1: any;
+  lng2: any;
+  lat2: any;
+  lat;
+  lng;
 
   constructor(private formBuilder: FormBuilder,
               private modalCtrl: ModalController,
@@ -36,20 +40,20 @@ export class AddChannelComponent implements OnInit {
   }
   initMap() {
     if (this.geolocation) {
-      this.geolocation.getCurrentPosition().then(position => {
-        this.lat = position.coords.latitude.toString();
-        this.lng = position.coords.longitude.toString();
-      });
+      const strictBounds = new google.maps.LatLngBounds();
+      this.lng1 = strictBounds.getNorthEast().lng();
+      this.lat1 = strictBounds.getNorthEast().lat();
+      this.lng2 = strictBounds.getSouthWest().lng();
+      this.lat2 = strictBounds.getSouthWest().lat();
+      console.log(this.lng1, this.lat1, this.lng2, this.lat2);
     }
-
   }
-
 
   addChannel() {
     const channel = {
       title: this.channelForm.value.title,
-      lat: this.lat,
-      lng: this.lng
+      // lat: this.lat,
+      // lng: this.lng
     };
     if (this.channelForm.valid) {
       this.authService.createChannels(channel).subscribe( res => {
