@@ -36,18 +36,18 @@ export class AddChannelComponent implements OnInit {
 
   ngOnInit() {
     this.platform.ready();
-    this.initMap();
+    // this.initMap();
   }
-  initMap() {
-    if (this.geolocation) {
-      const strictBounds = new google.maps.LatLngBounds();
-      this.lng1 = strictBounds.getNorthEast().lng();
-      this.lat1 = strictBounds.getNorthEast().lat();
-      this.lng2 = strictBounds.getSouthWest().lng();
-      this.lat2 = strictBounds.getSouthWest().lat();
-      console.log(this.lng1, this.lat1, this.lng2, this.lat2);
-    }
-  }
+  // initMap() {
+  //   if (this.geolocation) {
+  //     const strictBounds = new google.maps.LatLngBounds();
+  //     this.lng1 = strictBounds.getNorthEast().lng();
+  //     this.lat1 = strictBounds.getNorthEast().lat();
+  //     this.lng2 = strictBounds.getSouthWest().lng();
+  //     this.lat2 = strictBounds.getSouthWest().lat();
+  //     console.log(this.lng1, this.lat1, this.lng2, this.lat2);
+  //   }
+  // }
 
   addChannel() {
     const channel = {

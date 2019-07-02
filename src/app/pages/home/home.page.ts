@@ -3,7 +3,7 @@ import {NavController, Platform} from '@ionic/angular';
 import {AuthService} from '../../../services/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
-import {setToLocalStorage} from '../../../utils/local-storage';
+import {setToLocalStorage, getFromLocalStorage} from '../../../utils/local-storage';
 import {CodePush, SyncStatus} from '@ionic-native/code-push/ngx';
 
 
@@ -76,6 +76,10 @@ export class HomePage implements OnInit {
         if (status === SyncStatus.ERROR) {
         }
       });
+    const userToken = getFromLocalStorage('VB_USER').jwt;
+      if (userToken) {
+        this.router.navigate(['/main']);
+    }
   }
   showInstall() {
     this.showProgress = true;
@@ -144,5 +148,5 @@ export class HomePage implements OnInit {
   }
 
 
-
 }
+
