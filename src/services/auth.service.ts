@@ -104,8 +104,9 @@ export class AuthService {
     return this.http.get(`${appConfig.apiUrl}/popworks/${lat}/${lng}`);
   }
 
-  searchPlace(e) {
-    return this.http.get(`${appConfig.apiUrl}/places/search/${e}`);
+  searchPlace(lat, lng, searchTxt) {
+    // return this.http.get(`${appConfig.apiUrl}/places/search/${e}`);
+    return this.http.get(`${appConfig.apiUrl}/popworks/${lat}/${lng}/${searchTxt}`);
   }
 
   getToken() {

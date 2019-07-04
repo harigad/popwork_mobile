@@ -1,8 +1,8 @@
-
-<div class="bgImage" [ngStyle]="{'background-image': 'url(' + backgroundImage + ')'}" ></div>
-<div class="places" >
-  <h3>{{ place.name }}</h3>
-  <span>{{place.vicinity }}</span>
+<div class="places bgImage" [ngStyle]="{'background-image': 'url(' + backgroundImage + ')'}">
+  <div class="info">
+    <h3>{{ place.name }}</h3>
+    <span>{{place.vicinity }}</span>
+  </div>
   <div class="placeUser">
     <div *ngFor="let users of place.user" class="user">
       <ion-icon name="chatbubbles"></ion-icon><p>{{ users.jobTitle }}</p>

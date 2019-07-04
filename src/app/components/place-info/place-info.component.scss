@@ -6,25 +6,24 @@
   left:0;
   //filter: blur(3px);
   background-size:100%;
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  opacity:0.8;
-}
-
+    .info{
+      background: rgba(2, 2, 2, 0.37);
+      width: 100%;
+      height: 100%;
+      padding: 8px 20px;
+      color: #fff;
+    }
+  }
 .places{
-  z-index:999999;
-  padding: 8px 20px;
- 
   h3{
-    margin: 0;
+    margin: 0 0 6px 0;
     letter-spacing: 2px;
     font-weight: bold;
-    color: #000;
-    z-index: 9999;
   }
   span{
-    font-size: 12px;
-    color: #000;
+    font-size: 16px;
     letter-spacing: 1px;
   }
   .placeUser{

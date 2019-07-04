@@ -13,7 +13,6 @@ public backgroundImage: any;
 
   ngOnInit() {
     this.backgroundImage = 'https://consensusinc.com/wp-content/uploads/2016/10/OfficeInterior2.jpg';
-
   }
 
 }

@@ -16,12 +16,10 @@ export class AddChannelComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   myLocation;
   map: any;
-  lng1: any;
-  lat1: any;
-  lng2: any;
-  lat2: any;
-  lat;
-  lng;
+  north;
+  south;
+  west;
+  east;
 
   constructor(private formBuilder: FormBuilder,
               private modalCtrl: ModalController,
@@ -35,6 +33,7 @@ export class AddChannelComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(`${this.north} ${this.south} ${this.west} ${this.east}`);
     this.platform.ready();
     // this.initMap();
   }
@@ -52,12 +51,14 @@ export class AddChannelComponent implements OnInit {
   addChannel() {
     const channel = {
       title: this.channelForm.value.title,
-      // lat: this.lat,
-      // lng: this.lng
+      north: this.north,
+      south: this.south,
+      west: this.west,
+      east: this.east,
     };
     if (this.channelForm.valid) {
       this.authService.createChannels(channel).subscribe( res => {
-        this.modalCtrl.dismiss();
+        this.modalCtrl.dismiss().then();
       });
     }
   }
