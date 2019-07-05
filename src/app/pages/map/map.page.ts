@@ -65,6 +65,8 @@ export class MapPage implements OnInit {
                 this.places = place;
                 this.placeMarkers();
                 this.showPlaceInfo = this.places[0];
+                const center =  new google.maps.LatLng(this.places[0].lat, this.places[0].lng);
+                this.map.setCenter(center);
             });
         }, 500);
 
