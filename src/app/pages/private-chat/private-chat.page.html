@@ -4,7 +4,7 @@
       <button (click)="backToMessage()" ion-button><ion-icon name="arrow-back"></ion-icon></button>
     </div>
     <div class="inline autorChat">
-      <h4>Name Lastname</h4>
+      <h4>{{ channelcreatedUser }}</h4>
     </div>
     <div class="inline arrowMore">
       <button ion-button><ion-icon name="more"></ion-icon></button>
@@ -16,8 +16,8 @@
 </ion-header>
 <ion-content padding>
   <div class="private-chat" *ngFor="let message of messages">
-    <div [ngClass]="currentUserId === message.fromuser ? 'currentUser' : 'channelUser'">
-      <div *ngIf="currentUserId !== message.fromuser" class="fromUser">
+    <div [ngClass]="currentUserId === message.user ? 'currentUser' : 'channelUser'">
+      <div *ngIf="currentUserId !== message.user" class="fromUser">
         <img  src="{{ message.fromuser_photo || './assets/imgs/no_avatar.png'}}">
       </div>
       <div class="fromMess">

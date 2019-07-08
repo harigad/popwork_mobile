@@ -27,31 +27,34 @@ export class MessagePage implements OnInit {
         this.public = true;
         this.private = false;
         this.currentUserId = getFromLocalStorage('VB_USER').user.id;
-        this.getNearby('nearby');
+        this.getNearby('public');
     }
 
     getNearby(type) {
-        this.buttonActiveNearby = type === 'nearby';
+        this.buttonActiveNearby = type === 'public';
         this.buttonActivePrivate = type === 'private';
-        if (type === 'nearby') {
+        if (type === 'public') {
             this.public = true;
             this.private = false;
-            this.authService.getChannels().subscribe((messChannel: any) => {
-                this.messages = messChannel;
+            this.authService.getChannels(type).subscribe((publicChannels: any) => {
+                this.messages = publicChannels;
             });
         } else if (type === 'private') {
             this.public = false;
             this.private = true;
-            this.authService.getPrivateMess().subscribe((messPrivate: any) => {
-                this.messages = messPrivate;
-                for (const message of this.messages) {
-                    if (message.fromuser === this.currentUserId) {
-                        this.userId = message.touser;
-                    } else {
-                        this.userId = message.fromuser;
-                    }
-                }
+            this.authService.getChannels(type).subscribe((privateChannels: any) => {
+                this.messages = privateChannels;
             });
+            // this.authService.getPrivateMess().subscribe((messPrivate: any) => {
+            //     this.messages = messPrivate;
+            //     for (const message of this.messages) {
+            //         if (message.fromuser === this.currentUserId) {
+            //             this.userId = message.touser;
+            //         } else {
+            //             this.userId = message.fromuser;
+            //         }
+            //     }
+            // });
         }
     }
 

@@ -1,6 +1,6 @@
 <ion-content padding>
   <div class="messBtn">
-    <button (click)="getNearby('nearby')" class="nearby" [ngClass]="{'activated1' : buttonActiveNearby}" ion-button>nearby</button>
+    <button (click)="getNearby('public')" class="nearby" [ngClass]="{'activated1' : buttonActiveNearby}" ion-button>nearby</button>
     <button (click)="getNearby('private')" class="private" [ngClass]="{'activated2' : buttonActivePrivate}" ion-button>private</button>
   </div>
   <div class="paddingTop">
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div *ngIf="private">
-      <div (click)="goToPrivateMess(userId)" *ngFor="let mess of messages" class="message">
+      <div (click)="goToPrivateMess(mess.id)" *ngFor="let mess of messages" class="message">
         <div class="fromMessage">
           <img src="{{ mess.photo }}" alt="avatar6">
           <p>{{ mess.fullname }}</p>

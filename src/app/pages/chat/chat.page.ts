@@ -35,9 +35,11 @@ export class ChatPage implements OnInit {
     this.activeRouter.params.subscribe(params => {
       const data = params.id;
       this.channelId = params.id;
-      this.authService.getPublicMessById(data).subscribe( mess => {
+      this.authService.getMessagesById(data).subscribe( (mess: any) => {
         this.channelcreatedUser = mess[0].channel_created_user;
-        this.messages = mess;
+        if (mess[0].message) {
+          this.messages = mess;
+        }
         console.log(mess);
       });
     });
@@ -50,8 +52,10 @@ export class ChatPage implements OnInit {
   send(message) {
     if (this.sendMessage.valid) {
       const data = {
+        user: this.currentUserId,
         message: message.message,
         channel: this.channelId,
+        popwork: 0
       };
       this.authService.sendMessage(data).subscribe( (mess: any) => {
         this.textMess = mess;
@@ -59,7 +63,7 @@ export class ChatPage implements OnInit {
           this.messages.push({
             message: message.message,
             channel: this.channelId,
-            fromuser: this.currentUserId
+            user: this.currentUserId
           });
         }
         console.log(this.textMess);

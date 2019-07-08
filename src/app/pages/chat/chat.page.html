@@ -17,8 +17,8 @@
 
 <ion-content padding>
   <div class="chat" *ngFor="let message of messages">
-    <div [ngClass]="currentUserId === message.fromuser ? 'currentUser' : 'channelUser'">
-      <div *ngIf="currentUserId !== message.fromuser" class="fromUser">
+    <div [ngClass]="currentUserId === message.user ? 'currentUser' : 'channelUser'">
+      <div *ngIf="currentUserId !== message.user" class="fromUser">
         <img  src="{{ message.photo || './assets/imgs/no_avatar.png'}}">
       </div>
       <div class="fromMess">
