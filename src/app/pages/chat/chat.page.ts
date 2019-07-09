@@ -13,12 +13,13 @@ import { NavController } from '@ionic/angular';
 export class ChatPage implements OnInit {
   public sendMessage: FormGroup = new FormGroup({});
   public messages: any = [];
-  public  error = false;
+  public error = false;
   status = false;
   currentUserId;
   channelId;
   public textMess = [];
   channelcreatedUser: any;
+
   constructor(private authService: AuthService,
               public activeRouter: ActivatedRoute,
               private router: Router,
@@ -35,7 +36,7 @@ export class ChatPage implements OnInit {
     this.activeRouter.params.subscribe(params => {
       const data = params.id;
       this.channelId = params.id;
-      this.authService.getMessagesById(data).subscribe( (mess: any) => {
+      this.authService.getMessagesById(data).subscribe((mess: any) => {
         this.channelcreatedUser = mess[0].channel_created_user;
         if (mess[0].message) {
           this.messages = mess;
@@ -57,9 +58,9 @@ export class ChatPage implements OnInit {
         channel: this.channelId,
         popwork: 0
       };
-      this.authService.sendMessage(data).subscribe( (mess: any) => {
+      this.authService.sendMessage(data).subscribe((mess: any) => {
         this.textMess = mess;
-        if ( mess.insertId) {
+        if (mess.insertId) {
           this.messages.push({
             message: message.message,
             channel: this.channelId,
@@ -71,4 +72,7 @@ export class ChatPage implements OnInit {
       });
     }
   }
+
+
+
 }
