@@ -1,21 +1,79 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Platform} from '@ionic/angular';
+import {Push, PushObject, PushOptions} from '@ionic-native/push/ngx';
+import {Device} from '@ionic-native/device/ngx';
 import {AuthService} from '../../../services/auth.service';
-import {ModalController} from '@ionic/angular';
-import {getFromLocalStorage} from '../../../utils/local-storage';
-import {AddChannelComponent} from '../../components/add-channel/add-channel.component';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.page.html',
-  styleUrls: ['./main.page.scss'],
+    selector: 'app-main',
+    templateUrl: './main.page.html',
+    styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-  constructor(
-  ) {
-  }
+    constructor(
+        private platform: Platform,
+        private push: Push,
+        private device: Device,
+        private authService: AuthService,
+    ) {
+    }
 
-  ngOnInit() {
-  }
+    public apns: boolean;
+    public pushToken: any;
+    public deviceInfo = {
+        apns: true,
+        pushToken: this.pushToken,
+        deviceid: this.device.uuid,
+        devicetype: this.device.platform,
+        devicemaker: this.device.manufacturer,
+        devicemodel: this.device.model,
+        meta: ''
+    };
+
+    ngOnInit() {
+        this.platform.ready().then(() => {
+            this.pushSetup();
+        });
+    }
+
+    pushSetup() {
+        if (this.platform.is('cordova')) {
+            const options: PushOptions = {
+                android: {},
+                ios: {
+                    alert: 'true',
+                    badge: true,
+                    sound: 'false'
+                },
+            };
+
+            const pushObject: PushObject = this.push.init(options);
+            pushObject.on('notification').subscribe((notification: any) => {
+                // alert(JSON.stringify(notification));
+            });
+
+            pushObject.on('registration').subscribe((registration: any) => {
+                this.apns = registration.registrationType === 'APNS';
+                this.pushToken = registration.registrationId;
+                // alert(this.pushToken);
+                this.deviceInfo = {
+                    apns: true,
+                    pushToken: this.pushToken,
+                    deviceid: this.device.uuid,
+                    devicetype: this.device.platform,
+                    devicemaker: this.device.manufacturer,
+                    devicemodel: this.device.model,
+                    meta: ''
+                };
+                this.authService.setDeviceInfo(this.deviceInfo).subscribe((info) => {
+                    console.log(info);
+                });
+            });
+
+            pushObject.on('error').subscribe(error => {
+                alert(JSON.stringify(error));
+            });
+        }
+    }
 
 }

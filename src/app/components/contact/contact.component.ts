@@ -49,7 +49,6 @@ export class ContactComponent implements OnInit {
   }
   inviteContact() {
     if (!this.selectedNumbers.length) {
-      console.log('test');
     } else {
       this.sms.send(this.selectedNumbers, 'Hello From Ionic').then( e => {
             console.log('sent');

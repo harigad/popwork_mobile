@@ -1,13 +1,11 @@
 import {Component, ViewChild, OnInit} from '@angular/core';
 import {Platform} from '@ionic/angular';
-
 declare var google: any;
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {AddChannelComponent} from '../../components/add-channel/add-channel.component';
 import {ModalController} from '@ionic/angular';
-
 
 import {
     GoogleMaps,

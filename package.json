@@ -23,6 +23,7 @@
     "@ionic-native/code-push": "^5.5.0",
     "@ionic-native/contacts": "^5.2.0",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/device": "^5.9.0",
     "@ionic-native/file-transfer": "^5.5.1",
     "@ionic-native/geofence": "^5.5.1",
     "@ionic-native/geolocation": "^5.2.0",
@@ -127,8 +128,8 @@
       }
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

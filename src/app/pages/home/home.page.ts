@@ -114,7 +114,6 @@ export class HomePage implements OnInit {
         location: 'yes',
         zoom: 'no'
       });
-      // alert('cordova');
       browser.on('loaderror').subscribe((event) => {
         if (event.url.includes('localhost')) {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));

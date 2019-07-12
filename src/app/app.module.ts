@@ -15,6 +15,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import {CodePush} from '@ionic-native/code-push/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { Push } from '@ionic-native/push/ngx';
+import { Device } from '@ionic-native/device/ngx';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { Push } from '@ionic-native/push/ngx';
     CodePush,
     SplashScreen,
     Push,
+    Device,
     AuthService,
     Geolocation,
     InAppBrowser,
