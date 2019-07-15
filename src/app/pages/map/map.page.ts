@@ -469,7 +469,7 @@ export class MapPage implements OnInit {
         // debugger;
         this.map = new google.maps.Map(this.gmapElement.nativeElement, {
             center: new google.maps.LatLng(32.7767, -96.7970),
-            zoom: 14,
+            zoom: 10,
             mapTypeControl: false,
             streetViewControl: false,
             panControl: false,
