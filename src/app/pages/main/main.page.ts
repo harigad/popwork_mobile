@@ -18,7 +18,7 @@ export class MainPage implements OnInit {
     ) {
     }
 
-    public apns: boolean;
+    public apns: any;
     public pushToken: any;
     public deviceInfo = {
         apns: true,
@@ -53,11 +53,16 @@ export class MainPage implements OnInit {
             });
 
             pushObject.on('registration').subscribe((registration: any) => {
-                this.apns = registration.registrationType === 'APNS';
+                if (registration.registrationType !== 'APNS') {
+                    this.apns = 0;
+                } else {
+                    this.apns = 1;
+                }
+                // this.apns = registration.registrationType === 'APNS';
                 this.pushToken = registration.registrationId;
                 // alert(this.pushToken);
                 this.deviceInfo = {
-                    apns: true,
+                    apns: this.apns,
                     pushToken: this.pushToken,
                     deviceid: this.device.uuid,
                     devicetype: this.device.platform,
