@@ -1,12 +1,17 @@
 <div class="new-channel">
-  <h4>Create channel</h4>
-  <form class="channelForm" [formGroup]="channelForm">
+  <form class="channelForm" [formGroup]="channelForm" (ngSubmit)="addChannel()">
     <ion-item>
-      <ion-input placeholder="Title" type="text" formControlName="title"></ion-input>
+      <ion-textarea class="placeHolder" #focus placeholder="Shout&#x0a;      to 24&#x0a;&#x0a; popworks&#x0a;  nearby"
+              type="text" formControlName="title">
+      </ion-textarea>
     </ion-item>
-    <div class="channelBtn">
-      <button (click)="addChannel()" class="create" ion-button>Create</button>
-      <button (click)="cancel()" class="cancel" ion-button>Cancel</button>
-    </div>
   </form>
 </div>
+<ion-footer>
+  <ion-toolbar>
+    <div class="channelBtn">
+      <button (click)="addChannel()" class="create" ion-button>shout</button>
+      <button (click)="cancel()" class="cancel" ion-button>cancel</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

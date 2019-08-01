@@ -1,10 +1,11 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import {Component, ViewChild, OnInit, ElementRef} from '@angular/core';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {ModalController} from '@ionic/angular';
 import {AuthService} from '../../../services/auth.service';
 declare var google: any;
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
+import {logger} from 'codelyzer/util/logger';
 
 @Component({
   selector: 'app-add-channel',
@@ -14,6 +15,7 @@ import {Platform} from '@ionic/angular';
 export class AddChannelComponent implements OnInit {
   public channelForm: FormGroup = new FormGroup({});
   @ViewChild('gmap') gmapElement: any;
+  @ViewChild('focus') nameField: any;
   myLocation;
   map: any;
   north;
@@ -34,8 +36,9 @@ export class AddChannelComponent implements OnInit {
 
   ngOnInit() {
     console.log(`${this.north} ${this.south} ${this.west} ${this.east}`);
-    this.platform.ready();
+    this.platform.ready().then();
     // this.initMap();
+      this.showKeyboard();
   }
   // initMap() {
   //   if (this.geolocation) {
@@ -47,8 +50,13 @@ export class AddChannelComponent implements OnInit {
   //     console.log(this.lng1, this.lat1, this.lng2, this.lat2);
   //   }
   // }
+showKeyboard(): void {
 
-  addChannel() {
+    setTimeout(() => {
+        this.nameField.setFocus();
+    }, 200 );
+}
+ addChannel() {
     const channel = {
       title: this.channelForm.value.title,
       north: this.north,
@@ -59,11 +67,14 @@ export class AddChannelComponent implements OnInit {
     if (this.channelForm.valid) {
       this.authService.createChannels(channel).subscribe( res => {
         this.modalCtrl.dismiss().then();
+          this.modalCtrl.dismiss().then();
       });
+      // this.modalCtrl.dismiss().then();
     }
   }
 
+
   cancel() {
-    this.modalCtrl.dismiss();
+    this.modalCtrl.dismiss().then();
   }
 }
