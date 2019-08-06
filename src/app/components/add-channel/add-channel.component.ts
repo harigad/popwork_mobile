@@ -6,6 +6,7 @@ declare var google: any;
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
 import {logger} from 'codelyzer/util/logger';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-channel',
@@ -27,7 +28,8 @@ export class AddChannelComponent implements OnInit {
               private modalCtrl: ModalController,
               private authService: AuthService,
               private platform: Platform,
-              private geolocation: Geolocation
+              private geolocation: Geolocation,
+              private router: Router
               ) {
     this.channelForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -67,9 +69,8 @@ showKeyboard(): void {
     if (this.channelForm.valid) {
       this.authService.createChannels(channel).subscribe( res => {
         this.modalCtrl.dismiss().then();
-          this.modalCtrl.dismiss().then();
       });
-      // this.modalCtrl.dismiss().then();
+        this.router.navigate(['/main/message']).then();
     }
   }
 
