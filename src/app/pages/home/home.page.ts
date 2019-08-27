@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
         console.log(decodeURI(res.token ));
         const tok = decodeURI(res.token);
         setToLocalStorage('VB_USER', JSON.parse(tok + '"}}'));
-        this.router.navigate(['/main']);
+        this.router.navigate(['/main']).then();
       }
     });
 
@@ -64,13 +64,13 @@ export class HomePage implements OnInit {
         if (status === SyncStatus.UP_TO_DATE) {
           this.hideInstall();
           if (this.authService.isTokenValid()) {
-            this.router.navigate(['/main']);
+            this.router.navigate(['/main']).then();
           }
         }
         if (status === SyncStatus.UPDATE_INSTALLED) {
           this.hideInstall();
           if (this.authService.isTokenValid()) {
-            this.router.navigate(['/main']);
+            this.router.navigate(['/main']).then();
           }
         }
         if (status === SyncStatus.ERROR) {
@@ -78,7 +78,7 @@ export class HomePage implements OnInit {
       });
     const userToken = getFromLocalStorage('VB_USER').jwt;
       if (userToken) {
-        this.router.navigate(['/main']);
+        this.router.navigate(['/main']).then();
     }
   }
   showInstall() {
@@ -101,7 +101,7 @@ export class HomePage implements OnInit {
     console.log(this.phone);
     this.authService.sendPhoneNumber({phone: this.phone}).subscribe((res: any) => {
       if (res && res.status) {
-        this.router.navigate(['/confimation'], {queryParams: {phone: this.phone, code: res.code}});
+        this.router.navigate(['/confimation'], {queryParams: {phone: this.phone, code: res.code}}).then();
       }
     }, (error => {
       console.log(JSON.stringify(error));
