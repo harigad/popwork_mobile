@@ -78,6 +78,6 @@
     <key>IonChannelName</key>
     <string>Dev</string>
     <key>IonUpdateMethod</key>
-    <string>background</string>
+    <string>auto</string>
   </dict>
 </plist>
