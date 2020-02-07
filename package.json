@@ -23,7 +23,7 @@
     "@types/googlemaps": "^3.30.16",
     "appd-plugin-eum-mobile": "^1.9.534",
     "chart.js": "^2.8.0",
-    "core-js": "^2.5.4",
+    "core-js": "^3.6.4",
     "express": "^4.16.4",
     "gl-ionic-background-video": "0.0.5",
     "ios-deploy": "^1.9.4",
