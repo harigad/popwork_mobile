@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { defineCustomElements } from 'gl-ionic-background-video/dist/loader';
+import { defineCustomElements } from './app/pages/home/gl-ionic-background-video/dist/loader';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';

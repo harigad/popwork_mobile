@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, Platform  } from '@ionic/angular';
 import {ContactFieldType, Contacts, IContactFindOptions} from '@ionic-native/contacts';
 import {ModalController} from '@ionic/angular';
-import { SMS } from '@ionic-native/sms/ngx';
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -24,8 +24,7 @@ export class ContactComponent implements OnInit {
       params: NavParams,
       private contacts: Contacts,
       private  platform: Platform,
-      private modalCtrl: ModalController,
-      private sms: SMS
+      private modalCtrl: ModalController
   ) { }
 
 
@@ -49,14 +48,13 @@ export class ContactComponent implements OnInit {
   }
   inviteContact() {
     if (!this.selectedNumbers.length) {
-      console.log('test');
     } else {
-      this.sms.send(this.selectedNumbers, 'Hello From Ionic').then( e => {
+    /*  this.sms.send(this.selectedNumbers, 'Hello From Ionic').then( e => {
             console.log('sent');
             console.log(e);
         this.modalCtrl.dismiss();
           }
-      );
+      );*/
     }
   }
   closeModal() {

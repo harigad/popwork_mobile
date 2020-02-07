@@ -5,8 +5,7 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "online": "ng build && node app.js",
+    "start": "ng build && node app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,41 +20,26 @@
     "@angular/platform-browser": "^7.2.2",
     "@angular/platform-browser-dynamic": "^7.2.2",
     "@angular/router": "^7.2.2",
-    "@ionic-native/contacts": "^5.2.0",
-    "@ionic-native/core": "^5.0.0",
-    "@ionic-native/geolocation": "^5.2.0",
-    "@ionic-native/google-maps": "^4.20.0",
-    "@ionic-native/in-app-browser": "^5.3.0",
-    "@ionic-native/sms": "^5.3.0",
-    "@ionic-native/splash-screen": "^5.0.0",
-    "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.0.0",
     "@types/googlemaps": "^3.30.16",
+    "appd-plugin-eum-mobile": "^1.9.534",
     "chart.js": "^2.8.0",
-    "cordova-android": "7.1.4",
-    "cordova-ios": "4.5.5",
-    "cordova-plugin-contacts": "^3.0.1",
-    "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-geolocation": "^4.0.1",
-    "cordova-plugin-googlemaps": "2.5.0",
-    "cordova-plugin-inappbrowser": "^3.0.0",
-    "cordova-plugin-ionic-keyboard": "^2.1.3",
-    "cordova-plugin-ionic-webview": "^2.4.1",
-    "cordova-plugin-splashscreen": "^5.0.2",
-    "cordova-plugin-statusbar": "^2.4.2",
-    "cordova-plugin-whitelist": "^1.3.3",
-    "cordova-sms-plugin": "^1.0.0",
     "core-js": "^2.5.4",
     "express": "^4.16.4",
     "gl-ionic-background-video": "0.0.5",
+    "ios-deploy": "^1.9.4",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "ngx-moment": "^3.4.0",
-    "rxjs": "~6.3.3",
+    "phonegap-plugin-multidex": "^1.0.0",
+    "phonegap-plugin-push": "^2.2.3",
+    "platform": "1.3.5",
+    "rxjs": "^6.5.0",
     "rxjs-compat": "^6.4.0",
     "socket.io": "^2.2.0",
     "underscore": "latest",
-    "zone.js": "~0.8.29"
+    "zone.js": "~0.8.29",
+    "cordova-android": "7.1.4"
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.12.3",
@@ -89,19 +73,38 @@
       "cordova-plugin-contacts": {},
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyDCtTk5bb6tm7KxmtkMNt6sFF0oZIUxmZs",
-        "API_KEY_FOR_IOS": "AIzaSyAffA9E6YukvzLIccCVqgK_zEmMh6zg_EA"
+        "API_KEY_FOR_IOS": "AIzaSyAffA9E6YukvzLIccCVqgK_zEmMh6zg_EA",
+        "PLAY_SERVICES_VERSION": "15.0.1",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {
-        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-geolocation": {},
       "cordova-plugin-inappbrowser": {},
-      "cordova-sms-plugin": {}
+      "cordova-sms-plugin": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
+      "cordova-plugin-code-push": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-zip": {},
+      "phonegap-plugin-push": {
+        "ANDROID_SUPPORT_V13_VERSION": "27.+",
+        "FCM_VERSION": "11.6.2"
+      },
+      "appd-plugin-eum-mobile": {
+        "APP_KEY": "AD-AAB-AAU-STV",
+        "SCREENSHOTS_ENABLED": "true",
+        "LOGGING_LEVEL": "6",
+        "COLLECTOR_URL": "https://col.eum-appdynamics.com",
+        "SCREENSHOT_URL": "https://image.eum-appdynamics.com",
+        "REACHABILITY_HOST": "www.google.com",
+        "INTERACTION_CAPTURE_MODE": "0"
+      }
     },
     "platforms": [
       "android",

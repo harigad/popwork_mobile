@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content color="light" >
+    <div (click)="goToPublicMess(mess.id)" style="background-color:#fff;margin:10px;border-radius:4px;font-size:0.9em;padding:10px;display:flex;flex-direction: row ;"  > 
+        <span style="flex: none;" >
+        <img [src]="mess.photo" style="margin-right:5px;border-radius:50px;overflow:hidden;width:50px;height:50px;" > 
+      </span>  
+          <div style="flex:1">
+            <div style="display:flex;flex-direction: row ;" >
+              <span style="flex:1;font-size:0.8em;color:#666;">
+                  {{mess.fullname}}---
+              </span>
+              <span style="flex: none; align-self:flex-end; font-size:0.8em;color:#666;" >{{ mess.created | amTimeAgo }}</span>
+            </div> 
+            <div style="color:#666;" >
+                <span style="font-size:0.8em;color:#ff0077" >Mudsmith Coffee House</span>
+            <div style="color:#000;font-size:0.8em;">{{mess.title}}</div>
+
+            <div style="display:flex;flex-direction: row;" >
+               
+                <span style="padding-top:5px;padding-bottom:5px;vertical-align: top;flex: none; align-self:flex-end; font-size:0.8em;color:#666;" >235 comments</span>
+              </div> 
+         
+            </div>
+
+
+          </div>
+      </div>
+
+
+  <div class="chat" *ngFor="let message of messages" style="padding:10px;font-size:0.8em;">
+    <div [ngClass]="currentUserId === message.user ? 'currentUser' : 'channelUser'">
+      <div *ngIf="currentUserId !== message.user" class="fromUser">
+        <img  src="{{ message.photo || './assets/imgs/no_avatar.png'}}">
+      </div>
+      <div class="fromMess">
+        <p>{{ message.message }}</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <form class="messageForm" [formGroup]="sendMessage">
+    <div class="inputMess">
+      <ion-input id="inputValue" class="textMess" placeholder="reply" formControlName="message" type="text"></ion-input>
+    </div>
+    <div class="sendMess">
+      <button (click)="send(sendMessage.value)" ion-button><ion-icon name="arrow-dropright-circle"></ion-icon></button>
+    </div>
+    <div class="clearfix"></div>
+    </form>
+  </ion-toolbar>
+</ion-footer>

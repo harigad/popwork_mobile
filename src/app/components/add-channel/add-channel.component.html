@@ -1,0 +1,17 @@
+<div class="new-channel">
+  <form class="channelForm" [formGroup]="channelForm" (ngSubmit)="addChannel()">
+    <ion-item>
+      <ion-textarea class="placeHolder" #focus placeholder="SHOUT TO POPWORKS ON THE MAP"
+              type="text" formControlName="title">
+      </ion-textarea>
+    </ion-item>
+  </form>
+</div>
+<ion-footer>
+  <ion-toolbar>
+    <div class="channelBtn">
+      <button (click)="addChannel()" class="create" ion-button>shout</button>
+      <button (click)="cancel()" class="cancel" ion-button>cancel</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

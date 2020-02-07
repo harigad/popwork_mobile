@@ -2,39 +2,26 @@
   <div class="map">
     <div class="search-place">
       <ion-icon class="search-pl" name="search"></ion-icon>
-      <ion-input (input)="searchPlaces($event)" type="search" placeholder="search"></ion-input>
+      <ion-input class="searchinput" (input)="searchPlaces($event)" type="search" placeholder="find"></ion-input>
     </div>
-    <div id="map" #gmap></div>
-    <div class="slider-info">
-      <ion-slides (ionSlideDidChange)="getLocation($event)" [options]="sliderConfig">
-        <ion-slide *ngFor="let object of places">
-          <h1>{{ object.name }}</h1>
-          <span>{{ object.city }}</span>
-          <span>{{ object.state }}</span>
-        </ion-slide>
-      </ion-slides>
-    </div>
+
   </div>
+
+  <div id="map" #gmap></div>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <div class="footer-tabs">
-      <div class="qr-code">
-        <button routerLink="/message" routerDirection="root"  class="earn-btn" ion-button>
-          <ion-icon class="qr" name="chatbubbles"></ion-icon>
-        </button>
-      </div>
-      <div class="location">
-        <button routerLink="/map" routerDirection="root" class="earn-btn" ion-button>
-          <ion-icon class="location-color" name="navigate"></ion-icon>
-        </button>
-      </div>
-      <div class="settings">
-        <button routerLink="/settings" routerDirection="root" class="earn-btn" ion-button>
-          <ion-icon class="sett-icon" name="md-settings"></ion-icon>
-        </button>
-      </div>
-    </div>
-  </ion-toolbar>
-</ion-footer>
+<div class="foot">
+  <div *ngIf="showPlaceInfo" class="object-info">
+      <app-place-info [place]="showPlaceInfo"></app-place-info>
+</div>
+
+  <ion-range  min="7" max="19" step="0.5"  color="primary"  [(ngModel)]="hour">
+    <ion-label style="font-size:0.7em;" color="primary" slot="end" >
+    
+      <ion-datetime displayFormat="MM/DD/YY" placeholder="Select Date"></ion-datetime>
+
+
+    </ion-label>
+    <ion-label style="font-size:0.7em;"  slot="start" >7:00 AM</ion-label>
+  </ion-range>
+</div>

@@ -26,6 +26,10 @@ export class SettingsPage implements OnInit {
   public changePhoto = true;
   public savePhoto = false;
   public url;
+  public  company;
+  public reservations = [{
+    place:{}
+  }];
 
   constructor(
       private formBuilder: FormBuilder,
@@ -48,6 +52,7 @@ export class SettingsPage implements OnInit {
   }
 
   saveForm() {
+    debugger;
     this.authService.saveForm(this.nameEdit.value).subscribe((saved: boolean) => {
       if (saved) {
         const userData = getFromLocalStorage('VB_USER');

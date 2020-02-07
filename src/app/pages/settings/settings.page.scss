@@ -1,3 +1,43 @@
+.item.item-trns {
+	border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: white; 
+}
+
+.homepage-content {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  .video-container{
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    //overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .videoFixed {
+      position: fixed;
+      top: 50%;
+      left: 30%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+  .videoBack{
+    min-width: 100%;
+    min-height: 100%;
+    position: relative;
+  }
+}
+
 .settings-content-w {
   --offset-top: 0px !important;
   --offset-bottom: 0px !important;
@@ -21,7 +61,7 @@
     display: inline-block;
   }
   .user-settings{
-    top: 20%;
+    top: 0%;
     margin: auto;
     position: relative;
     span{
@@ -33,7 +73,7 @@
       width: 130px;
       height: 130px;
       border-radius: 100%;
-      margin-top: 6px;
+      margin-top: 0px;
     }
     h3{
       margin: 0;
@@ -49,6 +89,7 @@
       margin-top: 8px;
       color: #000;
       font-size: 13px;
+      display: inline-block;
       font-weight: 100;
       ion-icon{
         margin-left: 10px;
@@ -58,11 +99,13 @@
     }
     .edit-form, .edit-works{
       button{
+        width:100%;
         background: #f30c56;
-        height: 25px;
+      
         border-radius: 4px;
         margin-top: 6px;
         color: #fff;
+        outline: none;
         span{
           color: #fff;
           margin-top: 5px;
@@ -122,30 +165,6 @@
       ion-icon{
         font-size: 31px;
         color: #fff;
-      }
-    }
-  }
-}
-.footer-tabs{
-  text-align: center;
-  .settings, .qr-code,.location {
-    width: 30%;
-    display: inline-block;
-    button{
-      background: none;
-      box-shadow: none;
-      outline: none;
-      .location-color{
-        color: grey;
-        font-size: 30px;
-      }
-      .sett-icon{
-        color: #ff0046;
-        font-size: 30px;
-      }
-      .qr{
-        font-size: 30px;
-        color: gray;
       }
     }
   }

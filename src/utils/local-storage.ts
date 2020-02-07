@@ -1,10 +1,11 @@
 
 export function getFromLocalStorage(key: string): any {
   const value = localStorage.getItem(key);
+  //debugger;
   try {
-    return JSON.parse(value);
+    return JSON.parse(value) || {};
   } catch (e) {
-    return value;
+    return {};
   }
 }
 
@@ -13,12 +14,16 @@ export function removeFromLocalStorage(key: string | string[]) {
   key.map((k: string) => localStorage.removeItem(k));
 }
 
-export function setToLocalStorage(key: string, data: any): void {
+export function setToLocalStorage(key: string, data: any): any {
+  let newData = data;
   try {
-    localStorage.setItem(key, JSON.stringify(data));
+    newData = JSON.stringify(data);
   } catch (e) {
-    localStorage.setItem(key, data);
+    //do nothing
   }
+
+  return localStorage.setItem(key, newData);
+
 }
 
 export function clearLocalStorage() {

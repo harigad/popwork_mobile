@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
-import { StripePaymentComponent } from './stripe-payment/stripe-payment';
+import {PlaceInfoComponent} from '../components/place-info/place-info.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
-  declarations: [
-      StripePaymentComponent,
-  ],
+  declarations: [PlaceInfoComponent],
   entryComponents: [
 
   ],
-  imports: [],
-  exports: [
-      StripePaymentComponent,
-  ]
+  imports: [CommonModule],
+  exports: [PlaceInfoComponent]
 })
 export class ComponentsModule {}

@@ -1,0 +1,45 @@
+{
+  "components": [
+    {
+      "tag": "gl-background-video",
+      "dependencies": [],
+      "componentClass": "GLBackgroundVideoComponent",
+      "componentPath": "components/gl-background-video/gl-background-video.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/gl-background-video/gl-background-video.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "muted",
+          "type": "Boolean",
+          "attr": "muted"
+        },
+        {
+          "name": "poster",
+          "type": "String",
+          "attr": "poster"
+        },
+        {
+          "name": "src",
+          "type": "String",
+          "attr": "src"
+        }
+      ],
+      "hostElement": {
+        "name": "videoElement"
+      },
+      "shadow": true
+    }
+  ],
+  "collections": [],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.16.2",
+    "typescriptVersion": "3.2.2"
+  },
+  "bundles": []
+}

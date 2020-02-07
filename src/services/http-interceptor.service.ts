@@ -23,7 +23,6 @@ export class TokenInterceptor implements HttpInterceptor {
       if (this.auth.getToken()) {
         request = request.clone({
           headers: request.headers.set('Authorization',  `Bearer ${this.auth.getToken()}`)
-              .append('Content-Type', 'application/x-www-form-urlencoded')
               .append('Access-Control-Allow-Origin', '*')
         });
       }

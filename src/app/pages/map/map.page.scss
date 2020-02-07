@@ -1,6 +1,6 @@
 #map {
   width: 100%;
-  height: calc(100vh - 44px);
+  height: calc(100vh - 50px);
 }
 .footer-tabs{
     text-align: center;
@@ -25,14 +25,38 @@
       }
     }
   }
+
+  .shout-icon{
+    position: absolute;
+    z-index: 7777;
+    width:40px;
+    height:40px;
+    right: 20px;
+    top: 20px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px #888888;
+    background-color: #ff4560;
+  }
+
+  .foot {
+    box-shadow: 0px 0px 10px #888888;
+    position: absolute;
+    z-index: 99999;
+    background: #fff;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 0px;
+  }
 .search-place{
+  box-shadow: 0px 0px 10px #888888;
   position: absolute;
   z-index: 99999;
   background: #fff;
-  left: 10%;
-  right: 10%;
+  left: 20px;
+  right: 20px;
   top: 20px;
-  border-radius: 4px;
+  border-radius: 6px;
   .search-pl{
     position: absolute;
     top: 8px;
@@ -40,14 +64,20 @@
     font-size: 24px;
     color: gray;
   }
+
+  .searchinput {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   ion-input{
-    text-align: center;
+    margin-left:50px;
+    text-align: left;
     letter-spacing: 1px;
   }
 }
-  .slider-info{
-    position: absolute;
-    bottom: 0;
+  .object-info{
+    position: relative;
+    bottom: 60;
     width: 100%;
     h1{
       color: #fff;
@@ -61,15 +91,8 @@
       font-size: 13px;
       padding: 8px 0;
     }
-    .slides{
-      width: 100%;
-      ion-slide{
-        background: url(../../../assets/imgs/blur-back2.jpg);
-        border: 8px solid white;
-        border-radius: 6px;
+      .info-block{
         text-align: left;
-        height: 300px;
         display: block;
-      }
     }
   }
