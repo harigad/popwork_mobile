@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
 import {getFromLocalStorage} from '../../../utils/local-storage';
+import {Events} from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-message',
@@ -20,6 +22,8 @@ export class MessagePage implements OnInit {
     constructor(
         private router: Router,
         private authService: AuthService,
+        public events:Events,
+        private activatedRoute: ActivatedRoute
     ) {
     }
 
@@ -28,6 +32,17 @@ export class MessagePage implements OnInit {
         this.private = false;
         this.currentUserId = getFromLocalStorage('VB_USER').user.id;
         this.getNearby('public');
+        this.events.subscribe("public_message_posted",function(){
+            this.getNearby('public');
+        }.bind(this));
+    }
+
+    ionViewDidEnter() {
+        if(this.activatedRoute.snapshot.paramMap.get('msgtype') == "public"){
+            this.goToPublicMess(this.activatedRoute.snapshot.paramMap.get('msgid'));
+        }else if(this.activatedRoute.snapshot.paramMap.get('msgtype') == "private"){
+            this.goToPrivateMess(this.activatedRoute.snapshot.paramMap.get('msgid'));
+        }
     }
 
     getNearby(type) {
@@ -58,9 +73,15 @@ export class MessagePage implements OnInit {
         }
     }
 
-    goToPublicMess(id: any) {
-        this.router.navigate(['chat/' + id]).then();
+    goToPublicMess(mess: any, add:any = false) {
+        this.router.navigate(['chat/' + mess.id, {data : JSON.stringify(mess), add:add}]).then();
     }
+
+    addMessage(event:any, mess:any){
+        event.stopPropagation();
+        this.goToPublicMess(mess,true);
+    }
+
     goToPrivateMess(id: any) {
         this.router.navigate(['private-chat/' + id]).then();
     }

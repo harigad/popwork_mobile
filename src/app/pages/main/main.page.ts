@@ -3,7 +3,7 @@ import {Platform} from '@ionic/angular';
 import {Push, PushObject, PushOptions} from '@ionic-native/push/ngx';
 import {Device} from '@ionic-native/device/ngx';
 import {AuthService} from '../../../services/auth.service';
-
+import {Router} from '@angular/router';
 @Component({
     selector: 'app-main',
     templateUrl: './main.page.html',
@@ -15,6 +15,7 @@ export class MainPage implements OnInit {
         private push: Push,
         private device: Device,
         private authService: AuthService,
+        public router:Router
     ) {
     }
 
@@ -34,6 +35,16 @@ export class MainPage implements OnInit {
         this.platform.ready().then(() => {
             this.pushSetup();
         });
+
+       /* this.router.navigate(['/main/message']).then(
+            () => {
+              this.router.navigate(['/chat/1392']);
+            }
+          );*/
+    }
+
+    ionViewDidEnter(){
+       
     }
 
     pushSetup() {

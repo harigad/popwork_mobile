@@ -1,11 +1,25 @@
-<div class="places bgImage" [ngStyle]="{'background-image': 'url(' + backgroundImage + ')'}">
+<div class="places"  >
   <div class="info">
     <h3>{{ place.name }}</h3>
     <span>{{place.vicinity }}</span>
   </div>
-  <div class="placeUser">
-    <div *ngFor="let users of place.user" class="user">
-      <ion-icon name="chatbubbles"></ion-icon><p>{{ users.jobTitle }}</p>
+
+ <div style="width:100%;height:calc(40vh - 80px);position: relative;"> 
+
+  <span *ngIf="!tableSelected" >
+    <div  (click)="selectTable(item)" *ngFor="let item of items"  [class]="item.type" [style.width]= "item.width + '%'" [style.height]="item.height + '%'" [style.left]="item.left + '%'" [style.top]="item.top + '%'" >2
+      {{item.name}}
     </div>
-  </div>
+  </span>
+
+    <span *ngIf="tableSelected">
+
+
+
+    </span>
+
+
+
+
+</div>
 </div>

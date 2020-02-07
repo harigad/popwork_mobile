@@ -4,15 +4,24 @@
       <ion-icon class="search-pl" name="search"></ion-icon>
       <ion-input class="searchinput" (input)="searchPlaces($event)" type="search" placeholder="find"></ion-input>
     </div>
-    <div (click)="addChannelModal()" class="shout-icon" >
-      <img src="assets/imgs/shout-icon.png" >
-    </div>
 
-    <div id="map" #gmap></div>
-    <div *ngIf="showPlaceInfo" class="object-info">
-        <div class="info-block">
-          <app-place-info [place]="showPlaceInfo"></app-place-info>
-        </div>
-    </div>
   </div>
+
+  <div id="map" #gmap></div>
 </ion-content>
+
+<div class="foot">
+  <div *ngIf="showPlaceInfo" class="object-info">
+      <app-place-info [place]="showPlaceInfo"></app-place-info>
+</div>
+
+  <ion-range  min="7" max="19" step="0.5"  color="primary"  [(ngModel)]="hour">
+    <ion-label style="font-size:0.7em;" color="primary" slot="end" >
+    
+      <ion-datetime displayFormat="MM/DD/YY" placeholder="Select Date"></ion-datetime>
+
+
+    </ion-label>
+    <ion-label style="font-size:0.7em;"  slot="start" >7:00 AM</ion-label>
+  </ion-range>
+</div>

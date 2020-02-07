@@ -23,6 +23,16 @@ const routes: Routes = [
                         ]
                 },
                 {
+                    path: 'message/:msgtype/:msgid',
+                    children:
+                        [
+                            {
+                                path: '',
+                                loadChildren: '../message/message.module#MessagePageModule'
+                            }
+                        ]
+                },
+                {
                     path: 'map',
                     children:
                         [

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import { MomentModule } from 'ngx-moment';
 import { IonicModule } from '@ionic/angular';
 
 import { ChatPage } from './chat.page';
@@ -19,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MomentModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],

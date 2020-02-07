@@ -1,29 +1,37 @@
-.bgImage {
-  height:100%;
-  width:100%;
-  position: absolute;
-  top:0;
-  left:0;
-  //filter: blur(3px);
-  background-size:100%;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-    .info{
-      background: rgba(2, 2, 2, 0.37);
-      width: 100%;
-      height: 100%;
-      padding: 8px 20px;
-      color: #fff;
-    }
-  }
+
 .places{
+
+  background: #fff;
+  background-size:100%;
+  
+
+  .table{
+    background-color:#990000;
+    position:absolute;
+    color:#fff;
+    font-size:10px;
+    text-align:center;
+    line-height:200%;
+    border-radius:2px;
+  }
+
+  background-color:100%;
+
+  .info{
+   
+    width: 100%;
+    height: 100%;
+    padding: 8px 20px;
+    color: #009900;
+  }
   h3{
-    margin: 0 0 6px 0;
+    margin: 0 0 0px 0;
     letter-spacing: 2px;
     font-weight: bold;
+    font-size: 1.1em;
   }
   span{
-    font-size: 16px;
+    font-size: 11px;
     letter-spacing: 1px;
   }
   .placeUser{

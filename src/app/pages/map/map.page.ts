@@ -6,18 +6,7 @@ import {AuthService} from '../../../services/auth.service';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {AddChannelComponent} from '../../components/add-channel/add-channel.component';
 import {ModalController} from '@ionic/angular';
-
-import {
-    GoogleMaps,
-    GoogleMap,
-    GoogleMapsEvent,
-    GoogleMapOptions,
-    CameraPosition,
-    MarkerOptions,
-    Marker,
-    Environment
-} from '@ionic-native/google-maps';
-
+ 
 @Component({
     selector: 'app-map',
     templateUrl: './map.page.html',
@@ -36,6 +25,15 @@ export class MapPage implements OnInit {
     public lat;
     public lng;
     public time = null;
+    public hour = 7;
+    public displayHour = "7:00 AM";
+    public day = 0;
+
+
+    date: string;
+    type: 'string';
+
+
     @ViewChild('gmap') gmapElement: any;
     myLocation;
     map: any;
@@ -48,6 +46,25 @@ export class MapPage implements OnInit {
         private geolocation: Geolocation,
         public modalController: ModalController
     ) {
+
+        console.log("--------------------");
+        this.geofenceInit();
+
+    }
+
+    geofenceInit() {
+        console.log("calling Geofence");
+    }
+
+   
+
+    getDisplayTime() {
+        let t = this.hour;
+        let am = "am";
+        if(t > 11.5){
+            am = "pm";
+        }
+
     }
 
     ngOnInit() {
@@ -57,13 +74,14 @@ export class MapPage implements OnInit {
 
     searchPlaces(e) {
         clearTimeout(this.time);
+
         this.time = setTimeout(() => {
             this.authService.searchPlace(this.lat, this.lng, e.target.value).subscribe(place => {
                 this.places = '';
                 this.places = place;
                 this.placeMarkers();
                 this.showPlaceInfo = this.places[0];
-                const center =  new google.maps.LatLng(this.places[0].lat, this.places[0].lng);
+                const center =  new google.maps.LatLng(this.places[0].lat-0.1, this.places[0].lng);
                 this.map.setCenter(center);
             });
         }, 500);
@@ -681,21 +699,21 @@ export class MapPage implements OnInit {
         const markers = [];
         for (let i = 0; i < this.places.length; i++) {
             const pos = new google.maps.LatLng(this.places[i].lat, this.places[i].lng);
-            let iconUrl = '../../assets/imgs/coffee-map-icon.png';
+            let iconUrl = '../../assets/imgs/coffee-map-icon-trans.png';
             if (this.places[i].people === 0) {
                 iconUrl = '../../assets/imgs/coffee-map-icon-trans.png';
             }
             if (this.places[i].poptype === 1) {
                 if (this.places[i].people > 0) {
-                    iconUrl = '../../assets/imgs/coworking-map-icon.png';
+                    iconUrl = '../../assets/imgs/coworking-map-icon-trans.png';
                 } else {
                     iconUrl = '../../assets/imgs/coworking-map-icon-trans.png';
                 }
             }
             let labelText = this.places[i].people + '';
-            if (this.places[i].people === 0) {
+           // if (this.places[i].people === 0) {
                 labelText = ' ';
-            }
+            //}
 
             const place = this.places[i];
             const marker = new google.maps.Marker({
@@ -713,15 +731,17 @@ export class MapPage implements OnInit {
                 }
                 this.selectedMarker = marker;
                 this.selectedMarker.setAnimation(google.maps.Animation.BOUNCE);
-                this.map.panTo(new google.maps.LatLng(place.lat, place.lng));
+               // this.map.panTo(new google.maps.LatLng(place.lat, place.lng));
             }.bind(this));
 
             markers[i] = marker;
+            this.places[i].marker = marker;
 
             google.maps.event.addListener(markers[i], 'click', () => {
                 this.showPlaceInfo = this.places.filter(item => item.id === markers[i].id)[0];
                 console.log(this.showPlaceInfo);
             });
+            
             google.maps.event.addListener(this.map, 'bounds_changed', () => {
                 const strictBounds = this.map.getBounds();
                 this.north = strictBounds.getNorthEast().lng();

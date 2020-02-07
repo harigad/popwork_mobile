@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {appConfig} from '../utils/app.config';
 import {HttpClient} from '@angular/common/http';
-import {getFromLocalStorage} from '../utils/local-storage';
+import {setToLocalStorage, getFromLocalStorage} from '../utils/local-storage';
 import {HttpHeaders} from '@angular/common/http';
 import {HttpParams} from '@angular/common/http';
 import io from 'socket.io-client';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import * as jwt_decode from 'jwt-decode';
-
 
 @Injectable({
     providedIn: 'root'
@@ -22,19 +21,24 @@ export class AuthService {
     constructor(
         private http: HttpClient,
         private geolocation: Geolocation
+       
     ) {
-
+        console.log("geo calling pre");
         if (this.getToken() !== '') {
-            this.connectSocket();
+           // this.connectSocket();
         }
-        this.positionInterval();
-
+       // this.positionInterval();
+      
     }
 
     positionInterval() {
         setInterval(() => {
             this.getUserPosition();
         }, 30000);
+    }
+
+    refreshToken(){
+        return this.http.post(appConfig.apiUrl + '/refresh',{});
     }
 
     getUserPosition() {

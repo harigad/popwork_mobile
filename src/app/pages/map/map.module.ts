@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { MapPage } from './map.page';
-import {PlaceInfoComponent} from '../../components/place-info/place-info.component';
 import {AddChannelComponent} from '../../components/add-channel/add-channel.component';
+import {ComponentsModule} from '../../components/components.module';
 
 const routes: Routes = [
   {
@@ -20,9 +20,10 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MapPage, PlaceInfoComponent, AddChannelComponent],
+  declarations: [MapPage, AddChannelComponent],
   entryComponents: [AddChannelComponent]
 })
 export class MapPageModule {}

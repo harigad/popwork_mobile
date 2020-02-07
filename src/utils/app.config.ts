@@ -1,8 +1,7 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 export const appConfig = {
-  apiUrl: 'https://popwork-dev-api.herokuapp.com',
-  serverUrl: 'https://popwork-dev-api.herokuapp.com',
+  apiUrl: 'http://localhost:3001'//https://popwork-dev-api.herokuapp.com'
 };
 
 export const allowedImageType = [

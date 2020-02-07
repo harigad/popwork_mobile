@@ -27,10 +27,12 @@ export class HomePage implements OnInit {
       private acvtivRoute: ActivatedRoute,
       private  platform: Platform,
       private ngZone: NgZone,
-      private codePush: CodePush,
+      private codePush: CodePush
   ) {
 
   }
+
+
   ngOnInit() {
     this.acvtivRoute.queryParams.subscribe(res => {
       if (res.token) {
@@ -115,6 +117,7 @@ export class HomePage implements OnInit {
         zoom: 'no'
       });
       browser.on('loaderror').subscribe((event) => {
+        debugger;
         if (event.url.includes('localhost')) {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
@@ -123,6 +126,7 @@ export class HomePage implements OnInit {
         }
       });
       browser.on('loadstop').subscribe((event) => {
+        debugger;
         if (event.url.includes('localhost')) {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
@@ -131,11 +135,15 @@ export class HomePage implements OnInit {
         }
       });
     } else {
+
+      window.location.href="https://popwork-dev-api.herokuapp.com/linkedin/login";
+/*
       const browser = this.iab.create(`https://popwork-dev-api.herokuapp.com/linkedin/login`, '_self', {
         location: 'yes',
         zoom: 'no'
       });
       browser.on('loadstop').subscribe((event) => {
+        debugger;
         if (event.url.includes('localhost')) {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
@@ -143,6 +151,8 @@ export class HomePage implements OnInit {
           this.ngZone.run(() => this.router.navigate(['/main'])).then();
         }
       });
+   
+   */
     }
   }
 

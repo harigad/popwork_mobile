@@ -10,9 +10,10 @@ import { NavController } from '@ionic/angular';
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
 })
-export class ChatPage implements OnInit {
+export class ChatPage  {
   public sendMessage: FormGroup = new FormGroup({});
   public messages: any = [];
+  public mess: any = {};
   public error = false;
   status = false;
   currentUserId;
@@ -31,9 +32,13 @@ export class ChatPage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ionViewDidEnter() {
+
     this.currentUserId = getFromLocalStorage('VB_USER').user.id;
+ 
     this.activeRouter.params.subscribe(params => {
+
+      this.mess = JSON.parse(params.data);
       const data = params.id;
       this.channelId = params.id;
       this.authService.getMessagesById(data).subscribe((mess: any) => {

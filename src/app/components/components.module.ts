@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
+import {PlaceInfoComponent} from '../components/place-info/place-info.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
-  declarations: [],
+  declarations: [PlaceInfoComponent],
   entryComponents: [
 
   ],
-  imports: [],
-  exports: [
-  ]
+  imports: [CommonModule],
+  exports: [PlaceInfoComponent]
 })
 export class ComponentsModule {}

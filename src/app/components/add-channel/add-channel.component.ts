@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
 import {logger} from 'codelyzer/util/logger';
 import {Router} from '@angular/router';
+import {Events} from '@ionic/angular';
 
 @Component({
   selector: 'app-add-channel',
@@ -29,7 +30,8 @@ export class AddChannelComponent implements OnInit {
               private authService: AuthService,
               private platform: Platform,
               private geolocation: Geolocation,
-              private router: Router
+              private router: Router,
+              public events:Events
               ) {
     this.channelForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -70,7 +72,11 @@ showKeyboard(): void {
       this.authService.createChannels(channel).subscribe( res => {
         this.modalCtrl.dismiss().then();
       });
-        this.router.navigate(['/main/message']).then();
+        this.router.navigate(['/main/message']).then(
+          () => {
+            this.events.publish("public_message_posted");
+          }
+        );
     }
   }
 
