@@ -23,6 +23,7 @@
     "@types/googlemaps": "^3.30.16",
     "appd-plugin-eum-mobile": "^1.9.534",
     "chart.js": "^2.8.0",
+    "cordova-android": "7.1.4",
     "core-js": "^3.6.4",
     "express": "^4.16.4",
     "gl-ionic-background-video": "0.0.5",
@@ -37,12 +38,11 @@
     "rxjs-compat": "^6.4.0",
     "socket.io": "^2.2.0",
     "underscore": "latest",
-    "zone.js": "~0.8.29",
-    "cordova-android": "7.1.4"
+    "zone.js": "~0.8.29"
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.12.3",
-    "@angular-devkit/build-angular": "^0.13.8",
+    "@angular-devkit/build-angular": "^0.900.1",
     "@angular-devkit/core": "~7.2.3",
     "@angular-devkit/schematics": "~7.2.3",
     "@angular/cli": "~7.2.3",
