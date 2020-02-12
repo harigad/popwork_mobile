@@ -1,7 +1,7 @@
 {
-  "name": "third-space",
+  "name": "popwork",
   "integrations": {
-    "cordova": {}
+    "capacitor": {}
   },
   "type": "angular",
   "id": "cad8ec7e"

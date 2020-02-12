@@ -1,1 +1,0 @@
-// GlBackgroundVideo: ES Module

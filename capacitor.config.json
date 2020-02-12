@@ -1,0 +1,16 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "popwork",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {},
+  "server": {
+    "allowNavigation": [
+      "herokuapp.com",
+      "localhost:8100",
+    "*.herokuapp.com",
+    "*.linkedin.com"
+    ]
+  }
+}
