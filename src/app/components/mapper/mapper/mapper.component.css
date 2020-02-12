@@ -1,0 +1,10 @@
+.grid{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    color: #fff;
+    text-align: center;
+    line-height: 5px;
+    border: 1px dashed #999;
+}

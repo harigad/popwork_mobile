@@ -1,0 +1,21 @@
+.Aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+  }
+  
+  .Aligner-item {
+    max-width: 100%;
+    text-align:center;
+  }
+  
+  .Aligner-item--top {
+    align-self: flex-start;
+    text-align:center;
+  }
+  
+  .Aligner-item--bottom {
+    align-self: flex-end;
+    text-align:center;
+  }

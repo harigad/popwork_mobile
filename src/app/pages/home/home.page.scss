@@ -1,0 +1,97 @@
+  .homepage-content {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    .video-container{
+      -webkit-filter: blur(3px);
+      -moz-filter: blur(3px);
+      -o-filter: blur(3px);
+      -ms-filter: blur(3px);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      //overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .videoFixed {
+        position: fixed;
+        top: 50%;
+        left: 30%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+    .videoBack{
+      min-width: 100%;
+      min-height: 100%;
+      position: relative;
+    }
+    .numberForm{
+      top: 70%;
+      position: relative;
+      padding: 20px;
+    }
+    label{
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: 12px;
+      font-weight: 100;
+      span{
+        letter-spacing: 2px;
+        font-size: 25px;
+        color: #efecec;
+        position: relative;
+        top: 2px;
+        margin-right: 10px;
+      }
+    }
+    .phone {
+      background: #fff;
+      color: #353535;
+      border-radius: 4px;
+      margin-top: 4px;
+      input{
+        text-align: center;
+        font-size: 14px;
+        font-weight: 100;
+        letter-spacing: 2px;
+        padding: 4px 0;
+      }
+    }
+    .linkendin{
+      background: #fff;
+      width: 100%;
+      padding: 12px 0;
+      margin-top: 10px;
+      border-radius: 4px;
+      outline: none;
+      color: #ff008a;
+      font-size: 15px;
+      letter-spacing: 3px;
+      box-shadow: 0px 0px 5px #fff;
+    }
+      .modal{
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        width: 88%;
+        background: #fff;
+        border-radius: 4px;
+        .spiner{
+          color: #ff008a;
+        }
+        p{
+          margin-top: 6px;
+          margin-bottom: 0;
+          color: #ff008a;
+          letter-spacing: 2px;
+        }
+      }
+  }
+
+

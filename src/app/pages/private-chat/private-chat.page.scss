@@ -1,0 +1,107 @@
+.clearfix{
+  clear: both;
+}
+.inline{
+  display: inline-block;
+  text-align: center;
+}
+.arrowBack{
+  width: 12%;
+  button{
+    background: #b9b9b9;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    outline: none;
+    ion-icon{
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+}
+.autorChat{
+  width: 76%;
+  h4{
+    margin-bottom: 4px;
+    color: #acacac;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+.arrowMore{
+  width: 12%;
+  button{
+    background: none;
+    ion-icon{
+      font-size: 34px;
+      color: #9e9999;
+    }
+  }
+}
+.placeInfo{
+  text-align: center;
+  span{
+    color: #2563ef;
+    letter-spacing: 2px;
+  }
+}
+.fromUser{
+  width: 17%;
+  float: left;
+  img{
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+  }
+}
+.private-chat{
+  display: inline-block;
+  width: 100%;
+  .fromMess{
+    width: 83%;
+    float: left;
+    p{
+      width: 230px;
+      background: #f5f5f5;
+      border-bottom-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 15px 20px;
+      margin-bottom: 0px;
+    }
+  }
+  .currentUser{
+    float: right;
+    .fromMess{
+      p{
+        width: 230px;
+        background: #746bbd;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        padding: 15px 20px;
+        color: #fff;
+      }
+    }
+  }
+}
+.inputMess{
+  width: 80%;
+  float: left;
+  .textMess{
+    font-size: 15px;
+  }
+}
+.sendMess{
+  width: 20%;
+  float: left;
+  button{
+    background: none;
+    outline: none;
+    ion-icon{
+      font-size: 44px;
+      color: #3a95ff;
+    }
+  }
+}

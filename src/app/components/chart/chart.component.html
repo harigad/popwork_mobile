@@ -1,0 +1,42 @@
+<ion-content>
+  <div class="chartGraph">
+    <div class="chart-wrapper">
+      <div class="change-btn">
+        <ion-icon (click)="prevChart()" class="prev" name="arrow-round-back"></ion-icon>
+        <div class="dateChart">
+          <span>{{ date }}</span>
+        </div>
+        <ion-icon [ngClass]="{'opacity': (shift === 0)}" (click)="nextChart()" class="next" name="arrow-round-forward"></ion-icon>
+      </div>
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="selectGraph">
+          <ion-select class="chartContent" (ionChange)="onChange($event)">
+            <ion-select-option selected [value]="1">DAY</ion-select-option>
+            <ion-select-option [value]="2">WEEKLY</ion-select-option>
+            <ion-select-option [value]="3">MONTHLY</ion-select-option>
+          </ion-select>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-tabs">
+      <div class="qr-code">
+        <button routerLink="/message" routerDirection="root" (click)="pushMessagePage()" class="earn-btn" ion-button>
+          <ion-icon class="qr" name="chatbubbles"></ion-icon>
+        </button>
+      </div>
+      <div class="location">
+        <button routerLink="/map" routerDirection="root" (click)="pushMapPage()" class="earn-btn" ion-button>
+          <ion-icon class="location-color" name="navigate"></ion-icon>
+        </button>
+      </div>
+      <div class="settings">
+        <button routerLink="/settings" routerDirection="root" (click)="pushSettingsPage()" class="earn-btn" ion-button>
+          <ion-icon class="sett-icon" name="md-settings"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

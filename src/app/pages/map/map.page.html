@@ -1,0 +1,21 @@
+<ion-content>
+  <div class="map">
+    <div *ngIf="false" class="search-place">
+      <ion-icon class="search-pl" name="search"></ion-icon>
+      <ion-input (ionFocus)="onFocus=true"  class="searchinput" (input)="searchPlaces($event)" type="search" placeholder="find"></ion-input>
+    </div>
+
+  </div>
+
+  <div (click)="onFocus=false"   id="map" #gmap></div>
+</ion-content>
+
+<div class="foot" >
+  <div *ngIf="showPlaceInfo && onFocus==false" class="object-info">
+      <app-place-info [place]="showPlaceInfo"></app-place-info>
+  </div>
+
+  <ion-range  min="8" max="20" step="1" color="primary"  snaps="true" [(ngModel)]="hour" (ionChange) = "rangeChanged()">
+    <ion-label style="font-size:0.7em;"  slot="start" >{{displayHour}}</ion-label>
+  </ion-range>
+</div>

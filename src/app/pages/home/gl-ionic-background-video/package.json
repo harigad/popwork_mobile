@@ -1,0 +1,55 @@
+{
+  "_from": "gl-ionic-background-video",
+  "_id": "gl-ionic-background-video@0.0.5",
+  "_inBundle": false,
+  "_integrity": "sha512-SoTjjCtHP95Ozp93WNzLXty/Iac4/aTD1EZgsmLkWH0s1B/Cbc1JCwmaoRSWN4TkqPIBEQ7kY3aTAouhVTQQ/g==",
+  "_location": "/gl-ionic-background-video",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "gl-ionic-background-video",
+    "name": "gl-ionic-background-video",
+    "escapedName": "gl-ionic-background-video",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/gl-ionic-background-video/-/gl-ionic-background-video-0.0.5.tgz",
+  "_shasum": "28214f2562938cdc4d6e8f8597d770284e335df3",
+  "_spec": "gl-ionic-background-video",
+  "_where": "/Users/argam/web/popwork_mobile",
+  "bundleDependencies": false,
+  "collection": "dist/collection/collection-manifest.json",
+  "dependencies": {},
+  "deprecated": false,
+  "description": "A Stencil Component for a fullscreen video playing in the background of a Ionic page",
+  "devDependencies": {
+    "@stencil/core": "~0.16.2",
+    "@types/jest": "23.3.13",
+    "@types/puppeteer": "1.12.0",
+    "jest": "23.6.0",
+    "jest-cli": "23.6.0",
+    "puppeteer": "1.8.0"
+  },
+  "files": [
+    "dist/"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "name": "gl-ionic-background-video",
+  "scripts": {
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
+  },
+  "types": "dist/types/components.d.ts",
+  "unpkg": "dist/ionic.js",
+  "version": "0.0.5"
+}

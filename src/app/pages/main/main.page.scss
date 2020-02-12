@@ -1,0 +1,23 @@
+.footer-tabs{
+  text-align: center;
+  .settings, .qr-code,.location {
+    width: 30%;
+    display: inline-block;
+    button{
+      background: none;
+      outline: none;
+      .location-color{
+        color: #ff0046;
+        font-size: 30px;
+      }
+      .sett-icon{
+        color: grey;
+        font-size: 30px;
+      }
+      .qr{
+        font-size: 30px;
+        color: grey;
+      }
+    }
+  }
+}

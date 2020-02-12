@@ -1,0 +1,95 @@
+
+.chartGraph {
+  width: calc(100% - 24px);
+  height: 100%;
+  position: relative;
+  margin: 0 12px;
+  background: #fff;
+  .chart-wrapper {
+    height: calc(100% - 60px);
+    position: relative;
+    .change-btn{
+      position: absolute;
+      top: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      ion-icon{
+        color: #05717d;
+        font-size: 14px;
+        width: 50px;
+        height: 50px;
+      }
+      .prev{
+        margin-right: 20%;
+      }
+      .next{
+        margin-left: 20%;
+      }
+      .dateChart{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        span{
+          letter-spacing: 2px;
+        }
+        color: #05717d;
+      }
+      .opacity{
+        opacity: 0.3;
+      }
+    }
+}
+  .chartContent{
+    color: #000;
+    border: 1px solid grey;
+    padding: 6px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 18px;
+    background: #fff;
+  }
+  .selectGraph{
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    font-size: 15px;
+  }
+}
+.closeModal{
+  text-align: center;
+  button{
+    background: #f30c56;
+    color: #fff;
+    margin-top: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+}
+
+.footer-tabs{
+  text-align: center;
+  .settings, .qr-code,.location {
+    width: 30%;
+    display: inline-block;
+    button{
+      background: none;
+      box-shadow: none;
+      outline: none;
+      .location-color{
+        color: grey;
+        font-size: 30px;
+      }
+      .sett-icon{
+        color: #f30c56;
+        font-size: 30px;
+      }
+      .qr{
+        font-size: 30px;
+        color: gray;
+      }
+    }
+  }
+}

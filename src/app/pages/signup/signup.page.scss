@@ -1,0 +1,39 @@
+  .signup-content{
+    background: url("../../../assets/imgs/third-back.jpg");
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    .user-avatar{
+      top: 20%;
+      margin: auto;
+      position: relative;
+      span{
+        display: block;
+        color: #fff;
+        font-weight: 100;
+      }
+      img{
+        width: 140px;
+      }
+      h3{
+        margin: 0;
+        color: #fff;
+        font-weight: 100;
+        font-size: 19px;
+      }
+      p{
+        margin-top: 0;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 100;
+      }
+      .text{
+        font-size: 12px;
+        text-align: left;
+        margin-top: 15px;
+        width: 330px;
+      }
+    }
+  }

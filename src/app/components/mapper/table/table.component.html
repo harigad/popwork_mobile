@@ -1,0 +1,38 @@
+<div  
+  class="Aligner"
+
+  (keydown)="onKeydown($event)"
+
+  (endOffset) = "dragStopped($event)"
+  (rzStop) = "resizeStopped($event)"
+  *ngIf="table" 
+  #mytable 
+  (click) = "setSelected()"
+  
+  ngResizable
+
+  [bounds]="myBounds"
+  [inBounds]="true"
+
+  [gridSize]="gridSize"
+  
+  [zIndex]="100"
+  [preventDefaultEvent]="true"
+  
+  class="drag-grid" 
+  [style.opacity] = "table == selected? 1 : 0.5"
+  [style.width.px]="table.width" 
+  [style.height.px]="table.height" 
+  [style.border-radius.px]="table.shape == 'round'? table.width > table.height ? table.height : table.width : '8px'"
+  [style.left.px]="table.left" 
+  [style.top.px]="table.top" 
+
+  ngDraggable  
+  
+  style="position:absolute;text-align:center;border-radius:8px;background-color:#999;display:inline-block;" >
+  <div class="Aligner-item Aligner-item--top">&nbsp;</div>
+  <div class="Aligner-item">....</div>
+  <div class="Aligner-item Aligner-item--bottom">&nbsp;</div>
+
+</div>
+ 

@@ -1,0 +1,9 @@
+<div *ngFor="let x of XX" style="background-color:#990000;"    (dblclick) = "addTableFromClick($event)" >
+    <div *ngFor="let y of YY" style="background-color:#009900;" >
+            <div [ngDraggable]="false" [position]="{x: x, y: y }" [preventDefaultEvent]="true" class="grid">
+        </div>
+    </div>
+</div>
+<div>
+<app-table  *ngFor="let table of tables" [selected]="selected" [table]="table" [passSelected]="setSelected.bind(this)" [updateTable]="updateTable.bind(this)" ></app-table>
+</div>
