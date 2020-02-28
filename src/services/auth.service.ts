@@ -52,7 +52,10 @@ export class AuthService {
 
     connectSocket() {
        
+    }
 
+    refreshPopWork(popwork){
+        return this.http.get(appConfig.apiUrl + `/popworks/mobile/${popwork}`);
     }
 
     sendPhoneNumber(phone) {

@@ -1,9 +1,24 @@
 
-export function getFromLocalStorage(key: string): any {
+export function getFromLocalStorage(key: string, returnAsIs=false): any {
   const value = localStorage.getItem(key);
   //debugger;
+  if(returnAsIs){
+    return value;
+  }else{
+    try {
+      return JSON.parse(value) || {};
+    } catch (e) {
+      return {};
+   }
+  }
+}
+
+export function getUser(): any {
+  const value = localStorage.getItem("VB_USER");
+  //debugger;
   try {
-    return JSON.parse(value) || {};
+    let data = JSON.parse(value) || {};
+    return data.user;
   } catch (e) {
     return {};
   }
@@ -15,6 +30,7 @@ export function removeFromLocalStorage(key: string | string[]) {
 }
 
 export function setToLocalStorage(key: string, data: any): any {
+  debugger;
   let newData = data;
   try {
     newData = JSON.stringify(data);

@@ -14,18 +14,19 @@
           <div style="flex:1">
             <div style="display:flex;flex-direction: row ;" >
               <span style="flex:1;font-size:0.8em;color:#666;">
-                  {{mess.fullname}}---
+                  {{mess.fullname}}
               </span>
-              <span style="flex: none; align-self:flex-end; font-size:0.8em;color:#666;" >{{ mess.created | amTimeAgo }}</span>
+              <span style="flex: none; align-self:flex-end; font-size:0.8em;color:#999;" >{{ mess.created | amTimeAgo }}</span>
             </div> 
             <div style="color:#666;" >
-                <span style="font-size:0.8em;color:#ff0077" >Mudsmith Coffee House</span>
+                <span style="font-size:0.8em;color:#ff0077" >{{mess.popworkname || 'Mudsmith Coffee House'}}</span>
             <div style="color:#000;font-size:0.8em;">{{mess.title}}</div>
 
-            <div style="display:flex;flex-direction: row;" >
-               
-                <span style="padding-top:5px;padding-bottom:5px;vertical-align: top;flex: none; align-self:flex-end; font-size:0.8em;color:#666;" >235 comments</span>
-              </div> 
+            <div style="font-size:0.8em;padding-left:0px;padding-right:10px;color:#999;vertical-align: baseline;">
+              <img src="assets/icon/like.png"  style="height:15px;margin-right:10px;vertical-align: baseline;">
+              <span style="margin-right:10px;" >2 likes</span>|<span style="margin-left:10px;" >4 comments</span>
+              
+            </div>
          
             </div>
 
@@ -34,23 +35,40 @@
       </div>
 
 
-  <div class="chat" *ngFor="let message of messages" style="padding:10px;font-size:0.8em;">
-    <div [ngClass]="currentUserId === message.user ? 'currentUser' : 'channelUser'">
-      <div *ngIf="currentUserId !== message.user" class="fromUser">
-        <img  src="{{ message.photo || './assets/imgs/no_avatar.png'}}">
-      </div>
-      <div class="fromMess">
-        <p>{{ message.message }}</p>
-      </div>
-      <div class="clearfix"></div>
+  <div class="chat" *ngFor="let message of messages" style="padding-left:40px;font-size:1.0em;">
+ 
+    <div (click)="goToPublicMess(message.id)" style="background-color:#fff;margin:5px;margin-right:10px;border-radius:4px;font-size:0.9em;padding:10px;display:flex;flex-direction: row ;"  > 
+      <span style="flex: none;" >
+      <img [src]="mess.photo" style="margin-right:5px;border-radius:50px;overflow:hidden;width:50px;height:50px;" > 
+    </span>  
+        <div style="flex:1">
+          <div style="display:flex;flex-direction: row ;" >
+            <span style="flex:1;font-size:0.8em;color:#666;">
+                {{message.fullname}}
+            </span>
+            <span style="flex: none; align-self:flex-end; font-size:0.8em;color:#666;" >{{ message.created | amTimeAgo }}</span>
+          </div> 
+          <div style="color:#666;" >
+              <span style="font-size:0.8em;color:#ff0077" >{{message.popworkname || 'Mudsmith Coffee House'}}</span>
+          <div style="color:#000;font-size:0.8em;">{{message.message}}</div>
+
+          </div>
+
+
+        </div>
     </div>
+    <div style="font-size:0.8em;padding-left:10px;padding-right:10px;color:#999;vertical-align: top;">
+      <img src="assets/icon/like.png"  style="height:15px;margin-left:10px;margin-right:10px;vertical-align: top;">|
+      <img src="assets/icon/comment.png"  style="margin-top:3px;height:12px;margin-left:10px;margin-right:10px;vertical-align: top;">
+    </div>
+
   </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <form class="messageForm" [formGroup]="sendMessage">
     <div class="inputMess">
-      <ion-input id="inputValue" class="textMess" placeholder="reply" formControlName="message" type="text"></ion-input>
+      <ion-input id="inputValue" class="textMess" placeholder="add your comment" formControlName="message" type="text"></ion-input>
     </div>
     <div class="sendMess">
       <button (click)="send(sendMessage.value)" ion-button><ion-icon name="arrow-dropright-circle"></ion-icon></button>

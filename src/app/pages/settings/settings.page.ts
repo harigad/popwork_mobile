@@ -7,6 +7,8 @@ import {ChartComponent} from '../../components/chart/chart.component';
 import {AuthService} from '../../../services/auth.service';
 import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
 import {CallComponent} from '../../components/call/call.component';
+import { Plugins } from '@capacitor/core';
+const { Device } = Plugins;
 
 @Component({
   selector: 'app-settings',
@@ -27,8 +29,8 @@ export class SettingsPage implements OnInit {
   public savePhoto = false;
   public url;
   public  company;
-  public reservations = [{
-    place:{}
+  public visits = [{
+    
   }];
 
   constructor(
@@ -41,10 +43,15 @@ export class SettingsPage implements OnInit {
   }
 
   ngOnInit() {
+
+   
     this.user = getFromLocalStorage('VB_USER').user || {};
     this.url = this.user.photo;
+    this.visits = this.user.history;
     this.initForms();
   }
+
+
 
   showInput() {
     this.hideName = false;

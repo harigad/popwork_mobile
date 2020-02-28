@@ -29,4 +29,9 @@ export class MapperService {
         return this.http.post(`${appConfig.apiUrl}/popworks/table/delete`, table);
     }
 
+    visit(table) {
+        debugger;
+        return this.http.post(`${appConfig.apiUrl}/popworks/visit/` + table.id + '/8',{});
+    }
+
 }

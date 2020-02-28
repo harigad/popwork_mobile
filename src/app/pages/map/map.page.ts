@@ -7,6 +7,7 @@ import { Plugins } from '@capacitor/core';
 const { Geolocation } = Plugins;
 import {AddChannelComponent} from '../../components/add-channel/add-channel.component';
 import {ModalController} from '@ionic/angular';
+import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
  
 @Component({
     selector: 'app-map',
@@ -35,19 +36,18 @@ export class MapPage implements OnInit {
     date: string;
     type: 'string';
 
-
     @ViewChild('gmap',{static:false}) gmapElement: any;
     myLocation;
     map: any;
     public user = [];
+    public visitsForToday:any;
 
     constructor(
         private router: Router,
         private authService: AuthService,
         public modalController: ModalController
     ) {
-
-        console.log("--------------------");
+        
         this.geofenceInit();
 
     }
@@ -55,6 +55,10 @@ export class MapPage implements OnInit {
     geofenceInit() {
         console.log("calling Geofence");
     }
+
+    
+
+
 
     rangeChanged(){
         let hour:any;
@@ -84,8 +88,13 @@ export class MapPage implements OnInit {
     }
 
     ngOnInit() {
-      
-        this.initMap();
+            this.initMap();
+          }
+
+    refreshPopWork(){
+        this.authService.refreshPopWork(this.showPlaceInfo.id).subscribe((popwork) => {
+            this.showPlaceInfo = popwork;
+        });
     }
 
     searchPlaces(e) {
@@ -105,6 +114,7 @@ export class MapPage implements OnInit {
     }
 
     async initMap() {
+        debugger;
             const position = await Geolocation.getCurrentPosition();
     
            
@@ -560,6 +570,9 @@ export class MapPage implements OnInit {
 
             google.maps.event.addListener(markers[i], 'click', () => {
                 this.showPlaceInfo = this.places.filter(item => item.id === markers[i].id)[0];
+                debugger;
+                delete this.showPlaceInfo.marker;
+                setToLocalStorage("selectedPopWork",this.showPlaceInfo);
                 console.log(this.showPlaceInfo);
             });
             

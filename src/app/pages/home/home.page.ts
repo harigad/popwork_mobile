@@ -43,6 +43,7 @@ export class HomePage implements OnInit {
     console.log("----------------------------------------");*/
 
     this.acvtivRoute.queryParams.subscribe(res => {
+      debugger;
       if (res.token) {
         console.log(decodeURI(res.token ));
         const tok = decodeURI(res.token);

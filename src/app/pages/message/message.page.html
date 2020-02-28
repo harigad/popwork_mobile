@@ -17,18 +17,16 @@
                 <span style="flex:1;font-size:0.8em;color:#666;">
                     {{mess.fullname}}
                 </span>
-                <span style="flex: none; align-self:flex-end; font-size:0.8em;color:#666;" >{{ mess.created | amTimeAgo }}</span>
+                <span style="flex: none; align-self:flex-end; font-size:0.8em;color:#999;" >{{ mess.created | amTimeAgo }}</span>
               </div> 
               <div style="color:#666;" >
                   <span style="font-size:0.8em;color:#ff0077" >Mudsmith Coffee House</span>
               <div style="color:#000;font-size:0.8em;">{{mess.title}}</div>
 
-              <div style="display:flex;flex-direction: row;" >
-                  <span (click) = "addMessage($event, mess)" style="flex:1;font-size:0.8em;color:#666;vertical-align: middle;">
-                      <div style="vertical-align: middle;margin-top:3px;margin-right:5px;padding:5px;background-color:#f1f1f1;border-radius:4px;color:#666;">leave a comment</div>
-                  </span>
-                  <span style="padding-top:5px;padding-bottom:5px;vertical-align: top;flex: none; align-self:flex-end; font-size:0.8em;color:#666;" >235 comments</span>
-                </div> 
+              <div style="font-size:0.8em;padding-left:0px;padding-right:10px;color:#999;vertical-align: top;">
+                <img src="assets/icon/like.png"  style="height:15px;margin-right:10px;vertical-align: top;">2 likes|
+                <img src="assets/icon/comment.png"  style="margin-top:3px;height:12px;margin-left:10px;margin-right:10px;vertical-align: top;">4 comments
+              </div>
            
               </div>
 
