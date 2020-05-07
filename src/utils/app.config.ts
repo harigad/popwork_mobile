@@ -1,8 +1,8 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 export const appConfig = {
-  apiUrl: 'https://popwork-dev-api.herokuapp.com',
-  loginUrl: 'https://popwork-dev-api.herokuapp.com'
+  apiUrl: 'http://localhost:3001',
+  loginUrl: 'http://localhost:3001'
 };
 
 

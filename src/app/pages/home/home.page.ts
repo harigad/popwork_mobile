@@ -6,6 +6,8 @@ import {appConfig} from './../../../utils/app.config';
 import {setToLocalStorage, getFromLocalStorage} from '../../../utils/local-storage';
 import { Plugins } from '@capacitor/core';
 
+
+
 const { Browser } = Plugins;
 
 
@@ -50,19 +52,19 @@ export class HomePage implements OnInit {
         setToLocalStorage('VB_USER', JSON.parse(tok + '"}}'));
         this.authService.refreshToken().subscribe(res => {
           setToLocalStorage('VB_USER', res);
-          this.router.navigate(['/main']).then();
+          this.router.navigate(['/map']).then();
         });
       }else{ 
         this.authService.refreshToken().subscribe(res => {
           setToLocalStorage('VB_USER', res);
-          this.router.navigate(['/main']).then();
+          this.router.navigate(['/map']).then();
         });
       }
     });
       
     const userToken = getFromLocalStorage('VB_USER').jwt;
       if (userToken) {
-        this.router.navigate(['/main']).then();
+        this.router.navigate(['/map']).then();
       }else{
         this.showLoginBtn = true;
       }
@@ -98,33 +100,23 @@ export class HomePage implements OnInit {
 
    // console.log((window as any).location.href);
 
-    (window as any).location =  appConfig.loginUrl + "/linkedin/login";
-/*
-      const browser = await Browser.open(`https://popwork-dev-api.herokuapp.com/linkedin/login`, '_blank', {
-        location: 'yes',
-        zoom: 'no'
-      }); 
-      browser.on('loaderror').subscribe((event) => {
-        debugger;
+   
+      Browser.addListener('browserPageLoaded',(event) => {
+    debugger;
         if (event.url.includes('localhost')) {
           const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
           setToLocalStorage('VB_USER', JSON.parse(tok));
-          browser.close();
-          this.ngZone.run(() => this.router.navigate(['/main'])).then();
+          Browser.close();
+          this.ngZone.run(() => this.router.navigate(['/map'])).then();
         }
       });
-      browser.on('loadstop').subscribe((event) => {
-        debugger;
-        if (event.url.includes('localhost')) {
-          const tok = decodeURI(event.url.replace('http://localhost:8100/?token=', ''));
-          setToLocalStorage('VB_USER', JSON.parse(tok));
-          browser.close();
-          this.ngZone.run(() => this.router.navigate(['/main'])).then();
-        }
-      });
-      */
-    
-    
+
+      const browser = await Browser.open({url: `https://popwork-dev-api.herokuapp.com/linkedin/login`});
+      
+      
+
+
+
   }
 
 

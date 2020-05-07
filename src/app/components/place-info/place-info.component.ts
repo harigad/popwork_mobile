@@ -10,6 +10,13 @@ import { AlertController } from '@ionic/angular';
 export class PlaceInfoComponent implements OnInit {
 @Input() place: any;
  user: any;
+ slideOpts = {
+  initialSlide: 1,
+  speed: 400,
+  spaceBetween: 10,
+  slidesPerView:1.1,
+  centeredSlides:true
+};
 items:any = [];
 public backgroundImage: any;
   constructor(public mapperService:MapperService,

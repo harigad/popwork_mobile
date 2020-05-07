@@ -1,7 +1,0 @@
-{
-  "name": "popwork",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

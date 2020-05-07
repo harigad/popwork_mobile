@@ -21,6 +21,8 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>com.getcapacitor.capacitor</string>
 			<key>CFBundleURLSchemes</key>
@@ -36,7 +38,7 @@
 	<key>IonAppId</key>
 	<string>cad8ec7e</string>
 	<key>IonChannelName</key>
-	<string>Dev</string>
+	<string>Develop</string>
 	<key>IonMaxVersions</key>
 	<string>2</string>
 	<key>IonMinBackgroundDuration</key>

@@ -127,13 +127,13 @@ export class MapPage implements OnInit {
                 this.myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 this.map = new google.maps.Map(this.gmapElement.nativeElement, {
                     center: this.myLocation,
-                    zoom: 1,
+                    zoom: 15,
                     mapTypeControl: false,
                     streetViewControl: false,
                     panControl: false,
                     fullscreenControl: false,
                     rotateControl: false,
-                    zoomControl: true,
+                    zoomControl: false,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     styles: [
                         {
@@ -318,13 +318,13 @@ export class MapPage implements OnInit {
         // debugger;
         this.map = new google.maps.Map(this.gmapElement.nativeElement, {
             center: new google.maps.LatLng(32.7767, -96.7970),
-            zoom: 10,
+            zoom: 15,
+            zoomControl:false,
             mapTypeControl: false,
             streetViewControl: false,
             panControl: false,
             fullscreenControl: false,
             rotateControl: false,
-            zoomControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             styles: [
                 {

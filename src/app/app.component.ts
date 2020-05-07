@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
-
+import { MenuController } from '@ionic/angular';
 
 @Component({
     selector: 'app-root',
@@ -10,7 +10,7 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
     constructor(
-  
+        private menu: MenuController,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
     ) {
@@ -19,6 +19,10 @@ export class AppComponent {
 
     initializeApp() {
     
+    }
+
+    openMenu() {
+        this.menu.open('first');
     }
 
 }

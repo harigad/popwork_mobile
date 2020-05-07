@@ -1,12 +1,10 @@
 <ion-content>
   <div class="map">
-    <div class="search-place">
+    <div class="search-place" style="display:none;">
       <ion-icon class="search-pl" name="search"></ion-icon>
       <ion-input class="searchinput" (input)="searchPlaces($event)" type="search" placeholder="find"></ion-input>
     </div>
-    <div (click)="addChannelModal()" class="shout-icon" >
-      <img src="assets/imgs/shout-icon.png" >
-    </div>
+ 
 
     <div id="map" #gmap></div>
     <div *ngIf="showPlaceInfo" class="object-info">
@@ -15,4 +13,19 @@
         </div>
     </div>
   </div>
+
+<div class="footer" >
+  <div style="position: relative;">
+    <div (click)="addChannelModal()" class="menu-icon" >
+      <img src="assets/icon/menu.png" >
+    </div>
+    <div (click)="addChannelModal()" class="shout-icon" >
+      <img src="assets/icon/gift.png" >
+    </div>
+
+    <div (click)="addChannelModal()" class="scan-icon" >
+      <img src="assets/icon/key.png" >
+    </div>
+  </div>
+</div>
 </ion-content>
